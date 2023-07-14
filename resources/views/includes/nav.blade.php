@@ -631,7 +631,8 @@
     <!--end header -->
     <!--navigation-->
     <div class="primary-menu">
-        <input type="hidden" value="{{ csrf_token() }}" id="url">
+        <input type="hidden" value="{{URL::to('/')}}" id="url">
+        <input type="hidden" value="{{ csrf_token() }}" id="token">
         <nav class="navbar navbar-expand-lg align-items-center">
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header border-bottom">

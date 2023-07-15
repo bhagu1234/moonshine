@@ -11,6 +11,7 @@
 	<link href="{{URL::to('/')}}/public/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="{{URL::to('/')}}/public/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="{{URL::to('/')}}/public/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="{{URL::to('/')}}/public/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{URL::to('/')}}/public/assets/css/pace.min.css" rel="stylesheet" />
 	<script src="{{URL::to('/')}}/public/assets/js/pace.min.js"></script>

@@ -8,7 +8,7 @@
                     <button type="button" class="button-24 close_customerModal" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
-                    <h6 class="mb-0 text-uppercase">All Customers</h6>
+                    <h6 class="mb-0 text-uppercase">All Customers <button id="openCreateCustomerModal">Add Customer</button></h6>
                     <hr/>
                     <div class="table-responsive">
                         <table id="example" class="table table-striped table-bordered" style="width:100%">

@@ -8,10 +8,13 @@
 <script src="{{URL::to('/')}}/public/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="{{URL::to('/')}}/public/assets/plugins/chartjs/js/chart.js"></script>
 <script src="{{URL::to('/')}}/public/assets/js/index.js"></script>
-<!--app JS-->
+<script src="{{URL::to('/')}}/public/assets/plugins/validation/jquery.validate.min.js"></script>
+<script src="{{URL::to('/')}}/public/assets/plugins/validation/validation-script.js"></script>
+<!-- app js -->
 <script src="{{URL::to('/')}}/public/assets/js/app.js"></script>
 
 
-<!-- customer scripts  -->
+ <!-- customer scripts  -->
 <script src="{{URL::to('/')}}/public/app/js/customer.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/user.js"></script>
+<script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

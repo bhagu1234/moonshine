@@ -659,7 +659,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li id="openCustomerModel"><a class="dropdown-item" href="#"><i class='bx bx-chevron-down'></i>Customer View</a></li>
+                            <li onclick="openCustomerModel()"><a class="dropdown-item" href="#"><i class='bx bx-chevron-down'></i>Customer View</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

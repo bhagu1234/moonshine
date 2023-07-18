@@ -15,7 +15,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Customer</th>
+                                    <!-- <th>Customer</th> -->
+                                    <th>Customer Name</th>
+                                    <th>Customer Email</th>
                                     <th>User</th>
                                     <th>Company details</th>
                                     <th>Bank</th>
@@ -31,8 +33,6 @@
                                     <th>Mobile</th>
                                     <th>Fax</th>
                                     <th>Location Email</th>
-                                    <th>Customer Name</th>
-                                    <th>Customer Email</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,7 +41,9 @@
                             <tfoot>
                                 <tr>
                                 <th>#</th>
-                                    <th>Customer</th>
+                                    <!-- <th>Customer</th> -->
+                                    <th>Customer Name</th>
+                                    <th>Customer Email</th>
                                     <th>User</th>
                                     <th>Company details</th>
                                     <th>Bank</th>
@@ -57,8 +59,6 @@
                                     <th>Mobile</th>
                                     <th>Fax</th>
                                     <th>Location Email</th>
-                                    <th>Customer Name</th>
-                                    <th>Customer Email</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

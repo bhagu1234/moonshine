@@ -20,28 +20,34 @@ class CustomerController extends Controller
         $tr="";
         foreach($data as $row)
         {
-            $tr.="<tr>
-                <td>".$no++."</td>
-                <td>".$row->customer_id."</td>
-                <td>".$row->user_id."</td>
-                <td>".$row->company_detail_id."</td>
-                <td>".$row->bank_id."</td>
-                <td>".$row->group_cos."</td>
-                <td>".$row->address1."</td>
-                <td>".$row->address2."</td>
-                <td>".$row->area."</td>
-                <td>".$row->landmark."</td>
-                <td>".$row->country."</td>
-                <td>".$row->state."</td>
-                <td>".$row->city."</td>
-                <td>".$row->address_type."</td>
-                <td>".$row->phone_no."</td>
-                <td>".$row->fax."</td>
-                <td>".$row->location_email."</td>
-                <td>".$row->customer_name."</td>
-                <td>".$row->customer_email."</td>
-                <td><a href='#'>edit</a><a href='delete'>delete</a></td>
-            </tr>";
+            if($row->delete_status==1)
+            {
+                $tr.="<tr>
+                    <td>".$no++."</td>
+                    <td>".$row->customer_name."</td>
+                    <td>".$row->customer_email."</td>
+                    <td>".$row->user_id."</td>
+                    <td>".$row->company_detail_id."</td>
+                    <td>".$row->bank_id."</td>
+                    <td>".$row->group_cos."</td>
+                    <td>".$row->address1."</td>
+                    <td>".$row->address2."</td>
+                    <td>".$row->area."</td>
+                    <td>".$row->landmark."</td>
+                    <td>".$row->country."</td>
+                    <td>".$row->state."</td>
+                    <td>".$row->city."</td>
+                    <td>".$row->address_type."</td>
+                    <td>".$row->phone_no."</td>
+                    <td>".$row->fax."</td>
+                    <td>".$row->location_email."</td>
+                    <td>
+                        <a href='#' id='edit_customer' data-value=".$row->customer_id.">edit</a>
+                        <a href='#' id='delete_customer' data-value=".$row->customer_id.">delete</a>
+                    </td>
+                </tr>";
+            }
+           
 
         }
         echo $tr;
@@ -59,7 +65,7 @@ class CustomerController extends Controller
         $regionOption=$option;
         foreach($country as $r)
         {
-            $countryOPtion.="<option value=".$r->id.">".$r->name."</option>";
+            $countryOPtion.="<option value=".$r->id.">".$r->country_name."</option>";
         }
         foreach($AddressType as $r)
         {
@@ -107,23 +113,35 @@ class CustomerController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request->customerPostBox);
+        // dd($request);
         $Customer=new Customer();
-        $Customer->user_id=$request->user_id;
+        $Customer->user_id=1;
         $Customer->company_detail_id=$request->company_detail_id;
         $Customer->bank_id=$request->bank_id;
-        $Customer->group_cos=$request->group_cos;
-        $Customer->address1=$request->address1;
-        $Customer->address2=$request->address2;
-        $Customer->area=$request->area;
-        $Customer->landmark=$request->landmark;
-        $Customer->country=$request->country;
-        $Customer->state=$request->state;
-        $Customer->city=$request->city;
-        $Customer->address_type=$request->address_type;
-        $Customer->phone_no=$request->phone_no;
-        $Customer->location_email=$request->location_email;
-        $Customer->fax=$request->fax;
+        $Customer->group_cos=$request->customer_groupCos;
+        $Customer->address1=$request->customer_address1;
+        $Customer->address2=$request->customer_address2;
+        $Customer->area=$request->CustomerArea;
+        $Customer->landmark=$request->customerLandMark;
+        $Customer->country=$request->customer_country;
+        $Customer->state=$request->CustomerState;
+        $Customer->district=$request->CustomerDistrict;
+        $Customer->city=$request->CustomerCity;
+        $Customer->region=$request->CustomerRegion;
+        $Customer->address_type=$request->CustomerType;
+        $Customer->phone_no=$request->customerPhoneNo;
+        $Customer->location_email=$request->customerLocationEmail;
+        $Customer->fax=$request->customerFax;
+        $Customer->website=$request->customerWebsite;
+        $Customer->refere_by=$request->customerReferencedBy;
+        $Customer->trade_activity=$request->CustomerTradeActivity;
+        $Customer->facility_location=$request->CustomerFacilityAndLocation;
+        $Customer->customer_contact=$request->customerContact;
+        $Customer->bank_id=$request->customerBank;
+        $Customer->credit_facility=$request->customerCreditFacility;
+        $Customer->visite_rating=$request->customerVisiteRating;
+        $Customer->postbox=$request->customerPostBox;
         $Customer->customer_name=$request->customer_name;
         $Customer->customer_email=$request->customer_email;
         $Customer->save();
@@ -144,7 +162,9 @@ class CustomerController extends Controller
     public function delete(Request $request)
     {
         $id=$request->id;
-        $customerdata=Customer::where('customer_id',$id)->delete();
+        $customerdata=Customer::findOrFail($id);
+        $customerdata->delete_status='0';
+        $customerdata->save();
         $response = array('status' => 'success', 'message' => 'customer Deleted successfully.','status' => 200); 
         return json_encode($response);
     }

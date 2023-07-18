@@ -16,7 +16,7 @@
 								<h5 class="mb-0">Add Customer</h5>
 							</div>
 							<div class="card-body p-4">
-								<!-- <form class="row g-3 needs-validation" novalidate> -->
+								<form class="row g-3 needs-validation" novalidate>
 									<div class="col-md-6">
 										<label for="bsValidation1" class="form-label">Customer Name</label>
 										<input type="text" class="form-control" id="customer_name" placeholder="customer Name"  required>
@@ -126,11 +126,11 @@
                                     </div>
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
-											<button type="submit" class="btn btn-primary px-4" id="storeCustomer">Submit</button>
+											<button type="button" class="btn btn-primary px-4" id="storeCustomer">Submit</button>
                                             <button class="btn btn-light px-4 addAdvanceCustomer" id="">Add Advance</button>
 										</div>
 									</div>
-								<!-- </form> -->
+								</form>
 							</div>
 						</div>
 					</div>

@@ -16,9 +16,10 @@
 								<h5 class="mb-0">Update Customer</h5>
 							</div>
 							<div class="card-body p-4">
-								<!-- <form class="row g-3 needs-validation" novalidate> -->
+								<form class="row g-3 needs-validation" novalidate>
 									<div class="col-md-6">
 										<label for="bsValidation1" class="form-label">Customer Name</label>
+                                        <input type="hidden" id="customer_id">
 										<input type="text" class="form-control" id="update_customer_name" placeholder="customer Name"  required>
 									</div>
 									<div class="col-md-6">
@@ -67,7 +68,7 @@
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Region</label>
-										<select id="CustomerRegion" class="form-select" required>
+										<select id="update_CustomerRegion" class="form-select" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
@@ -121,16 +122,16 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">Visite & Rating</label>
-                                            <input type="text" class="form-control customerVisiteRating"  placeholder="Visite & Rating" >
+                                            <input type="text" class="form-control "  placeholder="Visite & Rating" id="update_customerVisiteRating">
                                         </div>
                                     </div>
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
-											<button type="submit" class="btn btn-primary px-4" id="update_storeCustomer">Update</button>
+											<button type="button" class="btn btn-primary px-4" id="update_storeCustomer">Update</button>
                                             <button class="btn btn-light px-4 addAdvanceCustomer" >Add Advance</button>
 										</div>
 									</div>
-								<!-- </form> -->
+								</form>
 							</div>
 						</div>
 					</div>

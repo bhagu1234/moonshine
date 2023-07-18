@@ -748,9 +748,12 @@
     </div>
 </div>
 <!-- resources file  -->
+<!-- customer  -->
 @include('customer.view')
 @include('customer.create')
 @include('customer.edit')
+@include('customer.index')
+<!-- user  -->
 @include('user.index')
 @include('user.create')
 @include('user.edit')

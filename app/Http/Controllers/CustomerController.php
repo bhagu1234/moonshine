@@ -14,7 +14,14 @@ class CustomerController extends Controller
 {
     public function index(Request $request)
     {
-        $data=Customer::orderBY('id','DESC')->get();
+        $data=Customer::orderBY('id','DESC')
+        ->leftJoin('countries','countries.id','customers.country')
+        ->leftJoin('cities','cities.city_id','customers.city')
+        ->leftJoin('states','states.state_id','customers.state')
+        ->leftJoin('address_types','address_types.address_id','customers.address_type')
+        ->leftJoin('users','users.user_id','customers.user_id')
+        ->select('customers.*','cities.city_name','states.name as state_name','countries.country_name as countryname','address_types.address_name','users.first_name','users.last_name')
+        ->get();
         // dd($data);
         $no=1;
         $tr="";
@@ -25,18 +32,17 @@ class CustomerController extends Controller
                 $tr.="<tr>
                     <td class='view_customer' data-value=".$row->id.">".$no++."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->customer_name."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->user_id."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->company_detail_id."</td>
+                    <td class='view_customer' data-value=".$row->id.">".$row->first_name. " ".$row->last_name."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->bank_id."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->group_cos."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->address1."</td>
                     <td>".$row->address2."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->area."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->landmark."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->country."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->state."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->city."</td>
-                    <td class='view_customer' data-value=".$row->id.">".$row->address_type."</td>
+                    <td class='view_customer' data-value=".$row->id.">".$row->countryname."</td>
+                    <td class='view_customer' data-value=".$row->id.">".$row->state_name."</td>
+                    <td class='view_customer' data-value=".$row->id.">".$row->city_name."</td>
+                    <td class='view_customer' data-value=".$row->id.">".$row->address_name."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->phone_no."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->fax."</td>
                     <td class='view_customer' data-value=".$row->id.">".$row->location_email."</td>
@@ -49,7 +55,7 @@ class CustomerController extends Controller
            
 
         }
-        echo $tr;
+        return $tr;
         // return json_encode($data);
     }
     public function getDetails(Request $request)
@@ -112,8 +118,30 @@ class CustomerController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->customerPostBox);
-        // dd($request);
+        if($request->customer_country=="null")
+        {
+            $request->customer_country=null;
+        }
+        if($request->CustomerState=="null")
+        {
+            $request->CustomerState=null;
+        }
+        if($request->CustomerDistrict=="null")
+        {
+            $request->CustomerDistrict=null;
+        }
+        if($request->CustomerCity=="null")
+        {
+            $request->CustomerCity=null;
+        }
+        if($request->CustomerRegion=="null")
+        {
+            $request->CustomerRegion=null;
+        }
+        if($request->CustomerType=="null")
+        {
+            $request->CustomerType=null;
+        }
         $Customer=new Customer();
         $Customer->user_id=1;
         $Customer->company_detail_id=$request->company_detail_id;

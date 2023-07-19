@@ -8,7 +8,7 @@
                     <button type="button" class="button-24 close_customerModal" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
-                    <h6 class="mb-0 text-uppercase">All Customers <button id="openCreateCustomerModal">Add Customer</button></h6>
+                    <h6 class="mb-0 text-uppercase">All Customers </h6> <button id="openCreateCustomerModal">Add Customer</button>
                     <hr/>
                     <div class="table-responsive">
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -18,7 +18,7 @@
                                     <!-- <th>Customer</th> -->
                                     <th>Customer Name</th>
                                     <th>User</th>
-                                    <th>Company details</th>
+                                    <!-- <th>Company details</th> -->
                                     <th>Bank</th>
                                     <th>Group cos</th>
                                     <th>Address 1</th>
@@ -43,7 +43,7 @@
                                     <!-- <th>Customer</th> -->
                                     <th>Customer Name</th>
                                     <th>User</th>
-                                    <th>Company details</th>
+                                    <!-- <th>Company details</th> -->
                                     <th>Bank</th>
                                     <th>Group cos</th>
                                     <th>Address 1</th>

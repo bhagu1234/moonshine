@@ -37,6 +37,10 @@ $("#openCreateCustomerModal").click(function(){
    });
    $("#createCustomerModal").modal("show");
 });
+// $("#createCustomerModal").on("shown.bs.modal",function(){
+//    $(this).hide().show(); 
+//    });
+
 $(".close_openCreateCustomerModal").click(function(){
    $("#createCustomerModal").modal("hide");
 });
@@ -164,9 +168,9 @@ $("body").on('click','#edit_customer',function(){
          $("#update_customer_country").append(res.country);
          $("#update_CustomerRegion").append(res.region); 
          $("#update_CustomerType").append(res.addressType);
+         
       }
    });
-
    var id=$(this).attr('data-value');
    $.ajax({
       type:'get',
@@ -181,8 +185,8 @@ $("body").on('click','#edit_customer',function(){
         $("#update_customer_address2").val(res.address2);
         $("#update_CustomerArea").val(res.area);
         $("#update_customerLandMark").val(res.landmark);
-        $("#update_customer_country").val(res.country);
-        $("#update_CustomerState").val(res.state);
+        $("#update_customer_country").val(res.country).change();
+        
         $("#update_CustomerDistrict").val(res.district);
         $("#update_CustomerCity").val(res.city);
         $("#update_CustomerRegion").val(res.region);
@@ -191,13 +195,20 @@ $("body").on('click','#edit_customer',function(){
         $("#update_customerFax").val(res.fax);
         $("#update_customerLocationEmail").val(res.location_email);
         $("#update_customerWebsite").val(res.website);
-        $("#update_customerReferencedBy").val(res.ref_by);
+        $("#update_customerReferencedBy").val(res.refere_by);
         $("#update_CustomerTradeActivity").val(res.trade_activity);
         $("#update_CustomerFacilityAndLocation").val(res.facility_location);
         $("#update_customerContact").val(res.customer_contact);
         $("#update_customerBank").val(res.bank_id);
         $("#update_customerCreditFacility").val(res.credit_facility);
         $("#update_customerVisiteRating").val(res.visite_rating);
+        if($("#update_customer_country").val() !="")
+         {
+            var id=$("#update_customer_country").find(":selected").val();
+            var from="country";
+            getAddress(id,from);
+         }
+         $("#update_CustomerState").val(res.state);
       }
    });
    $("#UpdateCustomerModal").modal("show");
@@ -287,12 +298,16 @@ $("body").on('click','.view_customer',function(){
       type:'get',
       data:{'id':id},
       url:base_path+"/customer-view",
-      success:function(){
-         
+      success:function(res){
+         $(".customer_name_view").text(res.customer_name);
+         $(".group_cos_view").text(res.group_cos);
+         $(".address1_view").text(res.address1);
+         $(".address2_view").text(res.address2);
+         $(".location_email_view").text(res.location_email);
       }
    });
   
-   ("#customerDetailsviewModal").modal("show");
+   $("#customerDetailsviewModal").modal("show");
 });
 $(".close_customerModalview").click(function(){
    $("#customerDetailsviewModal").modal("hide");

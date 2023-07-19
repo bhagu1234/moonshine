@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +24,6 @@ Route::post('customer-update', [CustomerController::class, 'update'])->name('cus
 Route::get('customer-delete', [CustomerController::class, 'delete'])->name('customer.delete');
 Route::get('customer-view', [CustomerController::class, 'view'])->name('customer.view');
 Route::get('customer-getDetails', [CustomerController::class, 'getDetails'])->name('customer.getDetails');
+
+// UserController
+Route::get('user', [UserController::class, 'index'])->name('user.index');

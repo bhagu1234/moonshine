@@ -728,7 +728,7 @@
                                 <a class="dropdown-item" href="#">Status</a>
                             </li>
                             <li> 
-                                <a class="dropdown-item" href="#">User</a>
+                                <a class="dropdown-item" href="#" onclick="openUserModel()">User</a>
                             </li>
                             <li> 
                                 <a class="dropdown-item" href="#">UOM</a>
@@ -738,6 +738,27 @@
                             </li>
                             <li> 
                                 <a class="dropdown-item" href="#">Enquiry  Priority List</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">  Country</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#"> State</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">District</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">City</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">Category</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">Base Product</a>
+                            </li>
+                            <li> 
+                                <a class="dropdown-item" href="#">Sub product</a>
                             </li>
                         </ul>
                     </li>

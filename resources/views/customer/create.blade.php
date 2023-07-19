@@ -1,8 +1,8 @@
 <div class="container">
     <div class="modal fade bd-example-modal-xl" data-backdrop="static" id="createCustomerModal" role="dialog"
-        style="backdrop-filter: blur(1px) contrast(.1);">
+        style="backdrop-filter: blur(1px) contrast(.1);" >
         <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content" style="height:fit-content; ">
+            <div class="modal-content" style="height:fit-content;z-index':1039 !important ">
                 <div class="modal-header">
                     <h5 class="modal-title">Customer </h5>
                     <button type="button" class="button-24 close_openCreateCustomerModal" data-dismiss="modal">×</button>
@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">Bank</label>
-                                            <input type="text" class="form-control" id="customerBank" placeholder="Bank" >
+                                            <input type="number" class="form-control" id="customerBank" placeholder="Bank" >
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">Credit Facility</label>

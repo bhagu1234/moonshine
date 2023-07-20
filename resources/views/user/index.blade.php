@@ -17,9 +17,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <button type="button" class="btn btn-primary" 
-                            id="add_user">
-                                {{-- data-toggle="modal"  --}}
-                                {{-- data-target="#exampleModal"> --}}
+                            id="openCreateUserModal">
                                 Add Form
                             </button><br><br>
                         </h3>
@@ -30,21 +28,14 @@
                         <table class="table table-bordered table-hover w-100" id="data-table">
                             <thead>
                                 <tr>
-                                    <th style="width:2px">ID</th> 
-                                     {{-- <th style="width:5px">ComId</th> --}}
-                                 <th style="width:15px">FisrtName</th> 
-                                 <th style="width:10px">LastName</th>
-                                     <th style="width:10px">UserEmail</th> 
-                                    {{-- <th style="width:5px">UPassword</th> --}}
-                                    <th style="width:10px">Status</th>
-                                    <th style="width:10px">Otp</th>
-                                    <th style="width:15px">EntryTime</th>
-                                    <th style="width:10px">Payroll</th>
+                                    <th style="width:2px">ID</th>
+                                    <th style="width:15px">Fisrt Name</th> 
+                                    <th style="width:10px">Last Name</th>
+                                    <th style="width:10px">User Email</th> 
                                     <th style="width:10px">Country</th> 
                                     <th style="width:10px">State</th>
-                                  
                                     <th style="width:10px">City</th> 
-                                    <th style="width:10px">pinCode</th>
+                                    <th style="width:10px">pin Code</th>
                                     <th style="width:50px">Action</th>  
                                 </tr>
                             </thead>

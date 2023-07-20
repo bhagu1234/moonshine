@@ -37,3 +37,4 @@ Route::get('product-getCategoryDetails', [ProductController::class, 'getCategory
 
 // UserController
 Route::get('user', [UserController::class, 'index'])->name('user.index');
+Route::post('users-store', [UserController::class, 'store'])->name('users-store');

@@ -20,6 +20,7 @@ class UserController extends Controller
                     ->leftJoin('cities','cities.city_id','users.city')
                     ->leftJoin('states','states.state_id','users.state')
                     ->select('users.*','cities.city_name','states.name as state_name','countries.country_name as countryname')
+                    ->orderBY('user_id','DESC')
                     ->get();
                     // dd($data);
         $tr="";
@@ -33,10 +34,6 @@ class UserController extends Controller
                     <td>".$row->first_name."</td>
                     <td>".$row->last_name."</td>
                     <td>".$row->user_email."</td>
-                    <td>".$row->status."</td>
-                    <td>".$row->otp."</td>
-                    <td>".$row->entry_time."</td>
-                    <td>".$row->payroll."</td>
                     <td>".$row->countryname."</td>
                     <td>".$row->state_name."</td>
                     <td>".$row->city_name."</td>
@@ -49,6 +46,41 @@ class UserController extends Controller
            }
         }
         return $tr;
+    }
+    public function store(Request $request)
+    {
+        // dd($request);
+        if($request->user_country=="null")
+        {
+            $request->user_country=null;
+        }
+        if($request->userState=="null")
+        {
+            $request->userState=null;
+        }
+        if($request->userDistrict=="null")
+        {
+            $request->userDistrict=null;
+        }
+        if($request->userCity=="null")
+        {
+            $request->userCity=null;
+        }
+        // dd($request);
+        $user=new  User();
+        $user->first_name=$request->fname;
+        $user->last_name=$request->lname;
+        $user->user_email=$request->uemail;
+        $user->user_password=Hash::make($request->user_password);
+        $user->country=$request->user_country;
+        $user->state=$request->userState;
+        $user->district=$request->userDistrict;
+        $user->city=$request->userCity;
+        $user->pin_code=$request->upincode;
+        
+        $user->save();
+        $response = array('status' => 'success', 'message' => 'user Added successfully.','status' => 200); 
+        return json_encode($response);
     }
 
 

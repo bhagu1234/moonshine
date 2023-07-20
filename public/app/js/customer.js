@@ -63,6 +63,8 @@ function getAddress(id, from)
             $("#CustomerState").append(res);
             $("#update_CustomerState").html("");
             $("#update_CustomerState").append(res);
+            $("#userState").html("");
+            $("#userState").append(res);
          }
          if(from=="state")
          {
@@ -70,6 +72,8 @@ function getAddress(id, from)
             $("#CustomerDistrict").append(res);
             $("#update_CustomerDistrict").html("");
             $("#update_CustomerDistrict").append(res);
+            $("#userDistrict").html("");
+            $("#userDistrict").append(res);
          }
          if(from=="district")
          {
@@ -77,6 +81,8 @@ function getAddress(id, from)
             $("#CustomerCity").append(res);
             $("#update_CustomerCity").html("");
             $("#update_CustomerCity").append(res);
+            $("#userCity").html("");
+            $("#userCity").append(res);
          }
         
       }

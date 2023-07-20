@@ -11,7 +11,7 @@
                     <h6 class="mb-0 text-uppercase">All Customers </h6> <button id="openCreateCustomerModal">Add Customer</button>
                     <hr/>
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table  class="data_table table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>#</th>

@@ -160,6 +160,9 @@ $("body").on('click','#edit_customer',function(){
    $("#update_customer_country").html("");
    $("#update_CustomerRegion").html(""); 
    $("#update_CustomerType").html("");
+   $("#update_CustomerState").html("");
+   $("#update_CustomerDistrict").html("");
+   $("#update_CustomerCity").html("");
    $.ajax({
       type:'get',
       url:base_path+"/customer-getDetails",
@@ -177,38 +180,69 @@ $("body").on('click','#edit_customer',function(){
       data:{'id':id},
       url:base_path+"/customer-edit",
       success:function(res){
-        $("#customer_id").val(res.id);
-        $("#update_customer_name").val(res.customer_name);
-        $("#update_customerPostBox").val(res.postbox);
-        $("#update_customer_groupCos").val(res.group_cos);
-        $("#update_customer_address1").val(res.address1);
-        $("#update_customer_address2").val(res.address2);
-        $("#update_CustomerArea").val(res.area);
-        $("#update_customerLandMark").val(res.landmark);
-        $("#update_customer_country").val(res.country).change();
-        
-        $("#update_CustomerDistrict").val(res.district);
-        $("#update_CustomerCity").val(res.city);
-        $("#update_CustomerRegion").val(res.region);
-        $("#update_CustomerType").val(res.address_type);
-        $("#update_customerPhoneNo").val(res.phone_no);
-        $("#update_customerFax").val(res.fax);
-        $("#update_customerLocationEmail").val(res.location_email);
-        $("#update_customerWebsite").val(res.website);
-        $("#update_customerReferencedBy").val(res.refere_by);
-        $("#update_CustomerTradeActivity").val(res.trade_activity);
-        $("#update_CustomerFacilityAndLocation").val(res.facility_location);
-        $("#update_customerContact").val(res.customer_contact);
-        $("#update_customerBank").val(res.bank_id);
-        $("#update_customerCreditFacility").val(res.credit_facility);
-        $("#update_customerVisiteRating").val(res.visite_rating);
-        if($("#update_customer_country").val() !="")
+         var state=res.state.length;
+         var stOption="";
+         var district=res.district.length;
+         var distrOption="";
+         var city=res.city.length;
+         var cityOption="";
+         for(var i=0;state>i;i++)
          {
-            var id=$("#update_customer_country").find(":selected").val();
-            var from="country";
-            getAddress(id,from);
+            var state_id=res.state[i].state_id;
+            var state_name=res.state[i].name;
+            console.log(state_id + "," + state_name);
+            stOption+="<option  value="+state_id+">"+state_name+"</option>";
+            
          }
-         $("#update_CustomerState").val(res.state);
+         $("#update_CustomerState").append(stOption);
+         for(var i=0;district>i;i++)
+         {
+            var district_id=res.district[i].district_id;
+            var district_name=res.district[i].district_name;
+            distrOption+="<option  value="+district_id+">"+district_name+"</option>";
+            
+         }
+         $("#update_CustomerDistrict").append(distrOption);
+         for(var i=0;city>i;i++)
+         {
+            var city_id=res.city[i].city_id;
+            var city_name=res.city[i].city_name;
+            cityOption+="<option  value="+city_id+">"+city_name+"</option>";
+            
+         }
+         $("#update_CustomerCity").append(cityOption);
+         $("#customer_id").val(res.allData.id);
+         $("#update_customer_name").val(res.allData.customer_name);
+         $("#update_customerPostBox").val(res.allData.postbox);
+         $("#update_customer_groupCos").val(res.allData.group_cos);
+         $("#update_customer_address1").val(res.allData.address1);
+         $("#update_customer_address2").val(res.allData.address2);
+         $("#update_CustomerArea").val(res.allData.area);
+         $("#update_customerLandMark").val(res.allData.landmark);
+         $("#update_customer_country").val(res.allData.country);
+         $("#update_CustomerState").val(res.allData.state);
+         $("#update_CustomerDistrict").val(res.allData.district);
+         $("#update_CustomerCity").val(res.allData.city);
+         $("#update_CustomerRegion").val(res.allData.region);
+         $("#update_CustomerType").val(res.allData.address_type);
+         $("#update_customerPhoneNo").val(res.allData.phone_no);
+         $("#update_customerFax").val(res.allData.fax);
+         $("#update_customerLocationEmail").val(res.allData.location_email);
+         $("#update_customerWebsite").val(res.allData.website);
+         $("#update_customerReferencedBy").val(res.allData.refere_by);
+         $("#update_CustomerTradeActivity").val(res.allData.trade_activity);
+         $("#update_CustomerFacilityAndLocation").val(res.allData.facility_location);
+         $("#update_customerContact").val(res.allData.customer_contact);
+         $("#update_customerBank").val(res.allData.bank_id);
+         $("#update_customerCreditFacility").val(res.allData.credit_facility);
+         $("#update_customerVisiteRating").val(res.allData.visite_rating);
+         // if($("#update_customer_country").val() !="")
+         //    {
+         //       var id=$("#update_customer_country").find(":selected").val();
+         //       var from="country";
+         //       getAddress(id,from);
+         //    }
+           
       }
    });
    $("#UpdateCustomerModal").modal("show");

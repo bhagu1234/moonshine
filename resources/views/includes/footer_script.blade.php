@@ -10,11 +10,19 @@
 <script src="{{URL::to('/')}}/public/assets/js/index.js"></script>
 <script src="{{URL::to('/')}}/public/assets/plugins/validation/jquery.validate.min.js"></script>
 <script src="{{URL::to('/')}}/public/assets/plugins/validation/validation-script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{URL::to('/')}}/public/assets/plugins/select2/js/select2-custom.js"></script>
+<script src="{{URL::to('/')}}/public/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{URL::to('/')}}/public/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <!-- app js -->
 <script src="{{URL::to('/')}}/public/assets/js/app.js"></script>
 
 
- <!-- customer scripts  -->
+ <!-- custom scripts  -->
+ <!-- customer  -->
 <script src="{{URL::to('/')}}/public/app/js/customer.js"></script>
+<!-- user -->
 <script src="{{URL::to('/')}}/public/app/js/user.js"></script>
+<!-- product -->
+<script src="{{URL::to('/')}}/public/app/js/product.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

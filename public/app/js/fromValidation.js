@@ -18,3 +18,11 @@
         }, false)
       })
   })()
+
+  // data table
+    $('.data_table').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+  } );

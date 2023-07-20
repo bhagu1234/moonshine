@@ -179,7 +179,14 @@ class CustomerController extends Controller
     {
         $id=$request->id;
         $customerdata=Customer::findOrFail($id);
-        return $customerdata;
+        $countryId=$customerdata->country;
+        $state_id=$customerdata->state;
+        $districtId=$customerdata->district;
+        $state=State::where('country_id',$countryId)->orderBy('state_id','DESC')->get();
+        $district=District::where('state_id',$state_id)->get();
+        $city=City::where('district_id',$districtId)->get();
+        $response=array('allData'=>$customerdata,'state'=>$state,'district'=>$district,'city'=>$city);
+        return $response;
 
     }
     public function update(Request $request)

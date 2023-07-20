@@ -47,32 +47,32 @@
 									</div>
 									<div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Country</label>
-										<select id="customer_country" class="form-select" onchange="getAddress(this.value,'country')" required>
+										<select id="customer_country" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'country')" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">State</label>
-										<select id="CustomerState" class="form-select" onchange="getAddress(this.value,'state')" required>
+										<select id="CustomerState"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'state')" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">District</label>
-										<select id="CustomerDistrict" class="form-select" onchange="getAddress(this.value,'district')"   required>
+										<select id="CustomerDistrict"  onchange="getAddress(this.value,'district')"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing"  required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">City</label>
-										<select id="CustomerCity" class="form-select" required>
+										<select id="CustomerCity"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing"  required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Region</label>
-										<select id="CustomerRegion" class="form-select" required>
+										<select id="CustomerRegion"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing"  required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Address Type</label>
-										<select id="CustomerType" class="form-select" required>
+										<select id="CustomerType"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing" required>
 										</select>
 									</div>
 									<div class="col-md-6">

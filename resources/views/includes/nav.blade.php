@@ -678,7 +678,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li> <a class="dropdown-item" href="#">Products View </a>
+                            <li> <a class="dropdown-item" href="#" onclick="openProductModel()">Products View </a>
                             </li>
                         </ul>
                     </li>
@@ -770,10 +770,30 @@
 </div>
 <!-- resources file  -->
 <!-- customer  -->
+@include('customer.index')
 @include('customer.view')
 @include('customer.create')
 @include('customer.edit')
-@include('customer.index')
+<!-- product  -->
+@include('product.index')
+@include('product.view')
+@include('product.create')
+@include('product.edit')
+<!-- supplier  -->
+@include('supplier.index')
+@include('supplier.view')
+@include('supplier.create')
+@include('supplier.edit')
+<!-- order  -->
+@include('order.index')
+@include('order.view')
+@include('order.create')
+@include('order.edit')
+<!-- enquiry  -->
+@include('enquiry.index')
+@include('enquiry.view')
+@include('enquiry.create')
+@include('enquiry.edit')
 <!-- user  -->
 @include('user.index')
 @include('user.create')

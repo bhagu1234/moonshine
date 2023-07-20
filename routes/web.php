@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,15 @@ Route::post('customer-update', [CustomerController::class, 'update'])->name('cus
 Route::get('customer-delete', [CustomerController::class, 'delete'])->name('customer.delete');
 Route::get('customer-view', [CustomerController::class, 'view'])->name('customer.view');
 Route::get('customer-getDetails', [CustomerController::class, 'getDetails'])->name('customer.getDetails');
+
+// ProductController
+Route::get('product', [ProductController::class, 'index'])->name('product.index');
+Route::post('product-store', [ProductController::class, 'store'])->name('product.store');
+Route::get('product-edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('product-update', [ProductController::class, 'update'])->name('product.update');
+Route::get('product-view', [ProductController::class, 'view'])->name('product.view');
+Route::get('product-delete', [ProductController::class, 'delete'])->name('product.delete');
+Route::get('product-getCategoryDetails', [ProductController::class, 'getCategoryDetails'])->name('product.getCategoryDetails');
 
 // UserController
 Route::get('user', [UserController::class, 'index'])->name('user.index');

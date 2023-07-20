@@ -12,6 +12,9 @@
 	<link href="{{URL::to('/')}}/public/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="{{URL::to('/')}}/public/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 	<link href="{{URL::to('/')}}/public/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+	<link href="{{URL::to('/')}}/public/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{URL::to('/')}}/public/assets/css/pace.min.css" rel="stylesheet" />
 	<script src="{{URL::to('/')}}/public/assets/js/pace.min.js"></script>

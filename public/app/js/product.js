@@ -28,17 +28,21 @@ function getproductCategory(id ,from)
          {
             $("#product_baseProduct_name").html("");
             $("#product_baseProduct_name").append(res);
+            $("#update_product_baseProduct_name").html("");
+            $("#update_product_baseProduct_name").append(res);
          }
          if(from=="base_product")
          {
             $("#product_subProduct_name").html("");
             $("#product_subProduct_name").append(res);
+            $("#update_product_subProduct_name").html("");
+            $("#update_product_subProduct_name").append(res);
          }
       }
    });
 }
 // end category
-// start store customer ==================================================
+// start store product ==================================================
 $("#openCreateproductModal").click(function(){
    $("#product_UOM").html("");
    $("#product_country_a").html("");
@@ -127,169 +131,213 @@ $("#storeProduct").click(function(){
       }
    })
 })
-// end store customer ===================================================
+// end store product ===================================================
 
-//start edit customer ===============================================
-// $("body").on('click','#edit_customer',function(){
-//    $("#update_customer_country").html("");
-//    $("#update_CustomerRegion").html(""); 
-//    $("#update_CustomerType").html("");
-//    $.ajax({
-//       type:'get',
-//       url:base_path+"/customer-getDetails",
-//       data:{'from':'open_form'},
-//       success:function(res){
-//          $("#update_customer_country").append(res.country);
-//          $("#update_CustomerRegion").append(res.region); 
-//          $("#update_CustomerType").append(res.addressType);
-         
-//       }
-//    });
-//    var id=$(this).attr('data-value');
-//    $.ajax({
-//       type:'get',
-//       data:{'id':id},
-//       url:base_path+"/customer-edit",
-//       success:function(res){
-//         $("#customer_id").val(res.id);
-//         $("#update_customer_name").val(res.customer_name);
-//         $("#update_customerPostBox").val(res.postbox);
-//         $("#update_customer_groupCos").val(res.group_cos);
-//         $("#update_customer_address1").val(res.address1);
-//         $("#update_customer_address2").val(res.address2);
-//         $("#update_CustomerArea").val(res.area);
-//         $("#update_customerLandMark").val(res.landmark);
-//         $("#update_customer_country").val(res.country).change();
-        
-//         $("#update_CustomerDistrict").val(res.district);
-//         $("#update_CustomerCity").val(res.city);
-//         $("#update_CustomerRegion").val(res.region);
-//         $("#update_CustomerType").val(res.address_type);
-//         $("#update_customerPhoneNo").val(res.phone_no);
-//         $("#update_customerFax").val(res.fax);
-//         $("#update_customerLocationEmail").val(res.location_email);
-//         $("#update_customerWebsite").val(res.website);
-//         $("#update_customerReferencedBy").val(res.refere_by);
-//         $("#update_CustomerTradeActivity").val(res.trade_activity);
-//         $("#update_CustomerFacilityAndLocation").val(res.facility_location);
-//         $("#update_customerContact").val(res.customer_contact);
-//         $("#update_customerBank").val(res.bank_id);
-//         $("#update_customerCreditFacility").val(res.credit_facility);
-//         $("#update_customerVisiteRating").val(res.visite_rating);
-//         if($("#update_customer_country").val() !="")
-//          {
-//             var id=$("#update_customer_country").find(":selected").val();
-//             var from="country";
-//             getAddress(id,from);
-//          }
-//          $("#update_CustomerState").val(res.state);
-//       }
-//    });
-//    $("#UpdateCustomerModal").modal("show");
-// });
-// $('#UpdateCustomerModal').on('hidden.bs.modal', function () {
-//    $(this).find('form').trigger('reset');
-// });
-// $(".close_openUpdateCustomerModal").click(function(){
-//    $("#UpdateCustomerModal").modal("hide");
-// });
-// $("#update_storeCustomer").click(function(){
-//    var _token=$("#token").val();
-//    var id=$("#customer_id").val();
-//    var customer_name=$("#update_customer_name").val();
-//    var customerPostBox=$("#update_customerPostBox").val();
-//    var customer_groupCos=$("#update_customer_groupCos").val();
-//    var customer_address1=$("#update_customer_address1").val();
-//    var customer_address2=$("#update_customer_address2").val();
-//    var CustomerArea=$("#update_CustomerArea").val();
-//    var customerLandMark=$("#update_customerLandMark").val();
-//    var customer_country=$("#update_customer_country").val();
-//    var CustomerState=$("#update_CustomerState").val();
-//    var CustomerDistrict=$("#update_CustomerDistrict").val();
-//    var CustomerCity=$("#update_CustomerCity").val();
-//    var CustomerRegion=$("#update_CustomerRegion").val();
-//    var CustomerType=$("#update_CustomerType").val();
-//    var customerPhoneNo=$("#update_customerPhoneNo").val();
-//    var customerFax=$("#update_customerFax").val();
-//    var customerLocationEmail=$("#update_customerLocationEmail").val();
-//    var customerWebsite=$("#update_customerWebsite").val();
-//    var customerReferencedBy=$("#update_customerReferencedBy").val();
-//    var CustomerTradeActivity=$("#update_CustomerTradeActivity").val();
-//    var CustomerFacilityAndLocation=$("#update_CustomerFacilityAndLocation").val();
-//    var customerContact=$("#update_customerContact").val();
-//    var customerBank=$("#update_customerBank").val();
-//    var customerCreditFacility=$("#update_customerCreditFacility").val();
-//    var customerVisiteRating=$("#update_customerVisiteRating").val();
-//    var formData=new FormData();
-//    formData.append('_token',_token);
-//    formData.append('customer_name',customer_name);
-//    formData.append('customerPostBox',customerPostBox);
-//    formData.append('customer_groupCos',customer_groupCos);
-//    formData.append('customer_address1',customer_address1);
-//    formData.append('customer_address2',customer_address2);
-//    formData.append('CustomerArea',CustomerArea);
-//    formData.append('customerLandMark',customerLandMark);
-//    formData.append('customer_country',customer_country);
-//    formData.append('CustomerState',CustomerState);
-//    formData.append('CustomerDistrict',CustomerDistrict);
-//    formData.append('CustomerCity',CustomerCity);
-//    formData.append('CustomerRegion',CustomerRegion);
-//    formData.append('CustomerType',CustomerType);
-//    formData.append('customerPhoneNo',customerPhoneNo);
-//    formData.append('customerFax',customerFax);
-//    formData.append('customerLocationEmail',customerLocationEmail);
-//    formData.append('customerWebsite',customerWebsite);
-//    formData.append('customerReferencedBy',customerReferencedBy);
-//    formData.append('CustomerTradeActivity',CustomerTradeActivity);
-//    formData.append('CustomerFacilityAndLocation',CustomerFacilityAndLocation);
-//    formData.append('customerContact',customerContact);
-//    formData.append('customerBank',customerBank);
-//    formData.append('customerCreditFacility',customerCreditFacility);
-//    formData.append('customerVisiteRating',customerVisiteRating);
-//    formData.append('id',id);
-//    $.ajax({
-//       type:'POST',
-//       processData: false,
-//       contentType: false,
-//       cache: false,
-//       async: false,
-//       data:formData,
-//       url:base_path+"/customer-update",
-//       success:function(){
-//          alert("success data Updated !");
-//          openCustomerModel();
-//          $("#UpdateCustomerModal").modal("hide");
+//start edit product ===============================================
+$("body").on('click','#edit_product',function(){
+   $("#update_product_country_a").html("");
+   $("#update_product_country_b").html("");
+   $("#update_product_country_c").html("");
+   $("#update_product_UOM").html(""); 
+   $("#update_product_baseProduct_name").html("");
+   $("#update_product_subProduct_name").html("");
+   $("#update_product_category_name").html("");
+   var id=$(this).attr('data-value');
+   $.ajax({
+      type:'get',
+      data:{'id':id},
+      url:base_path+"/product-edit",
+      success:function(res){
+         var category=res.category.length;
+         var base_prod_data=res.base_prod_data.length;
+         var sub_prod_data=res.sub_prod_data.length;
+         var country_Data=res.country_Data.length;
+         var UOM_data=res.UOM_data.length;
+         var catOption="";
+         var bProOption="";
+         var sProOption="";
+         var couOption="";
+         var uomOption="";
+         for(var i=0;category>i;i++)
+         {
+            var category_id=res.category[i].id;
+            var category_name=res.category[i].category_name;
+            catOption+="<option  value="+category_id+">"+category_name+"</option>";
+            
+         }
+         $("#update_product_category_name").append(catOption);
+         for(var i=0;base_prod_data>i;i++)
+         {
+            var base_prod_data_id=res.base_prod_data[i].id;
+            var base_prod_data_name=res.base_prod_data[i].product_name;
+            bProOption+="<option  value="+base_prod_data_id+">"+base_prod_data_name+"</option>";
+            
+         }
+         $("#update_product_baseProduct_name").append(bProOption);
+         for(var i=0;sub_prod_data>i;i++)
+         {
+            var sub_prod_data_id=res.sub_prod_data[i].id;
+            var sub_prod_data_name=res.sub_prod_data[i].product_name;
+            sProOption+="<option  value="+sub_prod_data_id+">"+sub_prod_data_name+"</option>";
+            
+         }
+         $("#update_product_subProduct_name").append(sProOption);
+         for(var i=0;country_Data>i;i++)
+         {
+            var country_Data_id=res.country_Data[i].id;
+            var country_Data_name=res.country_Data[i].country_name;
+            couOption+="<option  value="+country_Data_id+">"+country_Data_name+"</option>";
+            
+         }
+         $("#update_product_country_a").append(couOption);
+         $("#update_product_country_b").append(couOption);
+         $("#update_product_country_c").append(couOption);
+         for(var i=0;UOM_data>i;i++)
+         {
+            var UOM_data_id=res.UOM_data[i].id;
+            var UOM_data_name=res.UOM_data[i].name;
+            uomOption+="<option  value="+UOM_data_id+">"+UOM_data_name+"</option>";
+            
+         }
+         $("#update_product_UOM").append(uomOption);
+        $("#product_id").val(res.product_data.id);
+        $("#update_product_specific_name").val(res.product_data.product_specific_name);
+        $("#update_product_full_name").val(res.product_data.product_full_name);
+        $("#update_product_category_name").val(res.product_data.category_id);
+        $("#update_product_baseProduct_name").val(res.product_data.base_product_id);
+        $("#update_product_subProduct_name").val(res.product_data.sub_product_id);
+        $("#update_product_grades").val(res.product_data.grades);
+        $("#update_product_standards").val(res.product_data.standard);
+        $("#update_product_DimensionsProperties").val(res.product_data.propertie);
+        $("#update_product_TechnicalSpecs").val(res.product_data.technical_specs);
+        $("#update_product_Applications").val(res.product_data.application);
+        $("#update_product_PriceStructure").val(res.product_data.price_structure);
+        $("#update_product_PackingMethod").val(res.product_data.packing_method);
+        $("#update_product_Weightcalculation").val(res.product_data.weight_calculation);
+        $("#update_product_Comments").val(res.product_data.description);
+        $("#update_product_UOM").val(res.product_data.umos_id);
+        $("#update_product_shipmentMode").val(res.product_data.shipment_mode);
+        $("#update_product_HSCode").val(res.product_data.hs_code);
+        $("#update_product_country_a").val(res.product_data.country_a);
+        $("#update_product_country_b").val(res.product_data.country_b);
+        $("#update_product_country_c").val(res.product_data.country_c);
+       
+      }
+   });
+   $("#updateProductModal").modal("show");
+});
+$('#updateProductModal').on('hidden.bs.modal', function () {
+   $(this).find('form').trigger('reset');
+});
+$(".close_openupdateProductModal").click(function(){
+   $("#updateProductModal").modal("hide");
+});
+$("#update_Product").click(function(){
+   var _token=$("#token").val();
+   var id=$("#product_id").val();
+   var product_specific_name=$("#update_product_specific_name").val();
+   var product_full_name=$("#update_product_full_name").val();
+   var product_category_name=$("#update_product_category_name").val();
+   var product_baseProduct_name=$("#update_product_baseProduct_name").val();
+   var product_subProduct_name=$("#update_product_subProduct_name").val();
+   var product_grades=$("#update_product_grades").val();
+   var product_standards=$("#update_product_standards").val();
+   var product_DimensionsProperties=$("#update_product_DimensionsProperties").val();
+   var product_TechnicalSpecs=$("#update_product_TechnicalSpecs").val();
+   var product_Applications=$("#update_product_Applications").val();
+   var product_PriceStructure=$("#update_product_PriceStructure").val();
+   var product_PackingMethod=$("#update_product_PackingMethod").val();
+   var product_Weightcalculation=$("#update_product_Weightcalculation").val();
+   var product_Comments=$("#update_product_Comments").val();
+   var product_UOM=$("#update_product_UOM").val();
+   var product_shipmentMode=$("#update_product_shipmentMode").val();
+   var product_HSCode=$("#update_product_HSCode").val();
+   var product_country_a=$("#update_product_country_a").val();
+   var product_country_b=$("#update_product_country_b").val();
+   var product_country_c=$("#update_product_country_c").val();
+   var formData=new FormData();
+   formData.append('_token',_token);
+   formData.append('id',id);
+   formData.append('product_specific_name',product_specific_name);
+   formData.append('product_full_name',product_full_name);
+   formData.append('product_category_name',product_category_name);
+   formData.append('product_baseProduct_name',product_baseProduct_name);
+   formData.append('product_subProduct_name',product_subProduct_name);
+   formData.append('product_grades',product_grades);
+   formData.append('product_grades',product_grades);
+   formData.append('product_standards',product_standards);
+   formData.append('product_DimensionsProperties',product_DimensionsProperties);
+   formData.append('product_TechnicalSpecs',product_TechnicalSpecs);
+   formData.append('product_Applications',product_Applications);
+   formData.append('product_PriceStructure',product_PriceStructure);
+   formData.append('product_PackingMethod',product_PackingMethod);
+   formData.append('product_Weightcalculation',product_Weightcalculation);
+   formData.append('product_Comments',product_Comments);
+   formData.append('product_UOM',product_UOM);
+   formData.append('product_shipmentMode',product_shipmentMode);
+   formData.append('product_HSCode',product_HSCode);
+   formData.append('product_country_a',product_country_a);
+   formData.append('product_country_b',product_country_b);
+   formData.append('product_country_c',product_country_c);
+   $.ajax({
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/product-update",
+      success:function(){
+         alert("success data updated !");
+         openProductModel();
+         $("#updateProductModal").modal("hide");
 
-//       }
-//    });
-// });
-// end edit customer ================================================
+      }
+   })
+});
+// end edit product ================================================
 
 // start view data ==================================================
-// $("body").on('click','.view_customer',function(){
-//    var id=$(this).attr('data-value');
-//    $.ajax({
-//       type:'get',
-//       data:{'id':id},
-//       url:base_path+"/customer-view",
-//       success:function(res){
-//          $(".customer_name_view").text(res.customer_name);
-//          $(".group_cos_view").text(res.group_cos);
-//          $(".address1_view").text(res.address1);
-//          $(".address2_view").text(res.address2);
-//          $(".location_email_view").text(res.location_email);
-//       }
-//    });
+$("body").on('click','#view_product',function(){
+   var id=$(this).attr('data-value');
+   $.ajax({
+      type:'get',
+      data:{'id':id},
+      url:base_path+"/product-view",
+      success:function(res){
+         alert(res.product_specific_name);
+        $("#pro_specificName").text(res.product_specific_name);
+        $("#pro_fullName").text(res.product_full_name);
+        $("#pro_Category_name").text(res.category_name);
+        $("#pro_basePro_name").text(res.base_product_name);
+        $("#pro_subPro_name").text(res.sub_product_name);
+        $("#pro_grades_view").text(res.grades);
+        $("#pro_standards_name").text(res.standard);
+        $("#pro_dimen_properties").text(res.propertie);
+        $("#pro_tecnicalSpView").text(res.technical_specs);
+        $("#pro_applicationVIew").text(res.application);
+        $("#pro_priceStrucVIew").text(res.price_structure);
+        $("#pro_packingMeVIew").text(res.packing_method);
+        $("#pro_weightCalVIew").text(res.weight_calculation);
+        $("#pro_commentsVIew").text(res.description);
+        $("#pro_uomVIew").text(res.uoms_name);
+        $("#pro_shipmentmoVIew").text(res.shipment_mode);
+        $("#pro_HsCodeVIew").text(res.hs_code);
+        $("#pro_countryAVIew").text(res.countryA);
+        $("#pro_countryBVIew").text(res.countryB);
+        $("#pro_countryCVIew").text(res.countryC);
+      }
+   });
   
-//    $("#customerDetailsviewModal").modal("show");
-// });
-// $(".close_customerModalview").click(function(){
-//    $("#customerDetailsviewModal").modal("hide");
-// });
+   $("#productDetailsviewModal").modal("show");
+});
+$(".close_productModalview").click(function(){
+   $("#productDetailsviewModal").modal("hide");
+});
 
 // end view data ====================================================
 
-// start delete customer ===============================================
+// start delete product ===============================================
 $("body").on('click','#delete_product',function(){
    var id=$(this).attr('data-value');
    if (confirm('Are you sure you want to delete this?')) 
@@ -305,4 +353,4 @@ $("body").on('click','#delete_product',function(){
       });
    }
 });
-// end delete customer ===================================================
+// end delete product ===================================================

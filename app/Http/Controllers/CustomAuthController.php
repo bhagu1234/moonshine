@@ -20,34 +20,15 @@ class CustomAuthController extends Controller
         //     'admin_email' => 'required',
         //     'admin_password' => 'required',
         // ]);
-        $email=$request->admin_email;
-        $password=$request->admin_password;
-        $loginData=subscription_admin::where('admin_email', $email)->first();
-        if(!$loginData || !Hash::check($request->admin_password, $loginData->admin_password))
-        {
-           
-            return redirect("login")->with('error','Login details are not valid');
-         } 
-         else 
-         {
-            $subscription_admin = new subscription_admin();
-            $subscription_admin->id = $loginData->id;
-            $subscription_admin->admin_email = $loginData->admin_email;
-            $subscription_admin->admin_password = $loginData->admin_password;
-            $subscription_admin->company_name = $loginData->company_name;
-            Auth::login($subscription_admin);
-            return redirect()->intended('dashboard')->with('success','You are successfully logged in !');
-         }
-        
   
-        // $credentials = $request->only('admin_email', 'admin_password');
-        // $credentials['admin_password'] = sha1($credentials['admin_password']);
-        // dd(Auth::attempt($credentials));
-        // if (Auth::attempt($credentials)) {
-        //     return redirect()->intended('dashboard');
-        // }
+        $credentials = $request->only('admin_email', 'admin_password');
+        $credentials['admin_password'] = sha1($credentials['admin_password']);
+        dd(Auth::attempt($credentials));
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard');
+        }
   
-        // return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withSuccess('Login details are not valid');
     }
 
     public function registration()
@@ -82,12 +63,11 @@ class CustomAuthController extends Controller
     
     public function dashboard()
     {
-    //    dd(Auth::user());
         // if(Auth::check()){
             return view('dashboard');
         // }
   
-        // return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("login")->withSuccess('You are not allowed to access');
     }
     
     public function signOut() {

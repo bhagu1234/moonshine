@@ -37,9 +37,9 @@ $("#openCreateCustomerModal").click(function(){
    });
    $("#createCustomerModal").modal("show");
 });
-// $("#createCustomerModal").on("shown.bs.modal",function(){
-//    $(this).hide().show(); 
-//    });
+$("#createCustomerModal").on("shown.bs.modal",function(){
+   $(this).hide().show(); 
+   });
 
 $(".close_openCreateCustomerModal").click(function(){
    $("#createCustomerModal").modal("hide");

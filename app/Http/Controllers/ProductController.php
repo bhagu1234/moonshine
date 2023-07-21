@@ -57,6 +57,7 @@ class ProductController extends Controller
             <td>".$row->description."</td>
             <td>
                 <a href='#' id='edit_product' data-value=".$row->id.">edit</a>
+                <a href='#' id='view_product' data-value=".$row->id.">view</a>
                 <a href='#' id='delete_product' data-value=".$row->id.">delete</a>
             </td>
             </tr>";
@@ -95,15 +96,64 @@ class ProductController extends Controller
     }
     public function edit(Request $request)
     {
+        $id=$request->id;
+        $product_data=Product::findOrFail($id);
+        $categoryId=$product_data->category_id;
+        $baseProductId=$product_data->base_product_id;
+        $subProductId=$product_data->sub_product_id;
+        $category_data=Category::all();
+        $base_prod_data=BaseProduct::where('category_id',$categoryId)->get();
+        $sub_prod_data=SubProduct::where('base_product_id',$baseProductId)->get();
+        $country_Data=Country::all();
+        $UOM_data=Uom::all();
+        $response=array('product_data'=>$product_data,'category'=>$category_data,'base_prod_data'=>$base_prod_data,'sub_prod_data'=>$sub_prod_data,'country_Data'=>$country_Data,'UOM_data'=>$UOM_data);
+        return $response;
         
     }
     public function update(Request $request)
     {
-        
+        // dd($request);
+        $id=$request->id;
+        $product_data= Product::findOrFail($id);
+        $product_data->category_id=$request->product_category_name;
+        $product_data->base_product_id=$request->product_baseProduct_name;
+        $product_data->sub_product_id=$request->product_subProduct_name;
+        $product_data->product_specific_name=$request->product_specific_name;
+        $product_data->product_full_name=$request->product_full_name;
+        $product_data->grades=$request->product_grades;
+        $product_data->standard=$request->product_standards;
+        $product_data->propertie=$request->product_DimensionsProperties;
+        $product_data->technical_specs=$request->product_TechnicalSpecs;
+        $product_data->application=$request->product_Applications;
+        $product_data->price_structure=$request->product_PriceStructure;
+        $product_data->packing_method=$request->product_PackingMethod;
+        $product_data->umos_id=$request->product_UOM;
+        $product_data->shipment_mode=$request->product_shipmentMode;
+        $product_data->weight_calculation=$request->product_Weightcalculation;
+        $product_data->hs_code=$request->product_HSCode;
+        $product_data->country_a=$request->product_country_a;
+        $product_data->country_b=$request->product_country_b;
+        $product_data->country_c=$request->product_country_c;
+        $product_data->description=$request->product_Comments;
+        $product_data->save();
+        $response = array('status' => 'success', 'message' => 'Product Updated successfully.','status' => 200); 
+        return json_encode($response);
     }
     public function view(Request $request)
     {
-        
+        $id=$request->id;
+        $product=Product::leftJoin('countries as countries_a','countries_a.id','products.country_a')
+                    ->leftJoin('countries as countries_b','countries_b.id','products.country_b')
+                    ->leftJoin('countries as countries_c','countries_c.id','products.country_c')
+                    ->leftJoin('categories','categories.id','products.category_id')
+                    ->leftJoin('base_products','base_products.id','products.base_product_id')
+                    ->leftJoin('sub_products','sub_products.id','products.sub_product_id')
+                    ->leftJoin('uoms','uoms.id','products.umos_id')
+                    ->select('products.*','countries_a.country_name as countryA','countries_b.country_name as countryB','countries_c.country_name as countryC','categories.category_name','base_products.product_name as base_product_name','sub_products.product_name as sub_product_name','uoms.name as uoms_name')
+                    ->where('products.delete_status','1')
+                    ->where('products.id',$id)
+                    ->first();
+                    return $product;
     }
     public function delete(Request $request)
     {

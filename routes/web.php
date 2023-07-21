@@ -38,3 +38,6 @@ Route::get('product-getCategoryDetails', [ProductController::class, 'getCategory
 // UserController
 Route::get('user', [UserController::class, 'index'])->name('user.index');
 Route::post('users-store', [UserController::class, 'store'])->name('users-store');
+Route::get('users-edit',[UserController::class,'edit'])->name('users-edit');
+Route::post('user-update', [UserController::class, 'update'])->name('user-update');
+Route::get('user-delete', [UserController::class, 'delete'])->name('user-delete');

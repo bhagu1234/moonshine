@@ -74,4 +74,133 @@ $("#storeUser").click(function(){
    })
 });
 // end store ========================================================
+
+// start edit ========================================================
+$("body").on('click','#edit_user',function(){
+   $("#update_usercountry").html("");
+   $("#update_UserState").html("");
+   $("#update_UserDistrict").html("");
+   $("#update_UserCity").html("");
+   $.ajax({
+      type:'get',
+      url:base_path+"/customer-getDetails",
+      data:{'from':'open_form'},
+      success:function(res){
+         $("#update_usercountry").append(res.country);
+      }
+   });
+    var id=$(this).attr('data-value');
+   $.ajax({
+      type:'get',
+      data:{'id':id},
+      url:base_path+"/users-edit",
+      success:function(res){
+         var state=res.state.length;
+         var stOption="";
+         var district=res.district.length;
+         var distrOption="";
+         var city=res.city.length;
+         var cityOption="";
+         for(var i=0;state>i;i++)
+         {
+            var state_id=res.state[i].state_id;
+            var state_name=res.state[i].name;
+            console.log(state_id + "," + state_name);
+            stOption+="<option  value="+state_id+">"+state_name+"</option>";
+            
+         }
+         $("#update_UserState").append(stOption);
+         for(var i=0;district>i;i++)
+         {
+            var district_id=res.district[i].district_id;
+            var district_name=res.district[i].district_name;
+            distrOption+="<option  value="+district_id+">"+district_name+"</option>";
+            
+         }
+         $("#update_UserDistrict").append(distrOption);
+         for(var i=0;city>i;i++)
+         {
+            var city_id=res.city[i].city_id;
+            var city_name=res.city[i].city_name;
+            cityOption+="<option  value="+city_id+">"+city_name+"</option>";
+            
+         }
+         $("#update_UserCity").append(cityOption);
+         $("#cuser_id").val(res.allData.user_id);
+         $("#update_fname").val(res.allData.first_name);
+         $("#update_lname").val(res.allData.last_name);
+         $("#update_uemail").val(res.allData.user_email);
+         $("#update_usercountry").val(res.allData.country);
+         $("#update_UserState").val(res.allData.state);
+         $("#update_UserDistrict").val(res.allData.district);
+         $("#update_UserCity").val(res.allData.city);
+         $("#update_upincode").val(res.allData.pin_code);
+           
+      }
+   });
+   $("#UpdateUserModal").modal("show");
+});
+$('#UpdateUserModal').on('hidden.bs.modal', function () {
+   $(this).find('form').trigger('reset');
+});
+$(".close_openUpdateUserModal").click(function(){
+   $("#UpdateUserModal").modal("hide");
+});
+$("#update_storeUser").click(function(){
+   var _token=$("#token").val();
+   var id=$("#cuser_id").val();
+   var update_fname =$("#update_fname").val();
+   var update_lname =$("#update_lname").val();
+   var update_uemail =$("#update_uemail").val();
+   var update_usercountry=$("#update_usercountry").val();
+   var update_UserState=$("#update_UserState").val();
+   var update_UserDistrict=$("#update_UserDistrict").val();
+   var update_UserCity=$("#update_UserCity").val();
+   var update_upincode=$("#update_upincode").val();
+   var formData=new FormData();
+   formData.append('_token',_token);
+   formData.append('id',id);
+   formData.append('update_fname',update_fname);
+   formData.append('update_lname',update_lname);
+   formData.append('update_uemail',update_uemail);
+   formData.append('update_usercountry',update_usercountry);
+   formData.append('update_UserState',update_UserState);
+   formData.append('update_UserDistrict',update_UserDistrict);
+   formData.append('update_UserCity',update_UserCity);
+   formData.append('update_upincode',update_upincode);  
+   $.ajax({
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/user-update",
+      success:function(){
+         alert("success data Updated !");
+         openUserModel();
+         $("#UpdateUserModal").modal("hide");
+
+      }
+   });
+});
+// end edit=============================================================
+
+// start delete ====================================================
+$("body").on('click','#delete_user',function(){
+   var id=$(this).attr('data-value');
+   if (confirm('Are you sure you want to delete this?')) 
+   {
+      $.ajax({
+         type:'get',
+         data:{'id':id},
+         url:base_path+"/user-delete",
+         success:function(){
+            alert("success data deleted !");
+            openUserModel()
+         }
+      });
+   }
+});
+// end delete ======================================================
  

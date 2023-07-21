@@ -20,7 +20,7 @@ class UserController extends Controller
                     ->leftJoin('cities','cities.city_id','users.city')
                     ->leftJoin('states','states.state_id','users.state')
                     ->select('users.*','cities.city_name','states.name as state_name','countries.country_name as countryname')
-                    ->orderBY('user_id','DESC')
+                    ->orderBY('users.id','DESC')
                     ->get();
                     // dd($data);
         $tr="";
@@ -39,8 +39,8 @@ class UserController extends Controller
                     <td>".$row->city_name."</td>
                     <td>".$row->pin_code."</td>
                    <td>
-                       <a href='#' id='edit_user' data-value=".$row->user_id .">edit</a>
-                       <a href='#' id='delete_delete' data-value=".$row->user_id .">delete</a>
+                       <a href='#' id='edit_user' data-value=".$row->id .">edit</a>
+                       <a href='#' id='delete_user' data-value=".$row->id .">delete</a>
                     </td>
                </tr>";
            }
@@ -82,6 +82,44 @@ class UserController extends Controller
         $response = array('status' => 'success', 'message' => 'user Added successfully.','status' => 200); 
         return json_encode($response);
     }
+    public function delete(Request $request)
+    {
+        $id=$request->id;
+        $userdata=User::findOrFail($id);
+        $userdata->delete_status='0';
+        $userdata->save();
+        $response = array('status' => 'success', 'message' => 'user Deleted successfully.','status' => 200); 
+        return json_encode($response);
+    }
+    public function edit(Request $request)
+    {
+        $id=$request->id;
+        $userdata=User::findOrFail($id);
+        $countryId=$userdata->country;
+        $state_id=$userdata->state;
+        $districtId=$userdata->district;
+        $state=State::where('country_id',$countryId)->orderBy('state_id','DESC')->get();
+        $district=District::where('state_id',$state_id)->get();
+        $city=City::where('district_id',$districtId)->get();
+        $response=array('allData'=>$userdata,'state'=>$state,'district'=>$district,'city'=>$city);
+        return $response;
 
+    }
+    public function update(Request $request)
+    {
+        $id=$request->id;
+        $user=User::findOrFail($id);
+        $user->first_name=$request->update_fname;
+        $user->last_name=$request->update_lname;
+        $user->user_email=$request->update_uemail;
+        $user->country=$request->update_usercountry;
+        $user->state=$request->update_UserState;
+        $user->district=$request->update_UserDistrict;
+        $user->city=$request->update_UserCity;
+        $user->pin_code=$request->update_upincode;
+        $user->save();
+        $response = array('status' => 'success', 'message' => 'User Updated successfully.','status' => 200); 
+        return json_encode($response);
+    }
 
 }

@@ -740,7 +740,7 @@
                                 <a class="dropdown-item" href="#">Enquiry  Priority List</a>
                             </li>
                             <li> 
-                                <a class="dropdown-item" href="#">  Country</a>
+                                <a class="dropdown-item" onclick="openCountryModel()" href="#">  Country</a>
                             </li>
                             <li> 
                                 <a class="dropdown-item" href="#"> State</a>
@@ -802,3 +802,6 @@
 @include('category.index')
 @include('category.create')
 @include('category.edit')
+
+ <!-- country  -->
+@include('address.country')

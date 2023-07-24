@@ -60,9 +60,9 @@ class CustomerController extends Controller
     }
     public function getDetails(Request $request)
     {
-        $country=Country::all();
-        $AddressType=AddressType::all();
-        $Region=Region::all();
+        $country=Country::where('status','1')->get();
+        $AddressType=AddressType::where('status','1')->get();
+        $Region=Region::where('status','1')->get();
         $id=$request->id;
         $option="<option selected disabled value>...</option>";
         $countryOPtion=$option;
@@ -92,7 +92,7 @@ class CustomerController extends Controller
         }
         elseif($request->from=="state")
         {
-            $state=District::where('state_id',$id)->get();
+            $state=District::where('state_id',$id)->where('status','1')->get()->get();
             $sta_option=$option;
             foreach($state as $r)
             {
@@ -102,7 +102,7 @@ class CustomerController extends Controller
         }
         elseif($request->from=="district")
         {
-            $state=City::where('district_id',$id)->get();
+            $state=City::where('district_id',$id)->where('status','1')->get()->get();
             $sta_option=$option;
             foreach($state as $r)
             {

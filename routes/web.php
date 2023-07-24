@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
+use  App\Http\Controllers\Countrycontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,3 +60,10 @@ Route::post('category-store', [CategoryController::class, 'store'])->name('categ
 Route::get('category-edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('category-update', [CategoryController::class, 'update'])->name('category.update');
 Route::get('category-delete', [CategoryController::class, 'delete'])->name('category.delete');
+
+//// Countrycontroller
+Route::get('country', [CountryController::class, 'index'])->name('address.country');
+Route::post('country-store', [CountryController::class, 'store'])->name('country-store');
+Route::get('country-edit',[CountryController::class,'edit'])->name('country-edit');
+Route::post('country-update', [CountryController::class, 'update'])->name('country-update');
+Route::get('country-delete', [CountryController::class, 'delete'])->name('country-delete');

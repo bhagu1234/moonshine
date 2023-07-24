@@ -29,4 +29,6 @@
 <script src="{{URL::to('/')}}/public/app/js/supplier.js"></script>
  <!-- category  -->
 <script src="{{URL::to('/')}}/public/app/js/category.js"></script>
+<!-- country -->
+<script src="{{URL::to('/')}}/public/app/js/country.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

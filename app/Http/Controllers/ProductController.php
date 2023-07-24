@@ -101,11 +101,11 @@ class ProductController extends Controller
         $categoryId=$product_data->category_id;
         $baseProductId=$product_data->base_product_id;
         $subProductId=$product_data->sub_product_id;
-        $category_data=Category::all();
-        $base_prod_data=BaseProduct::where('category_id',$categoryId)->get();
-        $sub_prod_data=SubProduct::where('base_product_id',$baseProductId)->get();
-        $country_Data=Country::all();
-        $UOM_data=Uom::all();
+        $category_data=Category::where('status','1')->get();
+        $base_prod_data=BaseProduct::where('category_id',$categoryId)->where('status','1')->get();
+        $sub_prod_data=SubProduct::where('base_product_id',$baseProductId)->where('status','1')->get();
+        $country_Data=Country::where('status','1')->get();
+        $UOM_data=Uom::where('status','1')->get();
         $response=array('product_data'=>$product_data,'category'=>$category_data,'base_prod_data'=>$base_prod_data,'sub_prod_data'=>$sub_prod_data,'country_Data'=>$country_Data,'UOM_data'=>$UOM_data);
         return $response;
         
@@ -166,9 +166,9 @@ class ProductController extends Controller
     }
     public function getCategoryDetails(Request $request)
     {
-        $category=Category::all();
-        $UOM=Uom::all();
-        $country=Country::all();
+        $category=Category::where('status','1')->get();
+        $UOM=Uom::where('status','1')->get();
+        $country=Country::where('status','1')->get();
         $id=$request->id;
         $option="<option selected disabled value>...</option>";
         $categoryOptio=$option;
@@ -188,7 +188,7 @@ class ProductController extends Controller
         }
         if($request->from=="category")
         {
-            $BaseProduct=BaseProduct::where('category_id',$id)->get();
+            $BaseProduct=BaseProduct::where('category_id',$id)->where('status','1')->get()->get();
             $BaseProduct_option=$option;
             foreach($BaseProduct as $r)
             {
@@ -198,7 +198,7 @@ class ProductController extends Controller
         }
         elseif($request->from=="base_product")
         {
-            $SubProduct=SubProduct::where('base_product_id',$id)->get();
+            $SubProduct=SubProduct::where('base_product_id',$id)->where('status','1')->get()->get();
             $SubProduct_option=$option;
             foreach($SubProduct as $r)
             {

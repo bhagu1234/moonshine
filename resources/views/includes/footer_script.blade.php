@@ -25,4 +25,8 @@
 <script src="{{URL::to('/')}}/public/app/js/user.js"></script>
 <!-- product -->
 <script src="{{URL::to('/')}}/public/app/js/product.js"></script>
+ <!-- customer  -->
+<script src="{{URL::to('/')}}/public/app/js/supplier.js"></script>
+ <!-- category  -->
+<script src="{{URL::to('/')}}/public/app/js/category.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

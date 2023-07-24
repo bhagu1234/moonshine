@@ -4,6 +4,8 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +43,19 @@ Route::post('users-store', [UserController::class, 'store'])->name('users-store'
 Route::get('users-edit',[UserController::class,'edit'])->name('users-edit');
 Route::post('user-update', [UserController::class, 'update'])->name('user-update');
 Route::get('user-delete', [UserController::class, 'delete'])->name('user-delete');
+
+// SupplierController
+Route::get('supplier', [SupplierController::class, 'index'])->name('supplier.index');
+Route::post('supplier-store', [SupplierController::class, 'store'])->name('supplier.store');
+Route::get('supplier-edit', [SupplierController::class, 'edit'])->name('supplier.edit');
+Route::post('supplier-update', [SupplierController::class, 'update'])->name('supplier.update');
+Route::get('supplier-delete', [SupplierController::class, 'delete'])->name('supplier.delete');
+Route::get('supplier-view', [SupplierController::class, 'view'])->name('supplier.view');
+
+
+// CategoryController
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+Route::post('category-store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('category-edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('category-update', [CategoryController::class, 'update'])->name('category.update');
+Route::get('category-delete', [CategoryController::class, 'delete'])->name('category.delete');

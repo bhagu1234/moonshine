@@ -63,10 +63,14 @@ function getAddress(id, from)
             $("#CustomerState").append(res);
             $("#update_CustomerState").html("");
             $("#update_CustomerState").append(res);
+            $("#update_supplierState").html("");
+            $("#update_supplierState").append(res);
             $("#userState").html("");
             $("#userState").append(res);
             $("#update_UserState").html("");
             $("#update_UserState").append(res);
+            $("#supplierState").html("");
+            $("#supplierState").append(res);
          }
          if(from=="state")
          {
@@ -78,6 +82,10 @@ function getAddress(id, from)
             $("#userDistrict").append(res);
             $("#update_UserDistrict").html("");
             $("#update_UserDistrict").append(res);
+            $("#supplierDistrict").html("");
+            $("#supplierDistrict").append(res);
+            $("#update_supplierDistrict").html("");
+            $("#update_supplierDistrict").append(res);
          }
          if(from=="district")
          {
@@ -89,6 +97,10 @@ function getAddress(id, from)
             $("#userCity").append(res);
             $("#update_UserCity").html("");
             $("#update_UserCity").append(res);
+            $("#supplierCity").html("");
+            $("#supplierCity").append(res);
+            $("#update_supplierCity").html("");
+            $("#update_supplierCity").append(res);
          }
         
       }

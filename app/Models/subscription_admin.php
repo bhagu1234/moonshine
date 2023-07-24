@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Factories\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class subscription_admin extends Model implements Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'subscription_admins';
+    protected $table = 'subscription_admin';
     protected $primaryKey = 'admin_id';
+
     protected $fillable = [
-        // 'company_name',
+        'company_name',
         'admin_email',
         'admin_password',
     ];
@@ -40,7 +40,7 @@ class subscription_admin extends Model implements Authenticatable
     }
 
     /**
-     * Get the admin_password for the user.
+     * Get the password for the user.
      *
      * @return string
      */

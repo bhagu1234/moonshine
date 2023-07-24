@@ -19,7 +19,7 @@ class CustomerController extends Controller
         ->leftJoin('cities','cities.city_id','customers.city')
         ->leftJoin('states','states.state_id','customers.state')
         ->leftJoin('address_types','address_types.address_id','customers.address_type')
-        ->leftJoin('users','users.user_id','customers.user_id')
+        ->leftJoin('users','users.id','customers.user_id')
         ->select('customers.*','cities.city_name','states.name as state_name','countries.country_name as countryname','address_types.address_name','users.first_name','users.last_name')
         ->get();
         // dd($data);

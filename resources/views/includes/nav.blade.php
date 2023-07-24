@@ -668,7 +668,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li> <a class="dropdown-item" href="#">Supplier View </a>
+                            <li onclick="openSupplierModel()"> <a class="dropdown-item" href="#">Supplier View </a>
                             </li>
                         </ul>
                     </li>
@@ -751,7 +751,7 @@
                             <li> 
                                 <a class="dropdown-item" href="#">City</a>
                             </li>
-                            <li> 
+                            <li onclick="openCategoryModel()"> 
                                 <a class="dropdown-item" href="#">Category</a>
                             </li>
                             <li> 
@@ -798,3 +798,7 @@
 @include('user.index')
 @include('user.create')
 @include('user.edit')
+<!-- user  -->
+@include('category.index')
+@include('category.create')
+@include('category.edit')

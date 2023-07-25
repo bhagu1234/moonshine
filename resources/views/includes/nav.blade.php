@@ -688,7 +688,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li> <a class="dropdown-item" href="#">Enquiry View </a>
+                            <li  onclick="openEnquiryModel()"> <a class="dropdown-item" href="#">Enquiry View </a>
                             </li>
                         </ul>
                     </li>
@@ -698,7 +698,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li> <a class="dropdown-item" href="#">Orders View </a>
+                            <li onclick="openOrderModel()"> <a class="dropdown-item" href="#">Orders View </a>
                             </li>
                         </ul>
                     </li>
@@ -798,10 +798,14 @@
 @include('user.index')
 @include('user.create')
 @include('user.edit')
-<!-- user  -->
+<!-- category  -->
 @include('category.index')
 @include('category.create')
 @include('category.edit')
+<!-- contact  -->
+@include('contact.index')
+@include('contact.create')
+@include('contact.edit')
 
  <!-- country  -->
 @include('address.country')

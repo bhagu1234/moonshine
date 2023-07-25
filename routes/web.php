@@ -6,7 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
-use  App\Http\Controllers\Countrycontroller;
+use App\Http\Controllers\Countrycontroller;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,3 +69,21 @@ Route::post('country-store', [CountryController::class, 'store'])->name('country
 Route::get('country-edit',[CountryController::class,'edit'])->name('country-edit');
 Route::post('country-update', [CountryController::class, 'update'])->name('country-update');
 Route::get('country-delete', [CountryController::class, 'delete'])->name('country-delete');
+
+// OrderController
+Route::get('order', [OrderController::class, 'index'])->name('order.index');
+Route::post('order-store', [OrderController::class, 'store'])->name('order.store');
+Route::get('order-edit',[OrderController::class,'edit'])->name('order.edit');
+Route::post('order-update', [OrderController::class, 'update'])->name('order.update');
+Route::get('order-delete', [OrderController::class, 'delete'])->name('order.delete');
+Route::get('order-view', [OrderController::class, 'view'])->name('order.view');
+
+
+// ContactController
+Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+Route::get('contact-create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('contact-store', [ContactController::class, 'store'])->name('contact.store');
+Route::get('contact-edit',[ContactController::class,'edit'])->name('contact.edit');
+Route::post('contact-update', [ContactController::class, 'update'])->name('contact.update');
+Route::get('contact-delete', [ContactController::class, 'delete'])->name('contact.delete');
+Route::get('contact-view', [ContactController::class, 'view'])->name('contact.view');

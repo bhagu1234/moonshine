@@ -9,7 +9,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="col">
-						<h6 class="mb-0 text-uppercase">Product Detals</h6>
+						<h6 class="mb-0 text-uppercase">Product Details</h6>
 						<hr/>
 						<div class="card">
 							<div class="card-body">

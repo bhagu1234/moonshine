@@ -48,6 +48,7 @@ class CustomerController extends Controller
                     <td class='view_customer' data-value=".$row->id.">".$row->location_email."</td>
                     <td>
                         <a href='#' id='edit_customer' data-value=".$row->id.">edit</a>
+                        <a href='#' onclick='view_customer(".$row->id.")' data-value=".$row->id.">view</a>
                         <a href='#' id='delete_customer' data-value=".$row->id.">delete</a>
                     </td>
                 </tr>";
@@ -230,7 +231,62 @@ class CustomerController extends Controller
     {
         $id=$request->id;
         $customerdata=Customer::findOrFail($id);
-        return $customerdata;
+        $contact_data=Customer::join('contacts','contacts.customer_id','customers.id')
+                ->leftJoin('salutes','salutes.id','contacts.salute_id')
+                ->leftJoin('pocs','pocs.id','contacts.poc_id')
+                ->leftJoin('customer_statuses','customer_statuses.id','contacts.status_id')
+                ->leftJoin('sections','sections.id','contacts.section_id')
+                ->leftJoin('countries','countries.id','contacts.nationality')
+                ->leftJoin('languages','languages.id','contacts.m_tongue')
+                ->leftJoin('religions','religions.id','contacts.religion')
+                ->where('contacts.status','1')
+                ->where('contacts.customer_id',$id)
+                ->select('contacts.*','pocs.name as poc_name','customer_statuses.name as status_name','sections.name as section_name','countries.country_name','languages.name as motherTonName','religions.name as religions_name','salutes.name as salutes_name')
+                ->get();
+        $contact_tr="";
+        $no=1;
+        // dd($contact_data);
+        foreach($contact_data as $row)
+        {
+           $contact_tr.="<tr>
+                    <td>".$no++."</td>
+                    <td>".$row->salutes_name ." " . $row->first_name ." " . $row->middle_name ." " . $row->last_name ."</td>
+                    <td>".$row->poc_name."</td>
+                    <td>".$row->status_name."</td>
+                    <td>".$row->designation."</td>
+                    <td>".$row->sitting_office."</td>
+                    <td>".$row->Kickback."</td>
+                    <td>".$row->official_bg."</td>
+                    <td>".$row->mobile_no."</td>
+                    <td>".$row->landline_office."</td>
+                    <td>".$row->contact_email."</td>
+                    <td>".$row->contact_email2."</td>
+                    <td>".$row->presonal_email."</td>
+                    <td>".$row->skype_other."</td>
+                    <td>".$row->date_joined."</td>
+                    <td>".$row->date_left."</td>
+                    <td>".$row->dob."</td>
+                    <td>".$row->age_years."</td>
+                    <td>".$row->country_name."</td>
+                    <td>".$row->motherTonName."</td>
+                    <td>".$row->religions_name."</td>
+                    <td>".$row->gender."</td>
+                    <td>".$row->linving_in."</td>
+                    <td>".$row->personal_bg."</td>
+                    <td>".$row->passport_details."</td>
+                    <td>".$row->passport_number."</td>
+                    <td>".$row->passport_issued_at."</td>
+                    <td>".$row->passport_issued_date."</td>
+                    <td>".$row->passport_expired_date."</td>
+                    <td>".$row->visa_detail."</td>
+                    <td>
+                        <a href=''>edit</a>
+                        <a href='#' id='delete_customer_contact' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
+                    </td>
+                </tr>" ;
+        }
+        $response=array('customerdata'=>$customerdata,'contact_tr'=>$contact_tr);
+        return $response;
     }
     public function delete(Request $request)
     {

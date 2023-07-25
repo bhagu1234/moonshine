@@ -31,4 +31,10 @@
 <script src="{{URL::to('/')}}/public/app/js/category.js"></script>
 <!-- country -->
 <script src="{{URL::to('/')}}/public/app/js/country.js"></script>
+<!-- order -->
+<script src="{{URL::to('/')}}/public/app/js/order.js"></script>
+<!-- enquiry -->
+<script src="{{URL::to('/')}}/public/app/js/enquiry.js"></script>
+<!-- contact -->
+<script src="{{URL::to('/')}}/public/app/js/contact.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

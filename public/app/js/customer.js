@@ -350,23 +350,27 @@ $("#update_storeCustomer").click(function(){
 // end edit customer ================================================
 
 // start view data ==================================================
-$("body").on('click','.view_customer',function(){
-   var id=$(this).attr('data-value');
+function view_customer(id)
+{
+   $("#customer_contact_list").html("");
    $.ajax({
       type:'get',
       data:{'id':id},
       url:base_path+"/customer-view",
       success:function(res){
-         $(".customer_name_view").text(res.customer_name);
-         $(".group_cos_view").text(res.group_cos);
-         $(".address1_view").text(res.address1);
-         $(".address2_view").text(res.address2);
-         $(".location_email_view").text(res.location_email);
+         $(".customer_name_view").text(res.customerdata.customer_name);
+         $("#contactCustomer").val(res.customerdata.id);
+         $(".group_cos_view").text(res.customerdata.group_cos);
+         $(".address1_view").text(res.customerdata.address1);
+         $(".address2_view").text(res.customerdata.address2);
+         $(".location_email_view").text(res.customerdata.location_email);
+         $("#customer_contact_list").append(res.contact_tr);
       }
    });
   
    $("#customerDetailsviewModal").modal("show");
-});
+}
+// });
 $(".close_customerModalview").click(function(){
    $("#customerDetailsviewModal").modal("hide");
 });

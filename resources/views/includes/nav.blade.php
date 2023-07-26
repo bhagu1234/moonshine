@@ -806,6 +806,9 @@
 @include('contact.index')
 @include('contact.create')
 @include('contact.edit')
+<!-- bank  -->
+@include('bank.create')
+@include('bank.edit')
 
  <!-- country  -->
 @include('address.country')

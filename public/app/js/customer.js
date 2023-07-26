@@ -131,10 +131,10 @@ $("#storeCustomer").click(function(){
    var customerReferencedBy=$("#customerReferencedBy").val();
    var CustomerTradeActivity=$("#CustomerTradeActivity").val();
    var CustomerFacilityAndLocation=$("#CustomerFacilityAndLocation").val();
-   var customerContact=$("#customerContact").val();
-   var customerBank=$("#customerBank").val();
-   var customerCreditFacility=$("#customerCreditFacility").val();
-   var customerVisiteRating=$("#customerVisiteRating").val();
+   // var customerContact=$("#customerContact").val();
+   // var customerBank=$("#customerBank").val();
+   // var customerCreditFacility=$("#customerCreditFacility").val();
+   // var customerVisiteRating=$("#customerVisiteRating").val();
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('customer_name',customer_name);
@@ -157,10 +157,10 @@ $("#storeCustomer").click(function(){
    formData.append('customerReferencedBy',customerReferencedBy);
    formData.append('CustomerTradeActivity',CustomerTradeActivity);
    formData.append('CustomerFacilityAndLocation',CustomerFacilityAndLocation);
-   formData.append('customerContact',customerContact);
-   formData.append('customerBank',customerBank);
-   formData.append('customerCreditFacility',customerCreditFacility);
-   formData.append('customerVisiteRating',customerVisiteRating);
+   // formData.append('customerContact',customerContact);
+   // formData.append('customerBank',customerBank);
+   // formData.append('customerCreditFacility',customerCreditFacility);
+   // formData.append('customerVisiteRating',customerVisiteRating);
    $.ajax({
       type:'POST',
       processData: false,
@@ -256,16 +256,11 @@ $("body").on('click','#edit_customer',function(){
          $("#update_customerReferencedBy").val(res.allData.refere_by);
          $("#update_CustomerTradeActivity").val(res.allData.trade_activity);
          $("#update_CustomerFacilityAndLocation").val(res.allData.facility_location);
-         $("#update_customerContact").val(res.allData.customer_contact);
-         $("#update_customerBank").val(res.allData.bank_id);
-         $("#update_customerCreditFacility").val(res.allData.credit_facility);
-         $("#update_customerVisiteRating").val(res.allData.visite_rating);
-         // if($("#update_customer_country").val() !="")
-         //    {
-         //       var id=$("#update_customer_country").find(":selected").val();
-         //       var from="country";
-         //       getAddress(id,from);
-         //    }
+         // $("#update_customerContact").val(res.allData.customer_contact);
+         // $("#update_customerBank").val(res.allData.bank_id);
+         // $("#update_customerCreditFacility").val(res.allData.credit_facility);
+         // $("#update_customerVisiteRating").val(res.allData.visite_rating);
+       
            
       }
    });
@@ -300,10 +295,10 @@ $("#update_storeCustomer").click(function(){
    var customerReferencedBy=$("#update_customerReferencedBy").val();
    var CustomerTradeActivity=$("#update_CustomerTradeActivity").val();
    var CustomerFacilityAndLocation=$("#update_CustomerFacilityAndLocation").val();
-   var customerContact=$("#update_customerContact").val();
-   var customerBank=$("#update_customerBank").val();
-   var customerCreditFacility=$("#update_customerCreditFacility").val();
-   var customerVisiteRating=$("#update_customerVisiteRating").val();
+   // var customerContact=$("#update_customerContact").val();
+   // var customerBank=$("#update_customerBank").val();
+   // var customerCreditFacility=$("#update_customerCreditFacility").val();
+   // var customerVisiteRating=$("#update_customerVisiteRating").val();
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('customer_name',customer_name);
@@ -326,10 +321,10 @@ $("#update_storeCustomer").click(function(){
    formData.append('customerReferencedBy',customerReferencedBy);
    formData.append('CustomerTradeActivity',CustomerTradeActivity);
    formData.append('CustomerFacilityAndLocation',CustomerFacilityAndLocation);
-   formData.append('customerContact',customerContact);
-   formData.append('customerBank',customerBank);
-   formData.append('customerCreditFacility',customerCreditFacility);
-   formData.append('customerVisiteRating',customerVisiteRating);
+   // formData.append('customerContact',customerContact);
+   // formData.append('customerBank',customerBank);
+   // formData.append('customerCreditFacility',customerCreditFacility);
+   // formData.append('customerVisiteRating',customerVisiteRating);
    formData.append('id',id);
    $.ajax({
       type:'POST',
@@ -352,7 +347,9 @@ $("#update_storeCustomer").click(function(){
 // start view data ==================================================
 function view_customer(id)
 {
+   $("#check_suppliyer_customer").val('customer');
    $("#customer_contact_list").html("");
+   $("#customer_bank_tabledata").html("");
    $.ajax({
       type:'get',
       data:{'id':id},
@@ -364,7 +361,9 @@ function view_customer(id)
          $(".address1_view").text(res.customerdata.address1);
          $(".address2_view").text(res.customerdata.address2);
          $(".location_email_view").text(res.customerdata.location_email);
+         $("#bankCustomer").val(res.customerdata.id);
          $("#customer_contact_list").append(res.contact_tr);
+         $("#customer_bank_tabledata").append(res.bank_tr);
       }
    });
   

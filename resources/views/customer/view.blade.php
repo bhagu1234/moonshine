@@ -76,7 +76,7 @@
                                         </div>
 									</div>
 									<div class="tab-pane fade" id="customerContactView" role="tabpanel">
-									<button type="button" class="btn btn-outline-primary px-5 radius-30" id="openCreatecontactModal">Add Contact</button>
+									    <button type="button" class="btn btn-outline-primary px-5 radius-30 openCreatecontactModal" id="openCreatecontactModal">Add Contact</button>
                                         <div class="table-responsive">
                                             <table  class="table table-striped table-bordered " style="width:100%">
                                                 <thead>
@@ -120,37 +120,31 @@
                                         </div>
 									</div>
 									<div class="tab-pane fade" id="customerBankView" role="tabpanel">
+                                        <button type="button" class="btn btn-outline-primary px-5 radius-30 openCreatebankModal">Add Bank</button>
                                         <div class="table-responsive">
                                             <table  class="table table-striped table-bordered " style="width:100%">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Bank Name</th>
-                                                        <th>Product Specific Name</th>
-                                                        <th>Product Range</th>
-                                                        <th>Priority</th>
-                                                        <th>Comments</th>
-                                                        <th>Sup State</th>
-                                                        <th>Bus Fields</th>
-                                                        <th>Bus Scale</th>
-                                                        <th>Bus Nature</th>
-                                                        <th>Bus Category</th>
-                                                        <th>Bus Reliability</th>
-                                                        <th>Bus Sensitivity</th>
-                                                        <th>Current Status</th>
-                                                        <th>Website</th>
-                                                        <th>Country</th>
-                                                        <th>State/province</th>
-                                                        <th>District</th>
-                                                        <th>City</th>
-                                                        <th>Remarks</th>
-                                                        <th>POC</th>
-                                                        <th>Name</th>
-                                                        <th>Mobile</th>
-                                                        <th>Email</th>
+                                                        <th>Branch name</th>
+                                                        <th>Address</th>
+                                                        <th>Account number</th>
+                                                        <th>IBAN Account number</th>
+                                                        <th>Accound holder name</th>
+                                                        <th>PR officer</th>
+                                                        <th>Bank mail Id</th>
+                                                        <th>IFSC code</th>
+                                                        <th>SWIFT code</th>
+                                                        <th>Bank rating</th>
+                                                        <th>Direct FAC</th>
+                                                        <th>Indirect FAC</th>
+                                                        <th>Bank reference</th>
+                                                        <th>Commants</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id='customer_bank_tabledata'>
                                                 </tbody>
                                             </table> 
                                         </div>

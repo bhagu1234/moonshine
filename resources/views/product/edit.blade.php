@@ -29,17 +29,17 @@
 									</div>
                                     <div class="col-md-6">
 										<label for="bsValidation9" class="form-label">Product category name</label>
-										<select id="update_product_category_name" class="form-select single-select-clear-field"   onchange="getproductCategory(this.value,'category')">
+										<select id="update_product_category_name" class="form-select"   onchange="getproductCategory(this.value,'category')">
 										</select>
 									</div>
                                     <div class="col-md-6">
 										<label for="bsValidation9" class="form-label"> Base product Name</label>
-										<select id="update_product_baseProduct_name" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getproductCategory(this.value,'base_product')">
+										<select id="update_product_baseProduct_name" class="form-select"  data-placeholder="Choose one thing" onchange="getproductCategory(this.value,'base_product')">
 										</select>
 									</div>
                                     <div class="col-md-6">
 										<label for="bsValidation9" class="form-label">Sub product Name</label>
-										<select id="update_product_subProduct_name" class="form-select single-select-clear-field"  >
+										<select id="update_product_subProduct_name" class="form-select"  >
 										</select>
 									</div>
                                     <div class="col-md-6">
@@ -81,7 +81,7 @@
 									</div>
                                     <div class="col-md-6">
 										<label for="bsValidation9" class="form-label">UOM</label>
-										<select id="update_product_UOM"  class="form-select single-select-clear-field"  data-placeholder="Choose one thing">
+										<select id="update_product_UOM"  class="form-select"  data-placeholder="Choose one thing">
 										</select>
 									</div>
 									<div class="col-md-6">
@@ -94,18 +94,18 @@
 									</div>
 									<div class="col-md-6">
 										<label for="bsValidation9" class="form-label">Country A</label>
-										<select id="update_product_country_a" class="form-select single-select-clear-field"  data-placeholder="Choose one thing">
+										<select id="update_product_country_a" class="form-select"  data-placeholder="Choose one thing">
 										</select>
 									</div>
 									<div class="col-md-6">
 										<label for="bsValidation9" class="form-label">Country B</label>
-										<select id="update_product_country_b" class="form-select single-select-clear-field"  data-placeholder="Choose one thing">
+										<select id="update_product_country_b" class="form-select"  data-placeholder="Choose one thing">
 										</select>
 									</div>
                                     
 									<div class="col-md-6">
 										<label for="bsValidation9" class="form-label">Country C</label>
-										<select id="update_product_country_c" class="form-select single-select-clear-field"  data-placeholder="Choose one thing">
+										<select id="update_product_country_c" class="form-select"  data-placeholder="Choose one thing">
 										</select>
 									</div>
                                     

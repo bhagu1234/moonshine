@@ -44,13 +44,6 @@ $("#createsupplierModal").on("shown.bs.modal",function(){
 $(".close_openCreatesupplierModal").click(function(){
    $("#createsupplierModal").modal("hide");
 });
-// addvance details ======================================
-$(".advancesupplier").hide();
-$(".addAdvancesupplier").click(function(){
-   $(".advancesupplier").show();
-});
-// end advance details ==================================================
-
 $('#createsupplierModal').on('hidden.bs.modal', function () {
    $(this).find('form').trigger('reset');
 });
@@ -76,10 +69,10 @@ $("#storesupplier").click(function(){
    var supplierReferencedBy=$("#supplierReferencedBy").val();
    var supplierTradeActivity=$("#supplierTradeActivity").val();
    var supplierFacilityAndLocation=$("#supplierFacilityAndLocation").val();
-   var supplierContact=$("#supplierContact").val();
-   var supplierBank=$("#supplierBank").val();
-   var supplierCreditFacility=$("#supplierCreditFacility").val();
-   var supplierVisiteRating=$("#supplierVisiteRating").val();
+   // var supplierContact=$("#supplierContact").val();
+   // var supplierBank=$("#supplierBank").val();
+   // var supplierCreditFacility=$("#supplierCreditFacility").val();
+   // var supplierVisiteRating=$("#supplierVisiteRating").val();
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('supplier_name',supplier_name);
@@ -102,10 +95,10 @@ $("#storesupplier").click(function(){
    formData.append('supplierReferencedBy',supplierReferencedBy);
    formData.append('supplierTradeActivity',supplierTradeActivity);
    formData.append('supplierFacilityAndLocation',supplierFacilityAndLocation);
-   formData.append('supplierContact',supplierContact);
-   formData.append('supplierBank',supplierBank);
-   formData.append('supplierCreditFacility',supplierCreditFacility);
-   formData.append('supplierVisiteRating',supplierVisiteRating);
+   // formData.append('supplierContact',supplierContact);
+   // formData.append('supplierBank',supplierBank);
+   // formData.append('supplierCreditFacility',supplierCreditFacility);
+   // formData.append('supplierVisiteRating',supplierVisiteRating);
    $.ajax({
       type:'POST',
       processData: false,
@@ -155,16 +148,6 @@ $("body").on('click','#edit_supplier',function(){
          var distrOption="";
          var city=res.city.length;
          var cityOption="";
-         // var country=res.country.length;
-         // var countryOption="";
-         // for(var i=0;country>i;i++)
-         // {
-         //    var country_id=res.country[i].id;
-         //    var country_name=res.country[i].country_name;
-         //    countryOption+="<option  value="+country_id+">"+country_name+"</option>";
-            
-         // }         
-         // $("#update_supplier_country").append(countryOption);
          $("#update_supplierState").append(stOption);
          for(var i=0;state>i;i++)
          {
@@ -211,10 +194,10 @@ $("body").on('click','#edit_supplier',function(){
          $("#update_supplierReferencedBy").val(res.allData.refere_by);
          $("#update_supplierTradeActivity").val(res.allData.trade_activity);
          $("#update_supplierFacilityAndLocation").val(res.allData.facility_location);
-         $("#update_supplierContact").val(res.allData.supplier_contact);
-         $("#update_supplierBank").val(res.allData.bank_id);
-         $("#update_supplierCreditFacility").val(res.allData.credit_facility);
-         $("#update_supplierVisiteRating").val(res.allData.visite_rating);
+         // $("#update_supplierContact").val(res.allData.supplier_contact);
+         // $("#update_supplierBank").val(res.allData.bank_id);
+         // $("#update_supplierCreditFacility").val(res.allData.credit_facility);
+         // $("#update_supplierVisiteRating").val(res.allData.visite_rating);
        
       }
    });
@@ -249,10 +232,10 @@ $("#update_storesupplier").click(function(){
    var supplierReferencedBy=$("#update_supplierReferencedBy").val();
    var supplierTradeActivity=$("#update_supplierTradeActivity").val();
    var supplierFacilityAndLocation=$("#update_supplierFacilityAndLocation").val();
-   var supplierContact=$("#update_supplierContact").val();
-   var supplierBank=$("#update_supplierBank").val();
-   var supplierCreditFacility=$("#update_supplierCreditFacility").val();
-   var supplierVisiteRating=$("#update_supplierVisiteRating").val();
+   // var supplierContact=$("#update_supplierContact").val();
+   // var supplierBank=$("#update_supplierBank").val();
+   // var supplierCreditFacility=$("#update_supplierCreditFacility").val();
+   // var supplierVisiteRating=$("#update_supplierVisiteRating").val();
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('supplier_name',supplier_name);
@@ -275,10 +258,10 @@ $("#update_storesupplier").click(function(){
    formData.append('supplierReferencedBy',supplierReferencedBy);
    formData.append('supplierTradeActivity',supplierTradeActivity);
    formData.append('supplierFacilityAndLocation',supplierFacilityAndLocation);
-   formData.append('supplierContact',supplierContact);
-   formData.append('supplierBank',supplierBank);
-   formData.append('supplierCreditFacility',supplierCreditFacility);
-   formData.append('supplierVisiteRating',supplierVisiteRating);
+   // formData.append('supplierContact',supplierContact);
+   // formData.append('supplierBank',supplierBank);
+   // formData.append('supplierCreditFacility',supplierCreditFacility);
+   // formData.append('supplierVisiteRating',supplierVisiteRating);
    formData.append('id',id);
    $.ajax({
       type:'POST',
@@ -299,23 +282,30 @@ $("#update_storesupplier").click(function(){
 // end edit supplier ================================================
 
 // start view data ==================================================
-$("body").on('click','.view_supplier',function(){
-   var id=$(this).attr('data-value');
+function view_Supplier(id)
+{
+   $("#check_suppliyer_customer").val('suplier');
+   $("#supplier_contact_list").html("");
+   $("#supplier_bank_tabledata").html("");
    $.ajax({
       type:'get',
       data:{'id':id},
       url:base_path+"/supplier-view",
       success:function(res){
-         $(".supplier_name_view").text(res.supplier_name);
-         $(".group_cos_view").text(res.group_cos);
-         $(".address1_view").text(res.address1);
-         $(".address2_view").text(res.address2);
-         $(".location_email_view").text(res.location_email);
+         $(".supplier_name_view").text(res.supplierdata.supplier_name);
+         $(".group_cos_view").text(res.supplierdata.group_cos);
+         $(".address1_view").text(res.supplierdata.address1);
+         $(".address2_view").text(res.supplierdata.address2);
+         $(".location_email_view").text(res.supplierdata.location_email);
+         // alert(res.supplierdata.id);
+         $("#contactCustomer").val(res.supplierdata.id);
+         $("#bankCustomer").val(res.supplierdata.id);
+         $("#supplier_contact_list").append(res.contact_tr);
+         $("#supplier_bank_tabledata").append(res.bank_tr);
       }
    });
-  
    $("#supplierDetailsviewModal").modal("show");
-});
+}
 $(".close_supplierModalview").click(function(){
    $("#supplierDetailsviewModal").modal("hide");
 });

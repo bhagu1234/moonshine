@@ -37,4 +37,6 @@
 <script src="{{URL::to('/')}}/public/app/js/enquiry.js"></script>
 <!-- contact -->
 <script src="{{URL::to('/')}}/public/app/js/contact.js"></script>
+<!-- bank -->
+<script src="{{URL::to('/')}}/public/app/js/bank.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

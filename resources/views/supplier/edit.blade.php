@@ -48,32 +48,32 @@
 									</div>
 									<div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Country</label>
-										<select id="update_supplier_country" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'country')" required>
+										<select id="update_supplier_country" class="form-select"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'country')" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">State</label>
-										<select id="update_supplierState" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'state')" required>
+										<select id="update_supplierState" class="form-select"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'state')" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">District</label>
-										<select id="update_supplierDistrict" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'district')"   required>
+										<select id="update_supplierDistrict" class="form-select"  data-placeholder="Choose one thing" onchange="getAddress(this.value,'district')"   required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">City</label>
-										<select id="update_supplierCity" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" required>
+										<select id="update_supplierCity" class="form-select"  data-placeholder="Choose one thing" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Region</label>
-										<select id="update_supplierRegion" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" required>
+										<select id="update_supplierRegion" class="form-select"  data-placeholder="Choose one thing" required>
 										</select>
 									</div>
                                     <div class="col-md-12">
 										<label for="bsValidation9" class="form-label">Address Type</label>
-										<select id="update_supplierType" class="form-select single-select-clear-field"  data-placeholder="Choose one thing" required>
+										<select id="update_supplierType" class="form-select"  data-placeholder="Choose one thing" required>
 										</select>
 									</div>
 									<div class="col-md-6">
@@ -107,28 +107,9 @@
 										<label for="bsValidation13" class="form-label">Facility And Location</label>
 										<textarea class="form-control" id="update_supplierFacilityAndLocation" placeholder="Facility And Location ..." rows="3" required></textarea>
 									</div>
-                                    <div class="advancesupplier">
-                                        <div class="col-md-12">
-                                            <label class="form-label">Contact</label>
-                                            <input type="text" class="form-control" id="update_supplierContact" placeholder="Contact" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Bank</label>
-                                            <input type="text" class="form-control" id="update_supplierBank" placeholder="Bank" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Credit Facility</label>
-                                            <input type="text" class="form-control" id="update_supplierCreditFacility" placeholder="Credit Facility" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Visite & Rating</label>
-                                            <input type="text" class="form-control "  placeholder="Visite & Rating" id="update_supplierVisiteRating">
-                                        </div>
-                                    </div>
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
 											<button type="button" class="btn btn-primary px-4" id="update_storesupplier">Update</button>
-                                            <button class="btn btn-light px-4 addAdvancesupplier" >Add Advance</button>
 										</div>
 									</div>
 								</form>

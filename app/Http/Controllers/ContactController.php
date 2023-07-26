@@ -19,10 +19,6 @@ use App\Models\Section;
 
 class ContactController extends Controller
 {
-    public function index(Request $request)
-    {
-        
-    }
     public function create(Request $request)
     {
         $salute=Salute::where('status','1')->get();
@@ -81,7 +77,14 @@ class ContactController extends Controller
     {	 	 
         // dd($request);	 	 	 	 	
         $contactData=new Contact();
-        $contactData->customer_id=$request->contactCustomer;
+        if($request->check_sup_cus=='customer')
+        {
+          $contactData->customer_id=$request->contactCustomer;
+        }
+        elseif($request->check_sup_cus=='suplier')
+        {
+          $contactData->supplier_id=$request->contactCustomer;
+        }
         $contactData->salute_id=$request->contactSalute;
         $contactData->first_name=$request->contactFirstName;
         $contactData->middle_name=$request->contactMinddleName;
@@ -123,11 +126,61 @@ class ContactController extends Controller
     }
     public function edit(Request $request)
     {
-
+      $id=$request->id;
+      $data=Contact::findOrFail($id);
+      return $data;
     }
     public function update(Request $request)
     {
-
+      // dd($request);
+      $id=$request->id;
+      $contactData=Contact::findOrFail($id);
+      if($request->check_sup_cus=='customer')
+      {
+        $contactData->customer_id=$request->contactCustomer;
+      }
+      elseif($request->check_sup_cus=='suplier')
+      {
+        $contactData->supplier_id=$request->contactCustomer;
+      }
+      $contactData->salute_id=$request->contactSalute;
+      $contactData->first_name=$request->contactFirstName;
+      $contactData->middle_name=$request->contactMinddleName;
+      $contactData->last_name=$request->contactLastName;
+      $contactData->poc_id=$request->contactPOC;
+      $contactData->status_id=$request->contactStatus;
+      $contactData->section_id=$request->contactSection;
+      $contactData->designation=$request->contactDesignation;
+      $contactData->sitting_office=$request->contactSittingOffice;
+      $contactData->Kickback=$request->contactKickback;
+      $contactData->official_bg=$request->contactOfficialBg;
+      $contactData->landline_office=$request->contactLandlineOffice;
+      $contactData->presonal_email=$request->contactPersonalEmail;
+      $contactData->skype_other=$request->contactSkypeOthers;
+      $contactData->gender=$request->contactGender;
+      $contactData->linving_in=$request->contactLivingin;
+      // $contactData->contact_type=$request->contact_name;
+      $contactData->contact_email=$request->contactEmail1;
+      $contactData->contact_email2=$request->contactEmail2;
+      $contactData->mobile_no=$request->contactMobilePhone;
+      $contactData->dob=$request->contactDOB;
+      $contactData->age_years=$request->contactAge;
+      $contactData->m_tongue=$request->contactMotherTongue;
+      $contactData->nationality=$request->contactNationality;
+      $contactData->religion=$request->contactReligion;
+      $contactData->character_pecularitie=$request->contactCharacterPecularities;
+      $contactData->personal_bg=$request->contactPersonalBg;
+      $contactData->visa_detail=$request->contactVisaDetails;
+      $contactData->passport_issued_at=$request->contactPassportIssuedAt;
+      $contactData->passport_issued_date=$request->contactPassportIssuedDate;
+      $contactData->passport_expired_date=$request->contactPassportExpiryDate;
+      $contactData->date_joined=$request->contactDateJoined;
+      $contactData->date_left=$request->contactDateLeft;
+      $contactData->passport_number=$request->contactPassportNumber;
+      $contactData->passport_details=$request->contactPassportDetails;
+      $contactData->save();
+      $response=array('status'=>'200','data'=>'contact updated succefully');
+      return $response;
     }
     public function delete(Request $request)
     {

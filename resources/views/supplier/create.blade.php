@@ -106,28 +106,9 @@
 										<label for="bsValidation13" class="form-label">Facility And Location</label>
 										<textarea class="form-control" id="supplierFacilityAndLocation" placeholder="Facility And Location ..." rows="3" required></textarea>
 									</div>
-                                    <div class="advancesupplier">
-                                        <div class="col-md-12">
-                                            <label class="form-label">Contact</label>
-                                            <input type="text" class="form-control" id="supplierContact" placeholder="Contact" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Bank</label>
-                                            <input type="number" class="form-control" id="supplierBank" placeholder="Bank" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Credit Facility</label>
-                                            <input type="text" class="form-control" id="supplierCreditFacility" placeholder="Credit Facility" >
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label">Visite & Rating</label>
-                                            <input type="text" class="form-control" id="supplierVisiteRating" placeholder="Visite & Rating" >
-                                        </div>
-                                    </div>
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
 											<button type="button" class="btn btn-primary px-4" id="storesupplier">Submit</button>
-                                            <button class="btn btn-light px-4 addAdvancesupplier" id="">Add Advance</button>
 										</div>
 									</div>
 								</form>

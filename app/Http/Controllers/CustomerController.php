@@ -165,10 +165,10 @@ class CustomerController extends Controller
         $Customer->refere_by=$request->customerReferencedBy;
         $Customer->trade_activity=$request->CustomerTradeActivity;
         $Customer->facility_location=$request->CustomerFacilityAndLocation;
-        $Customer->customer_contact=$request->customerContact;
-        $Customer->bank_id=$request->customerBank;
-        $Customer->credit_facility=$request->customerCreditFacility;
-        $Customer->visite_rating=$request->customerVisiteRating;
+        // $Customer->customer_contact=$request->customerContact;
+        // $Customer->bank_id=$request->customerBank;
+        // $Customer->credit_facility=$request->customerCreditFacility;
+        // $Customer->visite_rating=$request->customerVisiteRating;
         $Customer->postbox=$request->customerPostBox;
         $Customer->customer_name=$request->customer_name;
         $Customer->customer_email=$request->customer_email;
@@ -216,10 +216,10 @@ class CustomerController extends Controller
         $Customer->refere_by=$request->customerReferencedBy;
         $Customer->trade_activity=$request->CustomerTradeActivity;
         $Customer->facility_location=$request->CustomerFacilityAndLocation;
-        $Customer->customer_contact=$request->customerContact;
-        $Customer->bank_id=$request->customerBank;
-        $Customer->credit_facility=$request->customerCreditFacility;
-        $Customer->visite_rating=$request->customerVisiteRating;
+        // $Customer->customer_contact=$request->customerContact;
+        // $Customer->bank_id=$request->customerBank;
+        // $Customer->credit_facility=$request->customerCreditFacility;
+        // $Customer->visite_rating=$request->customerVisiteRating;
         $Customer->postbox=$request->customerPostBox;
         $Customer->customer_name=$request->customer_name;
         $Customer->customer_email=$request->customer_email;
@@ -280,12 +280,42 @@ class CustomerController extends Controller
                     <td>".$row->passport_expired_date."</td>
                     <td>".$row->visa_detail."</td>
                     <td>
-                        <a href=''>edit</a>
-                        <a href='#' id='delete_customer_contact' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
+                        <a  href='#' class='edit_customer_contact' data-value=".$row->id." data-customer=".$row->customer_id.">edit</a>
+                        <a href='#' class='delete_customer_contact' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
                     </td>
                 </tr>" ;
         }
-        $response=array('customerdata'=>$customerdata,'contact_tr'=>$contact_tr);
+        $bank_data=Customer::join('banks','banks.customer_id','customers.id')
+        ->where('banks.status','1')
+        ->where('banks.customer_id',$id)
+        ->get();
+        $bank_tr="";
+        foreach($bank_data as $row)
+        {
+           $bank_tr.="<tr>
+                    <td>".$no++."</td>
+                    <td>".$row->bank_name ."</td>
+                    <td>".$row->branch_name."</td>
+                    <td>".$row->bank_address."</td>
+                    <td>".$row->account_number."</td>
+                    <td>".$row->iban_account_number."</td>
+                    <td>".$row->account_holder_name."</td>
+                    <td>".$row->pr_officer."</td>
+                    <td>".$row->bank_email_id."</td>
+                    <td>".$row->IFSC_code."</td>
+                    <td>".$row->SWIFT_code."</td>
+                    <td>".$row->bank_rating."</td>
+                    <td>".$row->direct_fac."</td>
+                    <td>".$row->indirect_fac."</td>
+                    <td>".$row->bank_reference."</td>
+                    <td>".$row->comments."</td>
+                    <td>
+                        <a  href='#' id='edit_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">edit</a>
+                        <a href='#' id='delete_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
+                    </td>
+                </tr>" ;
+        }
+        $response=array('customerdata'=>$customerdata,'contact_tr'=>$contact_tr,'bank_tr'=>$bank_tr);
         return $response;
     }
     public function delete(Request $request)

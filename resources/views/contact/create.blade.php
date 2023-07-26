@@ -60,8 +60,8 @@
                                         <input type="text" class="form-control" id="contactSittingOffice" placeholder="Sitting Office" >
 									</div>
                                     <div class="col-md-4">
-										<label for="bsValidation1" class="form-label">Kickback</label>
-                                        <input type="text" class="form-control" id="contactKickback" placeholder="Kickback" >
+										<label for="bsValidation1" class="form-label">Kick Bite</label>
+                                        <input type="text" class="form-control" id="contactKickback" placeholder="Kick bite" >
 									</div>
                                     <div class="col-md-8">
 										<label for="bsValidation13" class="form-label">Official BG</label>

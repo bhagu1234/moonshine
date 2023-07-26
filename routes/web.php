@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Countrycontroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BankController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,10 +81,14 @@ Route::get('order-view', [OrderController::class, 'view'])->name('order.view');
 
 
 // ContactController
-Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::get('contact-create', [ContactController::class, 'create'])->name('contact.create');
 Route::post('contact-store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('contact-edit',[ContactController::class,'edit'])->name('contact.edit');
 Route::post('contact-update', [ContactController::class, 'update'])->name('contact.update');
 Route::get('contact-delete', [ContactController::class, 'delete'])->name('contact.delete');
-Route::get('contact-view', [ContactController::class, 'view'])->name('contact.view');
+
+// BankController
+Route::post('bank-store', [BankController::class, 'store'])->name('bank.store');
+Route::get('bank-edit',[BankController::class,'edit'])->name('bank.edit');
+Route::post('bank-update', [BankController::class, 'update'])->name('bank.update');
+Route::get('bank-delete', [BankController::class, 'delete'])->name('bank.delete');

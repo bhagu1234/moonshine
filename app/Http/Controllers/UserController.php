@@ -33,7 +33,7 @@ class UserController extends Controller
                     <td>".$no++."</td>
                     <td>".$row->first_name."</td>
                     <td>".$row->last_name."</td>
-                    <td>".$row->user_email."</td>
+                    <td>".$row->email."</td>
                     <td>".$row->countryname."</td>
                     <td>".$row->state_name."</td>
                     <td>".$row->city_name."</td>
@@ -70,8 +70,8 @@ class UserController extends Controller
         $user=new  User();
         $user->first_name=$request->fname;
         $user->last_name=$request->lname;
-        $user->user_email=$request->uemail;
-        $user->user_password=Hash::make($request->user_password);
+        $user->email=$request->uemail;
+        $user->password=Hash::make($request->user_password);
         $user->country=$request->user_country;
         $user->state=$request->userState;
         $user->district=$request->userDistrict;
@@ -111,7 +111,7 @@ class UserController extends Controller
         $user=User::findOrFail($id);
         $user->first_name=$request->update_fname;
         $user->last_name=$request->update_lname;
-        $user->user_email=$request->update_uemail;
+        $user->email=$request->update_uemail;
         $user->country=$request->update_usercountry;
         $user->state=$request->update_UserState;
         $user->district=$request->update_UserDistrict;

@@ -3,7 +3,6 @@
         <div class="topbar d-flex align-items-center">
             <nav class="navbar navbar-expand gap-3">
                 <div class="topbar-logo-header d-none d-lg-flex">
-                    
                     <div class="">
                         <h4 class="logo-text">Moonshine</h4>
                     </div>
@@ -590,39 +589,35 @@
                 <div class="user-box dropdown px-3">
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{URL::to('/')}}/public/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
-                        <div class="user-info">
+                        <!-- <div class="user-info">
                             <p class="user-name mb-0">Pauline Seitz</p>
                             <p class="designattion mb-0">Web Designer</p>
-                        </div>
+                        </div> -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                        </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                         </li>
                         <li>
                             <div class="dropdown-divider mb-0"></div>
                         </li>
                         <!-- <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a> -->
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register-user') }}">Register</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register-user') }}">Register</a>
+                            </li>
                         @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('signout') }}">Logout</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('signout') }}">Logout</a>
+                            </li>
                         @endguest
-                        </li>
+                        <!-- </li> -->
                     </ul>
                 </div>
             </nav>
@@ -714,7 +709,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-                            <div class="menu-title d-flex align-items-center">Custome</div>
+                            <div class="menu-title d-flex align-items-center">Custom</div>
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">

@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
-use App\Models\subscription_admin;
+// use App\Models\subscription_admin;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class CustomAuthController extends Controller
 {
@@ -14,22 +15,40 @@ class CustomAuthController extends Controller
       
     public function customLogin(Request $request)
     {
-        // dd('hh');
-        // dd($request);
-        // $request->validate([
-        //     'admin_email' => 'required',
-        //     'admin_password' => 'required',
-        // ]);
-  
-        $credentials = $request->only('admin_email', 'admin_password');
-        // $credentials['admin_password'] = sha1($credentials['admin_password']);
-        // dd($credentials);
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                        ->withSuccess('Signed in');
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $email = $request->email;
+        $password = $request->password;
+        $user = User::where('email',$email)->first();
+         $today=date('Y-m-d');
+        if($user !=null)
+        {
+            $pas_check= Hash::check($password, $user->password);
+            if($pas_check==true)
+            {
+                if ($user) 
+                {
+                    $userModel = new User();
+                    $userModel->id = $user->id;
+                    $userModel->email = $user->email;
+                    $userModel->mobile = $user->mobile;
+                    $userModel->password = $user->password;
+                    $userModel->first_name = $user->first_name;
+                    Auth::login($userModel); 
+                }
+                if($user->plan_end<$today)
+                {
+                    return redirect()->route("admin.subscription");
+                }
+                else
+                {
+                    return redirect()->route("admin.dashboard");
+                }
+                
+            }
         }
-  
-        return redirect("login")->withSuccess('Login details are not valid');
     }
 
     public function registration()
@@ -40,35 +59,59 @@ class CustomAuthController extends Controller
     public function customRegistration(Request $request)
     {  
         // dd($request);
-        // $request->validate([
-        //     'company_name' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:6',
-        // ]);
-           
-        $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        $validated = $request->validate([
+            'email' => 'required|unique:users|max:255',
+            'password' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'mobile' => 'required',
+        ]);
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->mobile = $request->mobile;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        if($user==true)
+        {
+            $email = $request->email;
+            $password = $request->password;
+            $user_data = User::where('email',$email)->first();
+            $userModel = new User();
+            $userModel->id = $user_data->id;
+            $userModel->email = $user_data->email;
+            $user->mobile = $request->mobile;
+            $userModel->password = $user_data->password;
+            $userModel->first_name = $user_data->first_name;
+            Auth::login($userModel); 
+        }
+        return redirect()->route("admin.subscription");
+        
     }
 
-    public function create(array $data)
+    public function subscription(Request $request)
     {
-        // dd($data);
-      return subscription_admin::create([
-        'company_name' => $data['company_name'],
-        'admin_email' => $data['admin_email'],
-        'admin_password' => Hash::make($data['admin_password'])
-      ]);
+        // dd(Auth::user());
+        return view('auth.subscription');
     }    
     
     public function dashboard()
     {
-       
-        // if(Auth::check()){
-            return view('dashboard');
-        // }
-  
+        if(Auth::check())
+        {
+            $check_sub=Auth::user();
+            $today=date('Y-m-d');
+            if($check_sub->plan_end>$today)
+            {
+                return view('dashboard');
+            }
+            else
+            {
+                return redirect()->route("admin.subscription");
+            }
+           
+        }
         return redirect("login")->withSuccess('You are not allowed to access');
     }
     

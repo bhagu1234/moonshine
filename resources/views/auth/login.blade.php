@@ -15,7 +15,6 @@
 						</div>
 						
 					</div>
-
 					<div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
 						<div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
 							<div class="card-body p-sm-5">
@@ -31,17 +30,10 @@
                                         <form class="row g-3" method="POST" action="{{ route('login.custom') }}">
                                             @csrf
                                             <div class="form-group mb-3">
-                                                <input type="text" placeholder="Email" id="admin_email" class="form-control" name="admin_email" required
-                                                    autofocus>
-                                                @if ($errors->has('email'))
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                                @endif
+                                                <input type="text" placeholder="Email" id="admin_email" class="form-control" name="email" required >
                                             </div>
                                             <div class="form-group mb-3">
-                                                <input type="password" placeholder="Password" id="admin_password" class="form-control" name="admin_password" required>
-                                                @if ($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                                @endif
+                                                <input type="password" placeholder="Password" id="admin_password" class="form-control" name="password" required>
                                             </div>
                                             <div class="form-group mb-3">
                                                 <div class="checkbox">

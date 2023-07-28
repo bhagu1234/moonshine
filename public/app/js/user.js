@@ -129,7 +129,7 @@ $("body").on('click','#edit_user',function(){
          $("#cuser_id").val(res.allData.user_id);
          $("#update_fname").val(res.allData.first_name);
          $("#update_lname").val(res.allData.last_name);
-         $("#update_uemail").val(res.allData.user_email);
+         $("#update_uemail").val(res.allData.email);
          $("#update_usercountry").val(res.allData.country);
          $("#update_UserState").val(res.allData.state);
          $("#update_UserDistrict").val(res.allData.district);

@@ -10,6 +10,7 @@ use App\Http\Controllers\Countrycontroller;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\EnquiryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,3 +93,12 @@ Route::post('bank-store', [BankController::class, 'store'])->name('bank.store');
 Route::get('bank-edit',[BankController::class,'edit'])->name('bank.edit');
 Route::post('bank-update', [BankController::class, 'update'])->name('bank.update');
 Route::get('bank-delete', [BankController::class, 'delete'])->name('bank.delete');
+
+// EnquiryController
+Route::get('enquiry', [EnquiryController::class, 'index'])->name('enquiry.index');
+Route::get('enquiry-create', [EnquiryController::class, 'create'])->name('enquiry.index');
+Route::post('enquiry-store', [EnquiryController::class, 'store'])->name('enquiry.store');
+Route::get('enquiry-edit',[EnquiryController::class,'edit'])->name('enquiry.edit');
+Route::post('enquiry-update', [EnquiryController::class, 'update'])->name('enquiry.update');
+Route::get('enquiry-delete', [EnquiryController::class, 'delete'])->name('enquiry.delete');
+Route::get('enquiry-view', [EnquiryController::class, 'view'])->name('enquiry.view');

@@ -16,8 +16,12 @@ class BankController extends Controller
         {
             $data->customer_id=$request->bankCustomer;
         }
+        elseif($request->check_sup_cus=='suplier')
+        {
+            $data->supplier_id=$request->bankCustomer; 
+        }
         
-        $data->bank_name=$request->create_BranchNameCustomer;
+        $data->bank_name=$request->create_bankNameCustomer;
         $data->branch_name=$request->create_BranchNameCustomer;
         $data->bank_address=$request->create_bankAddressCustomer;
         $data->account_holder_name=$request->create_AccountHolderCustomer;
@@ -47,8 +51,15 @@ class BankController extends Controller
         // dd($request);
         $id=$request->id;
         $data=Bank::findOrFail($id);
-        $data->customer_id=$request->bankCustomer;
-        $data->bank_name=$request->create_BranchNameCustomer;
+        if($request->check_sup_cus=='customer')
+        {
+            $data->customer_id=$request->bankCustomer;
+        }
+        elseif($request->check_sup_cus=='suplier')
+        {
+            $data->supplier_id=$request->bankCustomer; 
+        }
+        $data->bank_name=$request->create_bankNameCustomer;
         $data->branch_name=$request->create_BranchNameCustomer;
         $data->bank_address=$request->create_bankAddressCustomer;
         $data->account_holder_name=$request->create_AccountHolderCustomer;

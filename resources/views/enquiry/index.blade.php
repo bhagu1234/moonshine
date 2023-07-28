@@ -15,21 +15,49 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>enquiry Name</th>
-                                    <th>User</th>
-                                    <th>Bank</th>
-                                    <th>Group cos</th>
-                                    <th>Address 1</th>
-                                    <th>Address 2</th>
-                                    <th>Area</th>
-                                    <th>Land Mark</th>
-                                    <th>Country</th>
-                                    <th>State</th>
+                                    <th>enquiry#</th>
+                                    <th>Enquiry status</th>
+                                    <th>Enquiry date</th>
+                                    <th>Age</th>
+                                    <th>Enquiry priority</th>
+                                    <th>Customer name</th>
+                                    <th>enquiry Items</th>
+                                    <th>enquiry focal point</th>
+                                    <th>cust#</th>
                                     <th>City</th>
-                                    <th>Address Type</th>
+                                    <th>State</th>
+                                    <th>Enquirer</th>
+                                    <th>Designation</th>
+                                    <th>Direct Tel</th>
                                     <th>Mobile</th>
-                                    <th>Fax</th>
-                                    <th>Location Email</th>
+                                    <th>Offical Email 1</th>
+                                    <th>Offical Email 2</th>
+                                    <th>Sales person</th>
+                                    <th>Kick bite</th>
+                                    <th>KB Commitment</th>
+                                    <th>Enquiry mode</th>
+                                    <th>Enquiry period</th>
+                                    <th>Enquiry reference</th>
+                                    <th>Product specific name</th>
+                                    <th>Total qty</th>
+                                    <th>UOM</th>
+                                    <th>Enquiry value aed</th>
+                                    <th>Margin set</th>
+                                    <th>Incoterm</th>
+                                    <th>Delivery place</th>
+                                    <th>Supply term</th>
+                                    <th>Enquiry conditions</th>
+                                    <th>Enquiry abstract</th>
+                                    <th>Period</th>
+                                    <th>Special instructions</th>
+                                    <th>RFQ date</th>
+                                    <th>Quoted date</th>
+                                    <th>Negotiation date</th>
+                                    <th>Confirmed Date</th>
+                                    <th>Dropped Date</th>
+                                    <th>Lost date</th>
+                                    <th>Closed date</th>
+                                    <th>Reasons codes</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

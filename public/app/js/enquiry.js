@@ -19,103 +19,115 @@ function openEnquiryModel()
 
 // end list data =====================================================
 
-// // start store customer ==================================================
+// start store customer ==================================================
 
-// $("#openCreateCustomerModal").click(function(){
-//    $("#customer_country").html("");
-//    $("#CustomerRegion").html(""); 
-//    $("#CustomerType").html("");
-//    $.ajax({
-//       type:'get',
-//       url:base_path+"/customer-getDetails",
-//       data:{'from':'open_form'},
-//       success:function(res){
-//          $("#customer_country").append(res.country);
-//          $("#CustomerRegion").append(res.region); 
-//          $("#CustomerType").append(res.addressType);
-//       }
-//    });
-//    $("#createCustomerModal").modal("show");
-// });
-// $("#createCustomerModal").on("shown.bs.modal",function(){
-//    $(this).hide().show(); 
-//    });
+$("#openCreateEnquiryModal").click(function(){
+   $("#create_enquiryCustomer").html("");
+   $("#create_enquiryProduct").html("");
+   $("#create_enquiryEnquiryPrioprity").html("");
+   $("#create_enquiryEnquiryfocalPoint").html("");
+   $("#create_enquiryEnquiryInfoTerms").html("");
+   $("#create_enquiryUom").html("");
+   $.ajax({
+      type:'get',
+      url:base_path+"/enquiry-create",
+      data:{'data':'open_form'},
+      success:function(res){
+         $("#create_enquiryCustomer").append(res.customer_option);
+         $("#create_enquiryProduct").append(res.product_option);
+         $("#create_enquiryEnquiryPrioprity").append(res.enquiryPr_option);
+         $("#create_enquiryEnquiryfocalPoint").append(res.focalPoint_option);
+         $("#create_enquiryEnquiryInfoTerms").append(res.incoterm_option);
+         $("#create_enquiryUom").append(res.uom_option);
+      }
+   });
+   $("#createEnquiryModal").modal("show");
+});
+function customerContact(id ,data)
+{
+   $("#create_enquirycontact").html("");
+   $.ajax({
+      type:'get',
+      url:base_path+"/enquiry-create",
+      data:{'id':id,'data':data},
+      success:function(res){
+         $("#create_enquirycontact").append(res);
+      }
+   })
+}
+$("#createEnquiryModal").on("shown.bs.modal",function(){
+   $(this).hide().show(); 
+   });
 
-// $(".close_openCreateCustomerModal").click(function(){
-//    $("#createCustomerModal").modal("hide");
-// });
-// $('#createCustomerModal').on('hidden.bs.modal', function () {
-//    $(this).find('form').trigger('reset');
-// });
-// $("#storeCustomer").click(function(){
-//    var _token=$("#token").val();
-//    var customer_name=$("#customer_name").val();
-//    var customerPostBox=$("#customerPostBox").val();
-//    var customer_groupCos=$("#customer_groupCos").val();
-//    var customer_address1=$("#customer_address1").val();
-//    var customer_address2=$("#customer_address2").val();
-//    var CustomerArea=$("#CustomerArea").val();
-//    var customerLandMark=$("#customerLandMark").val();
-//    var customer_country=$("#customer_country").val();
-//    var CustomerState=$("#CustomerState").val();
-//    var CustomerDistrict=$("#CustomerDistrict").val();
-//    var CustomerCity=$("#CustomerCity").val();
-//    var CustomerRegion=$("#CustomerRegion").val();
-//    var CustomerType=$("#CustomerType").val();
-//    var customerPhoneNo=$("#customerPhoneNo").val();
-//    var customerFax=$("#customerFax").val();
-//    var customerLocationEmail=$("#customerLocationEmail").val();
-//    var customerWebsite=$("#customerWebsite").val();
-//    var customerReferencedBy=$("#customerReferencedBy").val();
-//    var CustomerTradeActivity=$("#CustomerTradeActivity").val();
-//    var CustomerFacilityAndLocation=$("#CustomerFacilityAndLocation").val();
-//    var customerContact=$("#customerContact").val();
-//    var customerBank=$("#customerBank").val();
-//    var customerCreditFacility=$("#customerCreditFacility").val();
-//    var customerVisiteRating=$("#customerVisiteRating").val();
-//    var formData=new FormData();
-//    formData.append('_token',_token);
-//    formData.append('customer_name',customer_name);
-//    formData.append('customerPostBox',customerPostBox);
-//    formData.append('customer_groupCos',customer_groupCos);
-//    formData.append('customer_address1',customer_address1);
-//    formData.append('customer_address2',customer_address2);
-//    formData.append('CustomerArea',CustomerArea);
-//    formData.append('customerLandMark',customerLandMark);
-//    formData.append('customer_country',customer_country);
-//    formData.append('CustomerState',CustomerState);
-//    formData.append('CustomerDistrict',CustomerDistrict);
-//    formData.append('CustomerCity',CustomerCity);
-//    formData.append('CustomerRegion',CustomerRegion);
-//    formData.append('CustomerType',CustomerType);
-//    formData.append('customerPhoneNo',customerPhoneNo);
-//    formData.append('customerFax',customerFax);
-//    formData.append('customerLocationEmail',customerLocationEmail);
-//    formData.append('customerWebsite',customerWebsite);
-//    formData.append('customerReferencedBy',customerReferencedBy);
-//    formData.append('CustomerTradeActivity',CustomerTradeActivity);
-//    formData.append('CustomerFacilityAndLocation',CustomerFacilityAndLocation);
-//    formData.append('customerContact',customerContact);
-//    formData.append('customerBank',customerBank);
-//    formData.append('customerCreditFacility',customerCreditFacility);
-//    formData.append('customerVisiteRating',customerVisiteRating);
-//    $.ajax({
-//       type:'POST',
-//       processData: false,
-//       contentType: false,
-//       cache: false,
-//       async: false,
-//       data:formData,
-//       url:base_path+"/customer-store",
-//       success:function(){
-//          alert("success data stored !");
-//          openCustomerModel();
-//          $("#createCustomerModal").modal("hide");
+$(".close_opencreateEnquiryModal").click(function(){
+   $("#createEnquiryModal").modal("hide");
+});
+$('#createEnquiryModal').on('hidden.bs.modal', function () {
+   $(this).find('form').trigger('reset');
+});
+$("#storeEnquiry").click(function(){
+   var _token=$("#token").val();
+   var create_enquiryCustomer=$("#create_enquiryCustomer").val();
+   var create_enquirycontact=$("#create_enquirycontact").val();
+   var create_enquiryProduct=$("#create_enquiryProduct").val();
+   var create_enquiryUom=$("#create_enquiryUom").val();
+   var create_enquiryTotalQty=$("#create_enquiryTotalQty").val();
+   var create_enquiryEnquiryValueAED=$("#create_enquiryEnquiryValueAED").val();
+   var create_enquiryMarginSet=$("#create_enquiryMarginSet").val();
+   var create_enquiryenquiryDate=$("#create_enquiryenquiryDate").val();
+   var create_enquiryEnquiryPrioprity=$("#create_enquiryEnquiryPrioprity").val();
+   var create_enquiryEnquiryfocalPoint=$("#create_enquiryEnquiryfocalPoint").val();
+   var create_enquiryKbCommitment=$("#create_enquiryKbCommitment").val();
+   var create_enquiryEnquiryMode=$("#create_enquiryEnquiryMode").val();
+   var create_enquiryPeriod=$("#create_enquiryPeriod").val();
+   var create_enquiryItems=$("#create_enquiryItems").val();
+   var create_enquiryEnquiryInfoTerms=$("#create_enquiryEnquiryInfoTerms").val();
+   var create_enquirySupplyTerm=$("#create_enquirySupplyTerm").val();
+   var create_enquiryDeliveryPlace=$("#create_enquiryDeliveryPlace").val();
+   var create_EnquiryReference=$("#create_EnquiryReference").val();
+   var create_EnquiryConditions=$("#create_EnquiryConditions").val();
+   var create_EnquiryAbstract=$("#create_EnquiryAbstract").val();
+  
+   var formData=new FormData();
+   formData.append('_token',_token);
+   formData.append('create_enquiryCustomer',create_enquiryCustomer);
+   formData.append('create_enquirycontact',create_enquirycontact);
+   formData.append('create_enquiryProduct',create_enquiryProduct);
+   formData.append('create_enquiryUom',create_enquiryUom);
+   formData.append('create_enquiryTotalQty',create_enquiryTotalQty);
+   formData.append('create_enquiryEnquiryValueAED',create_enquiryEnquiryValueAED);
+   formData.append('create_enquiryMarginSet',create_enquiryMarginSet);
+   formData.append('create_enquiryenquiryDate',create_enquiryenquiryDate);
+   formData.append('create_enquiryEnquiryPrioprity',create_enquiryEnquiryPrioprity);
+   formData.append('create_enquiryEnquiryfocalPoint',create_enquiryEnquiryfocalPoint);
+   formData.append('create_enquiryKbCommitment',create_enquiryKbCommitment);
+   formData.append('create_enquiryEnquiryMode',create_enquiryEnquiryMode);
+   formData.append('create_enquiryPeriod',create_enquiryPeriod);
+   formData.append('create_enquiryItems',create_enquiryItems);
+   formData.append('create_enquiryEnquiryInfoTerms',create_enquiryEnquiryInfoTerms);
+   formData.append('create_enquirySupplyTerm',create_enquirySupplyTerm);
+   formData.append('create_enquiryDeliveryPlace',create_enquiryDeliveryPlace);
+   formData.append('create_EnquiryReference',create_EnquiryReference);
+   formData.append('create_EnquiryConditions',create_EnquiryConditions);
+   formData.append('create_EnquiryAbstract',create_EnquiryAbstract);
+   
+   $.ajax({
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/enquiry-store",
+      success:function(){
+         alert("success data stored !");
+         openEnquiryModel();
+         $("#createEnquiryModal").modal("hide");
 
-//       }
-//    })
-// })
-// // end store customer ===================================================
+      }
+   })
+})
+// end store customer ===================================================
 
 // //start edit customer ===============================================
 // $("body").on('click','#edit_customer',function(){

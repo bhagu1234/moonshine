@@ -253,8 +253,8 @@ class SupplierController extends Controller
                 <td>".$row->bank_reference."</td>
                 <td>".$row->comments."</td>
                 <td>
-                    <a  href='#' class='edit_bank_supplier' data-value=".$row->id." data-supplier=".$row->supplier_id.">edit</a>
-                    <a href='#' class='delete_bank_supplier' data-value=".$row->id." data-supplier=".$row->supplier_id.">delete</a>
+                    <a  href='#' class='edit_bank_customer' data-value=".$row->id." data-customer=".$row->supplier_id.">edit</a>
+                    <a href='#' class='delete_bank_customer' data-value=".$row->id." data-customer=".$row->supplier_id.">delete</a>
                 </td>
             </tr>" ;
         }

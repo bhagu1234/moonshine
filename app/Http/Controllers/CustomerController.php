@@ -310,8 +310,8 @@ class CustomerController extends Controller
                     <td>".$row->bank_reference."</td>
                     <td>".$row->comments."</td>
                     <td>
-                        <a  href='#' id='edit_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">edit</a>
-                        <a href='#' id='delete_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
+                        <a  href='#' class='edit_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">edit</a>
+                        <a href='#' class='delete_bank_customer' data-value=".$row->id." data-customer=".$row->customer_id.">delete</a>
                     </td>
                 </tr>" ;
         }

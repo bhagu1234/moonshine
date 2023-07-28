@@ -77,7 +77,7 @@ $("#storeBank").click(function(){
 // end store contact ===================================================
 
 // //start edit contact ===============================================
-$("body").on('click','#edit_bank_customer',function(){
+$("body").on('click','.edit_bank_customer',function(){
    var id=$(this).attr('data-value');
    var customerId=$(this).attr('data-customer');
     $.ajax({
@@ -85,7 +85,15 @@ $("body").on('click','#edit_bank_customer',function(){
         data:{'id':id,'customerId':customerId},
         url:base_path+"/bank-edit",
         success:function(res){
-           $("#update_bankCustomer").val(res.customer_id);
+            var check_sup_cus= $("#check_suppliyer_customer").val();
+            if(check_sup_cus=='customer')
+            {
+               $("#update_bankCustomer").val(res.customer_id);
+            }
+            else
+            {
+               $("#update_bankCustomer").val(res.supplier_id);
+            }
            $("#update_bankid").val(res.id);
            $("#update_bankNameCustomer").val(res.bank_name);
            $("#update_BranchNameCustomer").val(res.branch_name);
@@ -114,6 +122,7 @@ $(".close_open_update_bankModal").click(function(){
 });
 $("#updateBank").click(function(){
     var _token=$("#token").val();
+    var check_sup_cus= $("#check_suppliyer_customer").val();
     var bankCustomer=$("#update_bankCustomer").val();
     var id=$("#update_bankid").val();
     var create_bankNameCustomer=$("#update_bankNameCustomer").val();
@@ -134,6 +143,7 @@ $("#updateBank").click(function(){
    
     var formData=new FormData();
     formData.append('_token',_token);
+    formData.append('check_sup_cus',check_sup_cus);
     formData.append('bankCustomer',bankCustomer);
     formData.append('id',id);
     formData.append('create_bankNameCustomer',create_bankNameCustomer);
@@ -161,7 +171,14 @@ $("#updateBank").click(function(){
          url:base_path+"/bank-update",
          success:function(){
              alert("success data update !");
-             view_customer(bankCustomer);
+             if(check_sup_cus=='customer')
+             {
+               view_customer(bankCustomer);
+             }
+            else
+            {
+               view_Supplier(bankCustomer);
+            }
              $("#updatebankModal").modal("hide");
          }
      })
@@ -169,7 +186,8 @@ $("#updateBank").click(function(){
 // end edit bank ================================================
 
 // start delete bank ===============================================
-$("body").on('click','#delete_bank_customer',function(){
+$("body").on('click','.delete_bank_customer',function(){
+   var check_sup_cus= $("#check_suppliyer_customer").val();
    var id=$(this).attr('data-value');
    var cu_id=$(this).attr('data-customer');
    if (confirm('Are you sure you want to delete this?')) 
@@ -180,7 +198,14 @@ $("body").on('click','#delete_bank_customer',function(){
          url:base_path+"/bank-delete",
          success:function(){
             alert("success data deleted !");
-            view_customer(cu_id);
+            alert("success data update !");
+             if(check_sup_cus=='customer')
+             {
+               view_customer(cu_id);
+             }
+            else{
+               view_Supplier(cu_id);
+            }
          }
       });
    }

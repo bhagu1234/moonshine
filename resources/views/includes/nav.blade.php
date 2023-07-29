@@ -758,7 +758,7 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#" onclick="opendistrictModel()" href="#">
+                                            <a href="#"  href="#">
                                                 <p class="mb-0 mt-1" >District</p>
                                             </a>
                                         </div>
@@ -885,5 +885,7 @@
 @include('bank.create')
 @include('bank.edit')
 
- <!-- country  -->
+ <!-- Address  -->
 @include('address.country')
+@include('address.state')
+@include('address.district')

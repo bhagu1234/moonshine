@@ -11,6 +11,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\DistrictController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,4 +106,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('enquiry-update', [EnquiryController::class, 'update'])->name('enquiry.update');
     Route::get('enquiry-delete', [EnquiryController::class, 'delete'])->name('enquiry.delete');
     Route::get('enquiry-view', [EnquiryController::class, 'view'])->name('enquiry.view');
+
+
+    // StateController
+    Route::get('state', [StateController::class, 'index'])->name('address.state');
+    Route::post('state-store', [StateController::class, 'store'])->name('state-store');
+    Route::get('state-edit',[StateController::class,'edit'])->name('state-edit');
+    Route::post('state-update', [StateController::class, 'update'])->name('state-update');
+    Route::get('state-delete', [StateController::class, 'delete'])->name('state-delete');
+
+    // DistrictController
+    Route::get('district', [DistrictController::class, 'index'])->name('address.district');
+    Route::post('district-store', [DistrictController::class, 'store'])->name('district-store');
+    Route::get('district-edit',[DistrictController::class,'edit'])->name('district-edit');
+    Route::post('district-update', [DistrictController::class, 'update'])->name('district-update');
+    Route::get('district-delete', [DistrictController::class, 'delete'])->name('district-delete');
+    Route::get('district-getDetails', [DistrictController::class, 'getDetails'])->name('district-getDetails');
 });

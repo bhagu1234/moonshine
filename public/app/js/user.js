@@ -34,7 +34,6 @@ $(".close_openCreateUserModal").click(function(){
 });
 $("#storeUser").click(function(){
    var _token=$("#token").val();
-   var id=$("#id").val();
    var fname =$("#fname").val();
    var lname =$("#lname").val();
    var uemail =$("#uemail").val();
@@ -44,7 +43,46 @@ $("#storeUser").click(function(){
    var userDistrict=$("#userDistrict").val();
    var userCity=$("#userCity").val();
    var upincode=$("#upincode").val();
- 
+   if(fname=="" || fname==null)
+   {
+      alert("please fill first name");
+      return false
+   }
+   if(lname=="" || lname==null)
+   {
+      alert("please fill Last name");
+      return false
+   }
+   if(uemail=="" || uemail==null)
+   {
+      alert("please fill email");
+      return false
+   }
+   if(upassword=="" || upassword==null)
+   {
+      alert("please fill password");
+      return false
+   }
+   if(user_country=="" || user_country==null)
+   {
+      alert("please fill country name");
+      return false
+   }
+   if(userState=="" || userState==null)
+   {
+      alert("please fill State name");
+      return false
+   }
+   if(userDistrict=="" || userDistrict==null)
+   {
+      alert("please fill district name");
+      return false
+   }
+   if(userCity=="" || userCity==null)
+   {
+      alert("please fill city name");
+      return false
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('fname',fname);
@@ -126,7 +164,7 @@ $("body").on('click','#edit_user',function(){
             
          }
          $("#update_UserCity").append(cityOption);
-         $("#cuser_id").val(res.allData.user_id);
+         $("#cuser_id").val(res.allData.id);
          $("#update_fname").val(res.allData.first_name);
          $("#update_lname").val(res.allData.last_name);
          $("#update_uemail").val(res.allData.email);
@@ -158,6 +196,41 @@ $("#update_storeUser").click(function(){
    var update_UserCity=$("#update_UserCity").val();
    var update_upincode=$("#update_upincode").val();
    var formData=new FormData();
+   if(update_fname=="" || update_fname==null)
+   {
+      alert("please fill first name");
+      return false
+   }
+   if(update_lname=="" || update_lname==null)
+   {
+      alert("please fill Last name");
+      return false
+   }
+   if(update_uemail=="" || update_uemail==null)
+   {
+      alert("please fill email");
+      return false
+   }
+   if(update_usercountry=="" || update_usercountry==null)
+   {
+      alert("please fill country name");
+      return false
+   }
+   if(update_UserState=="" || update_UserState==null)
+   {
+      alert("please fill State name");
+      return false
+   }
+   if(update_UserDistrict=="" || update_UserDistrict==null)
+   {
+      alert("please fill district name");
+      return false
+   }
+   if(update_UserCity=="" || update_UserCity==null)
+   {
+      alert("please fill city name");
+      return false
+   }
    formData.append('_token',_token);
    formData.append('id',id);
    formData.append('update_fname',update_fname);

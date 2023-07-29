@@ -36,7 +36,11 @@ $('#createcategoryModal').on('hidden.bs.modal', function () {
 $("#storecategory").click(function(){
    var _token=$("#token").val();
    var category_name=$("#category_name").val();
-  
+   if(category_name=="" || category_name==null)
+   {
+      alert("please fill category name !");
+      return false;
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('category_name',category_name);
@@ -82,6 +86,11 @@ $("#updatCategory").click(function(){
    var _token=$("#token").val();
    var id=$("#category_id").val();
    var category_name=$("#update_category_name").val();
+   if(category_name=="" || category_name==null)
+   {
+      alert("please fill category name !");
+      return false;
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('category_name',category_name);

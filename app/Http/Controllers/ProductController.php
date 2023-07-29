@@ -34,7 +34,7 @@ class ProductController extends Controller
         foreach($product as $row)
         {
             $tr.="<tr>
-            <td>".$no++."</td>
+            <td> <a href='#' id='view_product' data-value=".$row->id."><i class='bx bxs-show'></i></a></td>
             <td>".$row->category_name."</td>
             <td>".$row->base_product_name."</td>
             <td>".$row->sub_product_name."</td>
@@ -57,7 +57,7 @@ class ProductController extends Controller
             <td>".$row->description."</td>
             <td>
                 <a href='#' id='edit_product' data-value=".$row->id.">edit</a>
-                <a href='#' id='view_product' data-value=".$row->id.">view</a>
+               
                 <a href='#' id='delete_product' data-value=".$row->id.">delete</a>
             </td>
             </tr>";
@@ -68,7 +68,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
          	 	 	 	 	 	
-        // dd($request);
+        if($request->product_country_a=="null")
+        {
+            $request->product_country_a=null;
+        }
+        if($request->product_country_b=="null")
+        {
+            $request->product_country_b=null;
+        }
+        if($request->product_country_c=="null")
+        {
+            $request->product_country_c=null;
+        }
         $product_data= new Product();
         $product_data->category_id=$request->product_category_name;
         $product_data->base_product_id=$request->product_baseProduct_name;
@@ -114,6 +125,18 @@ class ProductController extends Controller
     {
         // dd($request);
         $id=$request->id;
+        if($request->product_country_a=="null")
+        {
+            $request->product_country_a=null;
+        }
+        if($request->product_country_b=="null")
+        {
+            $request->product_country_b=null;
+        }
+        if($request->product_country_c=="null")
+        {
+            $request->product_country_c=null;
+        }
         $product_data= Product::findOrFail($id);
         $product_data->category_id=$request->product_category_name;
         $product_data->base_product_id=$request->product_baseProduct_name;
@@ -188,7 +211,7 @@ class ProductController extends Controller
         }
         if($request->from=="category")
         {
-            $BaseProduct=BaseProduct::where('category_id',$id)->where('status','1')->get()->get();
+            $BaseProduct=BaseProduct::where('category_id',$id)->where('status','1')->get();
             $BaseProduct_option=$option;
             foreach($BaseProduct as $r)
             {
@@ -198,7 +221,7 @@ class ProductController extends Controller
         }
         elseif($request->from=="base_product")
         {
-            $SubProduct=SubProduct::where('base_product_id',$id)->where('status','1')->get()->get();
+            $SubProduct=SubProduct::where('base_product_id',$id)->where('status','1')->get();
             $SubProduct_option=$option;
             foreach($SubProduct as $r)
             {

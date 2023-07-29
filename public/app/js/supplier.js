@@ -73,6 +73,35 @@ $("#storesupplier").click(function(){
    // var supplierBank=$("#supplierBank").val();
    // var supplierCreditFacility=$("#supplierCreditFacility").val();
    // var supplierVisiteRating=$("#supplierVisiteRating").val();
+   if(supplier_name=="" || supplier_name==null)
+   {
+      alert("Please fill supplier name !");
+      return false
+   }
+   if(supplier_country=="" || supplier_country==null)
+   {
+      alert("Please Select country name !");
+      return false
+   } if(supplierState=="" || supplierState==null)
+   {
+      alert("Please select state name !");
+      return false
+   } 
+   if(supplierDistrict=="" || supplierDistrict==null)
+   {
+      alert("Please select district name !");
+      return false
+   } 
+   if(supplierCity=="" || supplierCity==null)
+   {
+      alert("Please select city name !");
+      return false
+   } 
+   if(supplierRegion=="" || supplierRegion==null)
+   {
+      alert("Please fill Region name !");
+      return false
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('supplier_name',supplier_name);
@@ -236,6 +265,35 @@ $("#update_storesupplier").click(function(){
    // var supplierBank=$("#update_supplierBank").val();
    // var supplierCreditFacility=$("#update_supplierCreditFacility").val();
    // var supplierVisiteRating=$("#update_supplierVisiteRating").val();
+   if(supplier_name=="" || supplier_name==null)
+   {
+      alert("Please fill supplier name !");
+      return false
+   }
+   if(supplier_country=="" || supplier_country==null)
+   {
+      alert("Please Select country name !");
+      return false
+   } if(supplierState=="" || supplierState==null)
+   {
+      alert("Please select state name !");
+      return false
+   } 
+   if(supplierDistrict=="" || supplierDistrict==null)
+   {
+      alert("Please select district name !");
+      return false
+   } 
+   if(supplierCity=="" || supplierCity==null)
+   {
+      alert("Please select city name !");
+      return false
+   } 
+   if(supplierRegion=="" || supplierRegion==null)
+   {
+      alert("Please fill Region name !");
+      return false
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('supplier_name',supplier_name);

@@ -1,68 +1,61 @@
 var base_path = $("#url").val();
 $(".close_countryModal").click(function(){
-
-    $("#countryModal").modal("hide");
- });
-//  view model
-
+   $("#countryModal").modal("hide");
+});
 function openCountryModel()
 {
    $.ajax({
       type:'get',
       url:base_path+"/country",
       success:function(res){
-    //    alert("hi")
          $("#country_datatable").html(res);
       }
    });
    $("#countryModal").modal("show");
 }
 // end view model
-
 $("#openCreateCountryModal").click(function(){
-   $("#countryname").val("");//for empty textfield
-    $("#countryAdd").modal("show");
+   $("#countryname").val("");
+   $("#countryAdd").modal("show");
 });
  
  
 // store query start=======================================================
 $("#storeCountry").click(function(){
-    var _token=$("#token").val();
-    var id=$("#id").val();
-
+   var _token=$("#token").val();
    var countryname =$("#countryname").val();
+   if(countryname=="" || countryname==null)
+   {
+      alert("Plese fill country name !");
+      return false
+   }
    var formData=new FormData();
-    formData.append('_token',_token);
-    formData.append('countryname',countryname);
-      $.ajax({
-       type:'POST',
-       processData: false,
-       contentType: false,
-       cache: false,
-       async: false,
-       data:formData,
-       url:base_path+"/country-store",
-       success:function(){
-          alert("success data stored !");
-          openCountryModel();
-          $("#countryAdd").modal("hide");
+   formData.append('_token',_token);
+   formData.append('countryname',countryname);
+   $.ajax({
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/country-store",
+      success:function(){
+         alert("success data stored !");
+         openCountryModel();
+         $("#countryAdd").modal("hide");
  
-       }
-    });
-   
-    
- });
- $(".close_openCreateCountryModal").click(function(){
-
+      }
+   });
+});
+$(".close_openCreateCountryModal").click(function(){
    $("#countryAdd").modal("hide");
 });
+// end store ========================================================
 
-
-//end store
-// delete query
+// start delete ======================================================
 $("body").on('click','#delete_country',function(){
    var id=$(this).attr('data-value');
-   // alert(id)
    if (confirm('Are you sure you want to delete this?')) 
    {
       $.ajax({
@@ -76,66 +69,55 @@ $("body").on('click','#delete_country',function(){
       });
    }
 });
-// end delete query
+// end delete ==========================================================
 
 
 // start edit==============================================================
 $("body").on('click','#edit_country',function(){
-
-    var id=$(this).attr('data-value');
-   // alert(id);
+   var id=$(this).attr('data-value');
    $.ajax({
       type:'get',
       url:base_path+"/country-edit",
       data:{'id':id},
       success:function(res){
-       // alert(res.allData.id);
-       $("#co_id").val(res.allData.id);
-         $("#update_countryname").val(res.allData.country_name);
-                 
+         $("#co_id").val(res.allData.id);
+         $("#update_countryname").val(res.allData.country_name);    
       }
    });
-
    $("#UpdateCountryModal").modal("show");
 });
-// end edit
-
 $('#UpdateCountryModal').on('hidden.bs.modal', function () {
    $(this).find('form').trigger('reset');
 });
 $(".close_openUpdateCountryModal").click(function(){
    $("#UpdateCountryModal").modal("hide");
 });
-
-// update start=================================================================
 $("#update_storeCountry").click(function(){
    var _token=$("#token").val();
-   // alert('hello');
    var id=$("#co_id").val();
-   // alert(id);
    var country_name =$("#update_countryname").val();
-   //  console.log(country_name);
-  var formData=new FormData();
+   if(country_name=="" || country_name==null)
+   {
+      alert("Plese fill country name !");
+      return false
+   }
+   var formData=new FormData();
    formData.append('_token',_token);
    formData.append('id',id);
    formData.append('update_countryname',country_name);
-  
    $.ajax({
-   type:'POST',
-   processData: false,
-   contentType: false,
-   cache: false,
-   async: false,
-   data:formData,
-   url:base_path+"/country-update",
-   success:function(){
-      alert("success data Updated !");
-      openCountryModel();
-    
-      $("#UpdateCountryModal").modal("hide");
-
-   }
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/country-update",
+      success:function(){
+         alert("success data Updated !");
+         openCountryModel();
+         $("#UpdateCountryModal").modal("hide");
+      }
+   });
 });
- 
-});
-//end update
+// end edit=============================================================

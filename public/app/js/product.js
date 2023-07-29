@@ -92,6 +92,37 @@ $("#storeProduct").click(function(){
    var product_country_a=$("#product_country_a").val();
    var product_country_b=$("#product_country_b").val();
    var product_country_c=$("#product_country_c").val();
+   if(product_specific_name=="" || product_specific_name== null)
+   {
+      alert("please fill product specific name");
+      return false
+   }
+   if(product_full_name=="" || product_full_name== null)
+   {
+      alert("please fill product Full name");
+      return false
+   }
+   if(product_category_name=="" || product_category_name== null)
+   {
+      alert("please fill product Category name");
+      return false
+   }
+   if(product_baseProduct_name=="" || product_baseProduct_name== null)
+   {
+      alert("please fill Base product");
+      return false
+   }
+   if(product_subProduct_name=="" || product_subProduct_name== null)
+   {
+      alert("please fill sub product");
+      return false
+   }
+   if(product_UOM=="" || product_UOM== null)
+   {
+      alert("please Select UOM");
+      return false
+   }
+   
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('product_specific_name',product_specific_name);
@@ -255,6 +286,36 @@ $("#update_Product").click(function(){
    var product_country_a=$("#update_product_country_a").val();
    var product_country_b=$("#update_product_country_b").val();
    var product_country_c=$("#update_product_country_c").val();
+   if(product_specific_name=="" || product_specific_name== null)
+   {
+      alert("please fill product specific name");
+      return false
+   }
+   if(product_full_name=="" || product_full_name== null)
+   {
+      alert("please fill product Full name");
+      return false
+   }
+   if(product_category_name=="" || product_category_name== null)
+   {
+      alert("please fill product Category name");
+      return false
+   }
+   if(product_baseProduct_name=="" || product_baseProduct_name== null)
+   {
+      alert("please fill Base product");
+      return false
+   }
+   if(product_subProduct_name=="" || product_subProduct_name== null)
+   {
+      alert("please fill sub product");
+      return false
+   }
+   if(product_UOM=="" || product_UOM== null)
+   {
+      alert("please Select UOM");
+      return false
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('id',id);
@@ -305,7 +366,6 @@ $("body").on('click','#view_product',function(){
       data:{'id':id},
       url:base_path+"/product-view",
       success:function(res){
-         alert(res.product_specific_name);
         $("#pro_specificName").text(res.product_specific_name);
         $("#pro_fullName").text(res.product_full_name);
         $("#pro_Category_name").text(res.category_name);

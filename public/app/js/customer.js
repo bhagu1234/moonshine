@@ -131,10 +131,32 @@ $("#storeCustomer").click(function(){
    var customerReferencedBy=$("#customerReferencedBy").val();
    var CustomerTradeActivity=$("#CustomerTradeActivity").val();
    var CustomerFacilityAndLocation=$("#CustomerFacilityAndLocation").val();
-   // var customerContact=$("#customerContact").val();
-   // var customerBank=$("#customerBank").val();
-   // var customerCreditFacility=$("#customerCreditFacility").val();
-   // var customerVisiteRating=$("#customerVisiteRating").val();
+   if(customer_name=="" || customer_name==null)
+   {
+      alert("please fill customer name");
+      return false;
+   }
+   if(customer_country=="" || customer_country==null)
+   {
+      alert("please fill Country name");
+      return false;
+   }
+   if(CustomerState=="" || CustomerState==null)
+   {
+      alert("please fill State name");
+      return false;
+   }
+   if(CustomerCity=="" || CustomerCity==null)
+   {
+      alert("please fill City name");
+      return false;
+   }
+   if(CustomerRegion=="" || CustomerRegion==null)
+   {
+      alert("please fill Region name");
+      return false;
+   }
+   
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('customer_name',customer_name);
@@ -299,6 +321,31 @@ $("#update_storeCustomer").click(function(){
    // var customerBank=$("#update_customerBank").val();
    // var customerCreditFacility=$("#update_customerCreditFacility").val();
    // var customerVisiteRating=$("#update_customerVisiteRating").val();
+   if(customer_name=="" || customer_name==null)
+   {
+      alert("please fill customer name");
+      return false;
+   }
+   if(customer_country=="" || customer_country==null)
+   {
+      alert("please fill Country name");
+      return false;
+   }
+   if(CustomerState=="" || CustomerState==null)
+   {
+      alert("please fill State name");
+      return false;
+   }
+   if(CustomerCity=="" || CustomerCity==null)
+   {
+      alert("please fill City name");
+      return false;
+   }
+   if(CustomerRegion=="" || CustomerRegion==null)
+   {
+      alert("please fill Region name");
+      return false;
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('customer_name',customer_name);

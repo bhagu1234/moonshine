@@ -121,7 +121,7 @@
 									</div>
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
-											<button type="button" class="btn btn-primary px-4" id="updateEnquiry">Submit</button>
+											<button type="button" class="btn btn-primary px-4" id="updateEnquiry">Update</button>
 										</div>
 									</div>
 								</form>

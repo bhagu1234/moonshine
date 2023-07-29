@@ -31,25 +31,24 @@ class SupplierController extends Controller
             if($row->delete_status==1)
             {
                 $tr.="<tr>
-                    <td class='view_supplier' data-value=".$row->id.">".$no++."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->supplier_name."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->first_name. " ".$row->last_name."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->bank_id."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->group_cos."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->address1."</td>
+                    <td><a href='#' onclick='view_Supplier(".$row->id.")' data-value=".$row->id."><i class='bx bxs-show'></i></a></td>
+                    <td>".$row->supplier_name."</td>
+                    <td>".$row->first_name. " ".$row->last_name."</td>
+                    <td>".$row->bank_id."</td>
+                    <td>".$row->group_cos."</td>
+                    <td>".$row->address1."</td>
                     <td>".$row->address2."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->area."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->landmark."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->countryname."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->state_name."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->city_name."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->address_name."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->phone_no."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->fax."</td>
-                    <td class='view_supplier' data-value=".$row->id.">".$row->location_email."</td>
+                    <td>".$row->area."</td>
+                    <td>".$row->landmark."</td>
+                    <td>".$row->countryname."</td>
+                    <td>".$row->state_name."</td>
+                    <td>".$row->city_name."</td>
+                    <td>".$row->address_name."</td>
+                    <td>".$row->phone_no."</td>
+                    <td>".$row->fax."</td>
+                    <td>".$row->location_email."</td>
                     <td>
                         <a href='#' id='edit_supplier' data-value=".$row->id.">edit</a>
-                        <a href='#'onclick='view_Supplier(".$row->id.")' data-value=".$row->id.">view</a>
                         <a href='#' id='delete_supplier' data-value=".$row->id.">delete</a>
                     </td>
                 </tr>";

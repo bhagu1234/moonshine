@@ -107,7 +107,7 @@
 										<label for="bsValidation13" class="form-label">Facility And Location</label>
 										<textarea class="form-control" id="update_CustomerFacilityAndLocation" placeholder="Facility And Location ..." rows="3" required></textarea>
 									</div>
-                                    <div class="advanceCustomer">
+                                    <!-- <div class="advanceCustomer">
                                         <div class="col-md-12">
                                             <label class="form-label">Contact</label>
                                             <input type="text" class="form-control" id="update_customerContact" placeholder="Contact" >
@@ -124,11 +124,11 @@
                                             <label class="form-label">Visite & Rating</label>
                                             <input type="text" class="form-control "  placeholder="Visite & Rating" id="update_customerVisiteRating">
                                         </div>
-                                    </div>
+                                    </div> -->
 									<div class="col-md-12">
 										<div class="d-md-flex d-grid align-items-center gap-3">
 											<button type="button" class="btn btn-primary px-4" id="update_storeCustomer">Update</button>
-                                            <button class="btn btn-light px-4 addAdvanceCustomer" >Add Advance</button>
+                                            <!-- <button class="btn btn-light px-4 addAdvanceCustomer" >Add Advance</button> -->
 										</div>
 									</div>
 								</form>

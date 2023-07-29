@@ -104,15 +104,15 @@
                                     <td>{{$row->enquiry_conditions}}</td>
                                     <td>{{$row->enquiry_abstract}}</td>
                                     <td>{{$row->enquiry_period}}</td>
-                                    <td>{{$row->id}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
-                                    <td>{{$row->enquiry_period}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <a href='#' id='edit_enquiry' data-value='{{$row->enq_id}}'><i class='bx bxs-edit-alt'></i></a>
                                         <a href='#' id='delete_enquiry' data-value='{{$row->enq_id}}'><i class='bx bxs-trash'></i></a>

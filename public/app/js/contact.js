@@ -72,7 +72,51 @@ $("#storecontact").click(function(){
    var contactDateJoined=$("#contactDateJoined").val();
    var contactDateLeft=$("#contactDateLeft").val();
    var contactCustomer=$("#contactCustomer").val();
-  
+   if(contactSalute=="" || contactSalute==null)
+   {
+      alert("please select Salute");
+      return false;
+   }
+   if(contactFirstName=="" || contactFirstName==null)
+   {
+      alert("please Fill first name");
+      return false;
+   }
+   if(contactLastName=="" || contactLastName==null)
+   {
+      alert("please fill last name");
+      return false;
+   }
+   if(contactPOC=="" || contactPOC==null)
+   {
+      alert("please select POC");
+      return false;
+   }
+   if(contactStatus=="" || contactStatus==null)
+   {
+      alert("please select Status");
+      return false;
+   }
+   if(contactSection=="" || contactSection==null)
+   {
+      alert("please select Section");
+      return false;
+   }
+   if(contactNationality=="" || contactNationality==null)
+   {
+      alert("please select Nationality");
+      return false;
+   }
+   if(contactMotherTongue=="" || contactMotherTongue==null)
+   {
+      alert("please select MOther Tongue");
+      return false;
+   }
+   if(contactReligion=="" || contactReligion==null)
+   {
+      alert("please select Religion");
+      return false;
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('check_sup_cus',check_sup_cus);
@@ -252,7 +296,51 @@ $("#updatcontact").click(function(){
    var contactDateJoined=$("#update_contactDateJoined").val();
    var contactDateLeft=$("#update_contactDateLeft").val();
    var contactCustomer=$("#update_contactCustomer").val();
-  
+   if(contactSalute=="" || contactSalute==null)
+   {
+      alert("please select Salute");
+      return false;
+   }
+   if(contactFirstName=="" || contactFirstName==null)
+   {
+      alert("please Fill first name");
+      return false;
+   }
+   if(contactLastName=="" || contactLastName==null)
+   {
+      alert("please fill last name");
+      return false;
+   }
+   if(contactPOC=="" || contactPOC==null)
+   {
+      alert("please select POC");
+      return false;
+   }
+   if(contactStatus=="" || contactStatus==null)
+   {
+      alert("please select Status");
+      return false;
+   }
+   if(contactSection=="" || contactSection==null)
+   {
+      alert("please select Section");
+      return false;
+   }
+   if(contactNationality=="" || contactNationality==null)
+   {
+      alert("please select Nationality");
+      return false;
+   }
+   if(contactMotherTongue=="" || contactMotherTongue==null)
+   {
+      alert("please select MOther Tongue");
+      return false;
+   }
+   if(contactReligion=="" || contactReligion==null)
+   {
+      alert("please select Religion");
+      return false;
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('check_sup_cus',check_sup_cus);

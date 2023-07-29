@@ -32,7 +32,36 @@ $("#storeBank").click(function(){
    var create_IndirectFacCustomer=$("#create_IndirectFacCustomer").val();
    var create_bankReferenceCustomer=$("#create_bankReferenceCustomer").val();
    var create_CommentsCustomer=$("#create_CommentsCustomer").val();
-  
+   if(create_bankNameCustomer=="" || create_bankNameCustomer==null)
+   {
+      alert("please fill bank name !!");
+      return false
+   }
+   if(create_BranchNameCustomer=="" || create_BranchNameCustomer==null)
+   {
+      alert("please fill Brach name !!");
+      return false
+   }
+   if(create_bankAddressCustomer=="" || create_bankAddressCustomer==null)
+   {
+      alert("please fill bank address !!");
+      return false
+   }
+   if(create_AccountHolderCustomer=="" || create_AccountHolderCustomer==null)
+   {
+      alert("please fill Account holder name !!");
+      return false
+   }
+   if(create_IFSC_codeCustomer=="" || create_IFSC_codeCustomer==null)
+   {
+      alert("please fill IFSC code !!");
+      return false
+   }
+   if(create_AccountNumberCustomer=="" || create_AccountNumberCustomer==null)
+   {
+      alert("please fill account number");
+      return false
+   }
    var formData=new FormData();
    formData.append('_token',_token);
    formData.append('check_sup_cus',check_sup_cus);
@@ -140,7 +169,36 @@ $("#updateBank").click(function(){
     var create_IndirectFacCustomer=$("#update_IndirectFacCustomer").val();
     var create_bankReferenceCustomer=$("#update_bankReferenceCustomer").val();
     var create_CommentsCustomer=$("#update_CommentsCustomer").val();
-   
+    if(create_bankNameCustomer=="" || create_bankNameCustomer==null)
+   {
+      alert("please fill bank name !!");
+      return false
+   }
+   if(create_BranchNameCustomer=="" || create_BranchNameCustomer==null)
+   {
+      alert("please fill Brach name !!");
+      return false
+   }
+   if(create_bankAddressCustomer=="" || create_bankAddressCustomer==null)
+   {
+      alert("please fill bank address !!");
+      return false
+   }
+   if(create_AccountHolderCustomer=="" || create_AccountHolderCustomer==null)
+   {
+      alert("please fill Account holder name !!");
+      return false
+   }
+   if(create_IFSC_codeCustomer=="" || create_IFSC_codeCustomer==null)
+   {
+      alert("please fill IFSC code !!");
+      return false
+   }
+   if(create_AccountNumberCustomer=="" || create_AccountNumberCustomer==null)
+   {
+      alert("please fill account number");
+      return false
+   }
     var formData=new FormData();
     formData.append('_token',_token);
     formData.append('check_sup_cus',check_sup_cus);

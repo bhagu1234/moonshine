@@ -16,7 +16,7 @@
 								<div class="card-header px-4 py-3">
 									<h5 class="mb-0">Add User</h5>
 								</div>
-								<div class="card-body p-4">
+								<div class="card-body">
 									<div class="col-md-6">
 										<label for="bsValidation2" class="form-label">Enter first Name</label>
 										<input type="text" name="first_name" class="form-control"

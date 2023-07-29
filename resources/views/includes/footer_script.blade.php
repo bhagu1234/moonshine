@@ -39,4 +39,8 @@
 <script src="{{URL::to('/')}}/public/app/js/contact.js"></script>
 <!-- bank -->
 <script src="{{URL::to('/')}}/public/app/js/bank.js"></script>
+<!-- state -->
+<script src="{{URL::to('/')}}/public/app/js/state.js"></script>
+<!-- district -->
+<script src="{{URL::to('/')}}/public/app/js/district.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

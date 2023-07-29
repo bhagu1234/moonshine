@@ -599,7 +599,7 @@
                         </li>
                         <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="{{URL::to('/')}}"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                         </li>
                         <li>
                             <div class="dropdown-divider mb-0"></div>
@@ -683,7 +683,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li  onclick="openEnquiryModel()"> <a class="dropdown-item" href="#">Enquiry View </a>
+                            <li> <a class="dropdown-item" href="{{route('enquiry.index')}}">Enquiry View </a>
                             </li>
                         </ul>
                     </li>
@@ -707,7 +707,87 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown dropdown-app">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" href="javascript:;">Custom</a>
+                            <div class="dropdown-menu dropdown-menu-end p-0">
+                                <div class="app-container p-2 my-2">
+                                    <div class="row gx-0 gy-2 row-cols-3 justify-content-center p-2">
+                                        <div class="col">
+                                            <a href="#" >
+                                                <p class="mb-0 mt-1">Address Region</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Address Type</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Status</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#" onclick="openUserModel()">
+                                                <p class="mb-0 mt-1">User</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">UOM</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Supply Term List</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Enquiry  Priority List</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a onclick="openCountryModel()" href="#">
+                                                <p class="mb-0 mt-1">Country</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#" onclick="openstateModel()">
+                                                <p class="mb-0 mt-1">State</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#" onclick="opendistrictModel()" href="#">
+                                                <p class="mb-0 mt-1" >District</p>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">City</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#" onclick="openCategoryModel()">
+                                                <p class="mb-0 mt-1">Category</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Base Product</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Sub Product</p>
+                                            </a>
+                                        </div>
+                                        
+                                    </div><!--end row-->
+                                </div>
+                            </div>
+                        </li>
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
                             <div class="menu-title d-flex align-items-center">Custom</div>
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
@@ -756,7 +836,7 @@
                                 <a class="dropdown-item" href="#">Sub product</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             </div>
@@ -785,7 +865,7 @@
 @include('order.create')
 @include('order.edit')
 <!-- enquiry  -->
-@include('enquiry.index')
+
 @include('enquiry.view')
 @include('enquiry.create')
 @include('enquiry.edit')

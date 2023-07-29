@@ -17,7 +17,7 @@ use App\Http\Controllers\EnquiryController;
 |--------------------------------------------------------------------------
 */
 // CustomAuthController
-Route::get('dashboard', [CustomAuthController::class, 'dashboard'])->name('admin.dashboard'); 
+Route::get('/', [CustomAuthController::class, 'dashboard'])->name('admin.dashboard'); 
 Route::get('plan_subscription', [CustomAuthController::class, 'subscription'])->name('admin.subscription'); 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
@@ -98,7 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // EnquiryController
     Route::get('enquiry', [EnquiryController::class, 'index'])->name('enquiry.index');
-    Route::get('enquiry-create', [EnquiryController::class, 'create'])->name('enquiry.index');
+    Route::get('enquiry-create', [EnquiryController::class, 'create'])->name('enquiry.create');
     Route::post('enquiry-store', [EnquiryController::class, 'store'])->name('enquiry.store');
     Route::get('enquiry-edit',[EnquiryController::class,'edit'])->name('enquiry.edit');
     Route::post('enquiry-update', [EnquiryController::class, 'update'])->name('enquiry.update');

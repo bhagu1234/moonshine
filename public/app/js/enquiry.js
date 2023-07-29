@@ -1,20 +1,20 @@
 var base_path = $("#url").val();
 // list data ==========================================================
-$(".close_enquiryModal").click(function(){
-   $("#enquiryModal").modal("hide");
-});
-function openEnquiryModel()
-{
-    $("#enquiry_datatable").html("");
-    $.ajax({
-      type:'get',
-      url:base_path+"/enquiry",
-      success:function(res){
-         $("#enquiry_datatable").append(res);
-      }
-   });
-   $("#enquiryModal").modal("show");
-}
+// $(".close_enquiryModal").click(function(){
+//    $("#enquiryModal").modal("hide");
+// });
+// function openEnquiryModel()
+// {
+//     $("#enquiry_datatable").html("");
+//     $.ajax({
+//       type:'get',
+//       url:base_path+"/enquiry",
+//       success:function(res){
+//          $("#enquiry_datatable").append(res);
+//       }
+//    });
+//    $("#enquiryModal").modal("show");
+// }
 
 
 // end list data =====================================================
@@ -89,37 +89,37 @@ $("#storeEnquiry").click(function(){
    var create_EnquiryReference=$("#create_EnquiryReference").val();
    var create_EnquiryConditions=$("#create_EnquiryConditions").val();
    var create_EnquiryAbstract=$("#create_EnquiryAbstract").val();
-   if(create_enquiryCustomer=="")
+   if(create_enquiryCustomer=="" || create_enquiryCustomer==null)
    {
       alert("please select customer !");
       return false;
    }
-   if(create_enquirycontact=="")
+   if(create_enquirycontact=="" || create_enquirycontact ==null)
    {
       alert("please select contact !");
       return false;
    }
-   if(create_enquiryProduct=="")
+   if(create_enquiryProduct=="" || create_enquiryProduct==null)
    {
       alert("please select product !");
       return false;
    }
-   if(create_enquiryUom=="")
+   if(create_enquiryUom=="" || create_enquiryUom==null)
    {
       alert("please select uom !");
       return false;
    }
-   if(create_enquiryEnquiryfocalPoint=="")
+   if(create_enquiryEnquiryfocalPoint=="" || create_enquiryEnquiryfocalPoint==null)
    {
       alert("please select focal point !");
       return false;
    }
-   if(create_enquiryEnquiryInfoTerms=="")
+   if(create_enquiryEnquiryInfoTerms=="" || create_enquiryEnquiryInfoTerms==null)
    {
       alert("please select  incotrim !");
       return false;
    }
-   if(create_enquiryEnquiryPrioprity=="")
+   if(create_enquiryEnquiryPrioprity=="" ||create_enquiryEnquiryPrioprity==null)
    {
       alert("please select enquiry prioprity !");
       return false;
@@ -157,7 +157,7 @@ $("#storeEnquiry").click(function(){
       url:base_path+"/enquiry-store",
       success:function(){
          alert("success data stored !");
-         openEnquiryModel();
+        location.reload();
          $("#createEnquiryModal").modal("hide");
 
       }
@@ -202,27 +202,27 @@ $("body").on('click','#edit_enquiry',function(){
             conOp+="<option value="+id+">"+name+"</option>";
          }
          $("#update_enquirycontact").append(conOp);
-         $("#update_enq_id").val(res.response.id);
-         $("#update_enquiryCustomer").val(res.response.customer_id);
-         $("#update_enquirycontact").val(res.response.contact_id);
-         $("#update_enquiryProduct").val(res.response.product_id);
-         $("#update_enquiryUom").val(res.response.uom_id);
-         $("#update_enquiryTotalQty").val(res.response.total_qty);
-         $("#update_enquiryEnquiryValueAED").val(res.response.enquiry_value_aed);
-         $("#update_enquiryMarginSet").val(res.response.margin_set);
-         $("#update_enquiryenquiryDate").val(res.response.enquiry_date);
-         $("#update_enquiryEnquiryPrioprity").val(res.response.enquiry_priority_id);
-         $("#update_enquiryEnquiryfocalPoint").val(res.response.enquiry_focal_points_id);
-         $("#update_enquiryKbCommitment").val(res.response.kb_commitment);
-         $("#update_enquiryEnquiryMode").val(res.response.enquiry_mode);
-         $("#update_enquiryPeriod").val(res.response.enquiry_period);
-         $("#update_enquiryItems").val(res.response.enquired_item);
-         $("#update_enquiryEnquiryInfoTerms").val(res.response.inco_term_id);
-         $("#update_enquirySupplyTerm").val(res.response.supply_term);
-         $("#update_enquiryDeliveryPlace").val(res.response.delivery_place);
-         $("#update_EnquiryReference").val(res.response.enquiry_reference);
-         $("#update_EnquiryConditions").val(res.response.enquiry_conditions);
-         $("#update_EnquiryAbstract").val(res.response.enquiry_abstract);
+         $("#update_enq_id").val(res.data.id);
+         $("#update_enquiryCustomer").val(res.data.customer_id);
+         $("#update_enquirycontact").val(res.data.contact_id);
+         $("#update_enquiryProduct").val(res.data.product_id);
+         $("#update_enquiryUom").val(res.data.uom_id);
+         $("#update_enquiryTotalQty").val(res.data.total_qty);
+         $("#update_enquiryEnquiryValueAED").val(res.data.enquiry_value_aed);
+         $("#update_enquiryMarginSet").val(res.data.margin_set);
+         $("#update_enquiryenquiryDate").val(res.data.enquiry_date);
+         $("#update_enquiryEnquiryPrioprity").val(res.data.enquiry_priority_id);
+         $("#update_enquiryEnquiryfocalPoint").val(res.data.enquiry_focal_points_id);
+         $("#update_enquiryKbCommitment").val(res.data.kb_commitment);
+         $("#update_enquiryEnquiryMode").val(res.data.enquiry_mode);
+         $("#update_enquiryPeriod").val(res.data.enquiry_period);
+         $("#update_enquiryItems").val(res.data.enquired_item);
+         $("#update_enquiryEnquiryInfoTerms").val(res.data.inco_term_id);
+         $("#update_enquirySupplyTerm").val(res.data.supply_term);
+         $("#update_enquiryDeliveryPlace").val(res.data.delivery_place);
+         $("#update_EnquiryReference").val(res.data.enquiry_reference);
+         $("#update_EnquiryConditions").val(res.data.enquiry_conditions);
+         $("#update_EnquiryAbstract").val(res.data.enquiry_abstract);
       }
    });
    $("#updateEnquiryModal").modal("show");
@@ -256,37 +256,37 @@ $("#updateEnquiry").click(function(){
    var create_EnquiryReference=$("#update_EnquiryReference").val();
    var create_EnquiryConditions=$("#update_EnquiryConditions").val();
    var create_EnquiryAbstract=$("#update_EnquiryAbstract").val();
-   if(create_enquiryCustomer=="")
+   if(create_enquiryCustomer=="" || create_enquiryCustomer==null)
    {
       alert("please select customer !");
       return false;
    }
-   if(create_enquirycontact=="")
+   if(create_enquirycontact=="" || create_enquirycontact ==null)
    {
       alert("please select contact !");
       return false;
    }
-   if(create_enquiryProduct=="")
+   if(create_enquiryProduct=="" || create_enquiryProduct==null)
    {
       alert("please select product !");
       return false;
    }
-   if(create_enquiryUom=="")
+   if(create_enquiryUom=="" || create_enquiryUom==null)
    {
       alert("please select uom !");
       return false;
    }
-   if(create_enquiryEnquiryfocalPoint=="")
+   if(create_enquiryEnquiryfocalPoint=="" || create_enquiryEnquiryfocalPoint==null)
    {
       alert("please select focal point !");
       return false;
    }
-   if(create_enquiryEnquiryInfoTerms=="")
+   if(create_enquiryEnquiryInfoTerms=="" || create_enquiryEnquiryInfoTerms==null)
    {
       alert("please select  incotrim !");
       return false;
    }
-   if(create_enquiryEnquiryPrioprity=="")
+   if(create_enquiryEnquiryPrioprity=="" ||create_enquiryEnquiryPrioprity==null)
    {
       alert("please select enquiry prioprity !");
       return false;
@@ -314,7 +314,6 @@ $("#updateEnquiry").click(function(){
    formData.append('create_EnquiryReference',create_EnquiryReference);
    formData.append('create_EnquiryConditions',create_EnquiryConditions);
    formData.append('create_EnquiryAbstract',create_EnquiryAbstract);
-   
    $.ajax({
       type:'POST',
       processData: false,
@@ -324,8 +323,8 @@ $("#updateEnquiry").click(function(){
       data:formData,
       url:base_path+"/enquiry-update",
       success:function(){
-         alert("success data stored !");
-         openEnquiryModel();
+         alert("success data updated !");
+         location.reload();
          $("#updateEnquiryModal").modal("hide");
 
       }
@@ -333,44 +332,111 @@ $("#updateEnquiry").click(function(){
 });
 // end edit customer ================================================
 
-// // start view data ==================================================
-// $("body").on('click','.view_customer',function(){
-//    var id=$(this).attr('data-value');
-//    $.ajax({
-//       type:'get',
-//       data:{'id':id},
-//       url:base_path+"/customer-view",
-//       success:function(res){
-//          $(".customer_name_view").text(res.customer_name);
-//          $(".group_cos_view").text(res.group_cos);
-//          $(".address1_view").text(res.address1);
-//          $(".address2_view").text(res.address2);
-//          $(".location_email_view").text(res.location_email);
-//       }
-//    });
+// start view data ==================================================
+$("body").on('click','#view_enquiry',function(){
+   var id=$(this).attr('data-value');
+   $.ajax({
+      type:'get',
+      data:{'id':id},
+      url:base_path+"/enquiry-view",
+      success:function(res){
+         var str = "" + res.enquiry_details.enq_id
+         var pad = "00000"
+         var ans = pad.substring(0, pad.length - str.length) + str;
+         var date = new Date(res.enquiry_details.enquiry_date+'T00:00:00+05:30');
+        var enquiry_date=((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear();
+        var enq_status=res.enquiry_details.enq_status;
+         if(enq_status=='1')
+         {
+            enq_status="Active";
+         }
+         else if(enq_status=='2')
+         {
+            enq_status="Quoted";
+         }
+         else if(enq_status=='3')
+         {
+            enq_status="RFQ";
+         }
+         else if(enq_status=='4')
+         {
+            enq_status="Negotiation";
+         }
+         else if(enq_status=='5')
+         {
+            enq_status="Confirmed";
+         }
+         else if(enq_status=='6')
+         {
+            enq_status="Dropped";
+         }
+         else if(enq_status=='7')
+         {
+            enq_status="Lost";
+         }
+         else if(enq_status=='8')
+         {
+            enq_status="Closed";
+         }
+         $("#view_EnquiryNumber").text("EQ"+ans);
+         $("#viewEnquiryDate").text(enquiry_date);
+         $("#view_enquiryOldByDays").text("");
+         $("#viewEnquiryStatus").text(enq_status);
+         $("#viewEnquiryPriority").text(res.enquiry_details.enq_pri_name);
+         $("#viewEnqCustomerName").text(res.enquiry_details.customer_name);
+         $("#viewEnqKbCommitment").text(res.enquiry_details.kb_commitment);
+         $("#viewEnqEnquiryMode").text(res.enquiry_details.enquiry_mode);
+         $("#viewEnqEnquiryPeriod").text(res.enquiry_details.enquiry_period);
+         $("#viewEnqIncoTrim").text(res.enquiry_details.incoTrname);
+         $("#viewEnqSupplyTerm").text(res.enquiry_details.supply_term);
+         $("#viewEnqDeliveryPlace").text(res.enquiry_details.delivery_place);
+         $("#viewEnqEnquiryReference").text(res.enquiry_details.enquiry_reference);
+         $("#viewEnqEnquiryConditions").text(res.enquiry_details.enquiry_conditions);
+         $("#viewEnqEnquiryAbstracts").text(res.enquiry_details.enquiry_abstract);
+         $("#viewEnqProductSpecific").text(res.enquiry_details.product_specific_name);
+         $("#viewEnqTotalQty").text(res.enquiry_details.total_qty);
+         $("#viewEnqUOM").text(res.enquiry_details.uom_name);
+         $("#viewEnqValueAed").text(res.enquiry_details.enquiry_value_aed);
+         $("#viewEnqMarginSet").text(res.enquiry_details.margin_set);
+         $("#viewEnqProductCategory").text(res.enquiry_details.category_name);
+         $("#viewEnqBaseProduct").text(res.enquiry_details.baseProductName);
+         $("#viewEnqSubProduct").text(res.enquiry_details.subProductName);
+         $("#viewEnqCustomerNumber").text(res.enquiry_details.phone_no);
+         $("#viewEnqCityState").text(res.enquiry_details.state_name+ " & " +res.enquiry_details.city_name);
+         $("#viewEnqEnquirer").text(res.enquiry_details.first_name + " " + res.enquiry_details.middle_name + " " + res.enquiry_details.last_name);
+         $("#viewEnqDesignation").text(res.enquiry_details.designation);
+         // $("#pro_priceStrucVIew").text(res.enquiry_details.enq_id);
+         $("#viewEnqDirectTel").text(res.enquiry_details.landline_office);
+         $("#viewEnqMobileNumber").text(res.enquiry_details.mobile_no);
+         $("#viewEnqOfficialMail1").text(res.enquiry_details.contact_email);
+         $("#viewEnqOfficialMail2").text(res.enquiry_details.contact_email2);
+         $("#viewEnqSalesPerson").text(res.enquiry_details.focal_points);
+         $("#viewEnqKickBite").text(res.enquiry_details.Kickback);
+      }
+   });
   
-//    $("#customerDetailsviewModal").modal("show");
-// });
-// $(".close_customerModalview").click(function(){
-//    $("#customerDetailsviewModal").modal("hide");
-// });
+   $("#EnquiryDetailsviewModal").modal("show");
+});
+$(".close_EnquiryModalview").click(function(){
+   $("#EnquiryDetailsviewModal").modal("hide");
+});
 
-// // end view data ====================================================
+// end view data ====================================================
 
-// // start delete customer ===============================================
-// $("body").on('click','#delete_customer',function(){
-//    var id=$(this).attr('data-value');
-//    if (confirm('Are you sure you want to delete this?')) 
-//    {
-//       $.ajax({
-//          type:'get',
-//          data:{'id':id},
-//          url:base_path+"/customer-delete",
-//          success:function(){
-//             alert("success data deleted !");
-//             openCustomerModel();
-//          }
-//       });
-//    }
-// });
-// // end delete customer ===================================================
+// start delete customer ===============================================
+$("body").on('click','#delete_enquiry',function(){
+   var id=$(this).attr('data-value');
+   if (confirm('Are you sure you want to delete this?')) 
+   {
+      $.ajax({
+         type:'get',
+         data:{'id':id},
+         url:base_path+"/enquiry-delete",
+         success:function(){
+            alert("success data deleted !");
+           location.reload();
+         }
+      });
+   }
+});
+// end delete enquiry ===================================================

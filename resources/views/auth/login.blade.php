@@ -5,9 +5,7 @@
 		<div class="section-authentication-cover">
 			<div class="">
 				<div class="row g-0">
-
 					<div class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
-
                         <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
 							<div class="card-body">
                                  <img src="{{URL::to('/')}}/public/assets/images/login-images/login-cover.svg" class="img-fluid auth-img-cover-login" width="650" alt=""/>
@@ -42,21 +40,21 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-												<div class="d-grid">
-													<button type="submit" class="btn btn-primary">Sign in</button>
+                                            <div class="col-3">
+												<div class="d-grid ">
+													<button type="submit" class="btn btn-primary">Login</button>
 												</div>
 											</div>
+										
 											<div class="col-12">
-												<div class="text-center ">
+												<div class="text-center">
 													<p class="mb-0">Don't have an account yet?  <a class="nav-link" href="{{ route('register-user') }}">Sign up here</a>
-                                                   
 													</p>
 												</div>
 											</div>
-                                        
-                                        </form>
+										</form>
 									</div>
+									
 									<div class="login-separater text-center mb-5"> <span>OR SIGN IN WITH</span>
 										<hr>
 									</div>

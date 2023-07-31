@@ -49,6 +49,8 @@ class CustomAuthController extends Controller
                 
             }
         }
+        Session::flash('error', 'Your Details are not matched!');
+        return back();
     }
 
     public function registration()
@@ -84,9 +86,12 @@ class CustomAuthController extends Controller
             $user->mobile = $request->mobile;
             $userModel->password = $user_data->password;
             $userModel->first_name = $user_data->first_name;
-            Auth::login($userModel); 
+            Auth::login($userModel);
+            return redirect()->route("admin.subscription"); 
         }
-        return redirect()->route("admin.subscription");
+        Session::flash('error', 'Something went wrong!');
+        return back();
+       
         
     }
 

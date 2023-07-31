@@ -71,7 +71,26 @@
                                 <tr>
                                     <td> <a href='#' id='view_enquiry' data-value="{{$row->enq_id}}"><i class='bx bxs-show'></i></a></td>
                                     <td>EQ{{str_pad($row->enq_id, 6, '0', STR_PAD_LEFT)}}</td>
-                                    <td>{{$enq_st}}</td>
+                                    <td>
+                                        <select onchange="EnqStatus({{$row->enq_id}}, this.value,'{{$row->enquiry_date}}')" id="refe_status">
+                                            <option <?php if($row->enq_status=="1"){ echo "selected"; } ?> value="1" >Active</option>
+
+                                            <option  <?php if($row->enq_status=="2"){ echo "selected"; } ?> value="2">Quoted</option>
+
+                                            <option  <?php if($row->enq_status=="3"){ echo "selected"; } ?> value="3" >RFQ</option>
+
+                                            <option  <?php if($row->enq_status=="4"){ echo "selected"; } ?> value="4" >Negotiation</option>
+
+                                            <option  <?php if($row->enq_status=="5"){ echo "selected"; } ?> value="5" >Confirmed</option>
+
+                                            <option  <?php if($row->enq_status=="6"){ echo "selected"; } ?> value="6">Dropped</option>
+
+                                            <option  <?php if($row->enq_status=="7"){ echo "selected"; } ?> value="7">Lost</option>
+
+                                            <option  <?php if($row->enq_status=="8"){ echo "selected" ;} ?> value="8" >Closed</option>
+
+                                        </select>
+                                    </td>
                                     <td>{{date("d/m/20y", strtotime($row->enquiry_date) )}}</td>
                                     <td>{{$row->age_years}}</td>
                                     <td>{{$row->enq_pri_name}}</td>
@@ -105,14 +124,14 @@
                                     <td>{{$row->enquiry_abstract}}</td>
                                     <td>{{$row->enquiry_period}}</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>@if($row->rfq_date !="" || $row->rfq_date !=null){{date("d/m/20y", strtotime($row->rfq_date) )}} @endif</td>
+                                    <td>@if($row->quoted_date !="" || $row->quoted_date !=null) {{date("d/m/20y", strtotime($row->quoted_date) )}} @endif</td>
+                                    <td>@if($row->negotiation_date !="" || $row->negotiation_date !=null) {{date("d/m/20y", strtotime($row->negotiation_date) )}} @endif</td>
+                                    <td>@if($row->confirmed_date !="" || $row->confirmed_date !=null) {{date("d/m/20y", strtotime($row->confirmed_date) )}} @endif</td>
+                                    <td>@if($row->Dropped_date !="" || $row->Dropped_date !=null) {{date("d/m/20y", strtotime($row->Dropped_date) )}} @endif</td>
+                                    <td>@if($row->lost_date !="" || $row->lost_date !=null) {{date("d/m/20y", strtotime($row->lost_date ) )}} @endif</td>
+                                    <td> @if($row->closed !="" || $row->closed !=null) {{date("d/m/20y", strtotime($row->closed) )}} @endif</td>
+                                    <td>@if($row->enq_status=='6') {{$row->dropp_reason}} @elseif($row->enq_status=='7') {{$row->lost_reason}} @endif</td>
                                     <td>
                                         <a href='#' id='edit_enquiry' data-value='{{$row->enq_id}}'><i class='bx bxs-edit-alt'></i></a>
                                         <a href='#' id='delete_enquiry' data-value='{{$row->enq_id}}'><i class='bx bxs-trash'></i></a>

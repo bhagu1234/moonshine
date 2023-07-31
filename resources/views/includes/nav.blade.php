@@ -693,7 +693,7 @@
                             <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li onclick="openOrderModel()"> <a class="dropdown-item" href="#">Orders View </a>
+                            <li> <a class="dropdown-item" href="{{route('order.index')}}">Orders View </a>
                             </li>
                         </ul>
                     </li>
@@ -860,7 +860,6 @@
 @include('supplier.create')
 @include('supplier.edit')
 <!-- order  -->
-@include('order.index')
 @include('order.view')
 @include('order.create')
 @include('order.edit')
@@ -869,6 +868,7 @@
 @include('enquiry.view')
 @include('enquiry.create')
 @include('enquiry.edit')
+@include('enquiry.change_enq_status')
 <!-- user  -->
 @include('user.index')
 @include('user.create')

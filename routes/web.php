@@ -106,6 +106,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('enquiry-update', [EnquiryController::class, 'update'])->name('enquiry.update');
     Route::get('enquiry-delete', [EnquiryController::class, 'delete'])->name('enquiry.delete');
     Route::get('enquiry-view', [EnquiryController::class, 'view'])->name('enquiry.view');
+    Route::post('enquiry-status_update', [EnquiryController::class, 'status_update'])->name('enquiry.status_update');
+    Route::get('enquiry-get_reason', [EnquiryController::class, 'get_reason'])->name('enquiry.get_reason');
 
 
     // StateController

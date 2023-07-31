@@ -1,24 +1,4 @@
 var base_path = $("#url").val();
-// list data ==========================================================
-// $(".close_enquiryModal").click(function(){
-//    $("#enquiryModal").modal("hide");
-// });
-// function openEnquiryModel()
-// {
-//     $("#enquiry_datatable").html("");
-//     $.ajax({
-//       type:'get',
-//       url:base_path+"/enquiry",
-//       success:function(res){
-//          $("#enquiry_datatable").append(res);
-//       }
-//    });
-//    $("#enquiryModal").modal("show");
-// }
-
-
-// end list data =====================================================
-
 // start store customer ==================================================
 
 $("#openCreateEnquiryModal").click(function(){
@@ -440,3 +420,139 @@ $("body").on('click','#delete_enquiry',function(){
    }
 });
 // end delete enquiry ===================================================
+
+// update enq status ============================================
+function EnqStatus(id,status,enq_date)
+{
+   $("#check_enqstatus").val(status);
+   $("#update_status_id").val(id);
+   $("#update_status_enq_date").val(enq_date);
+   $(".Dropped").hide();
+   if(status=='1')
+   {
+      $("#status_label_name").text("Active");
+   }
+   else if(status=='2')
+   {
+      $("#status_label_name").text("Quoted");
+   }
+   else if(status=='3')
+   {
+      $("#status_label_name").text("RFQ");
+   }
+   
+   else if(status=='4')
+   {
+      $("#status_label_name").text("Negotiation");
+   }   
+   else if(status=='5')
+   {
+      $("#status_label_name").text("Confirmed");
+   }
+   else if(status=='6')
+   {
+      $("#status_label_name").text("Dropped");
+      $(".Dropped").show();
+   }
+   else if(status=='7')
+   {
+      $("#status_label_name").text("Lost");
+      $(".Dropped").show();
+   }
+   else if(status=='8')
+   {
+      $("#status_label_name").text("Closed");
+   }
+   
+   $("#update_enquiryEnquiryDroppedReasonStatus").html("");
+   $.ajax({
+      type:'get',
+      data:{'id':id},
+      url:base_path+"/enquiry-get_reason",
+      success:function(res){
+         var optio="<option selected disabled>select</option>";
+         var droppOp=optio;
+         var lostOp=optio;
+         var data_length=res.length;
+         for(var i=0; i<data_length; i++)
+         {
+            var id=res[i].id;
+            var droppReason=res[i].dropp_reason;
+            var lostReason=res[i].lost_reason;
+            if(droppReason !="" || droppReason !=null)
+            {
+               droppOp+="<option value="+id+">"+droppReason+"</option>";
+            }
+            if(droppReason !="" || droppReason !=null)
+            {
+               lostOp+="<option value="+id+">"+lostReason+"</option>";
+            }
+         }
+         if(status=='6')
+         {
+            $("#update_enquiryEnquiryDroppedReasonStatus").append(droppOp);
+         }
+         if(status=='7')
+         {
+            $("#update_enquiryEnquiryDroppedReasonStatus").append(lostOp);
+         }
+        
+      }
+   });
+  $("#updateEnquiryStatusModal").modal("show");
+}
+$('#updateEnquiryStatusModal').on('hidden.bs.modal', function () {
+   $(this).find('form').trigger('reset');
+});
+$(".close_openupdateEnquiryStatusModal").click(function(){
+   location.reload(true);
+   $("#updateEnquiryStatusModal").modal("hide");
+});
+$("#updateEnquiryStatus").click(function(){
+   var _token=$("#token").val();
+  var status= $("#check_enqstatus").val();
+   var id =$("#update_status_id").val();
+   var changed_date=$("#update_enquiryEnquiryActiveStatus").val();
+   var enq_date=$("#update_status_enq_date").val();
+   var reason=$("#update_enquiryEnquiryDroppedReasonStatus").val();
+   if(changed_date=="" || changed_date==null)
+   {
+      alert("please Fill the status date"); 
+      return false;
+   }
+   if(new Date(changed_date) < new Date(enq_date))
+   {
+      alert("Confirmed date should be greater than Enquiry date");
+      return false;
+   }
+   if(status=='6' || status=='7')
+   {
+      if(reason =="" || reason==null)
+      {
+         alert("please select reason !");
+         return false;
+      }
+   }
+   var formData=new FormData();
+   formData.append('_token',_token);
+   formData.append('id',id);
+   formData.append('status',status);
+   formData.append('changed_date',changed_date);
+   formData.append('reason',reason);
+   $.ajax({
+      type:'POST',
+      processData: false,
+      contentType: false,
+      cache: false,
+      async: false,
+      data:formData,
+      url:base_path+"/enquiry-status_update",
+      success:function(){
+         alert("success Status updated !");
+         location.reload();
+         $("#updateEnquiryStatusModal").modal("hide");
+
+      }
+   })
+});
+// end updated enq status ========================================

@@ -11,6 +11,7 @@ use App\Models\Enquiry;
 use App\Models\User;
 use App\Models\Uom;
 use App\Models\Incotrim;
+use App\Models\EnqDroppLostReason;
 
 class EnquiryController extends Controller
 {
@@ -29,9 +30,11 @@ class EnquiryController extends Controller
             ->leftJoin('sub_products','sub_products.id','products.sub_product_id')
             ->leftJoin('cities','cities.city_id','customers.city')
             ->leftJoin('states','states.state_id','customers.state')
+            ->leftJoin('enq_dropp_lost_reasons','enq_dropp_lost_reasons.id','enquiries.dropped_reson_id')
             ->where('enquiries.status','1')
-            ->select('enquiries.id as enq_id','enquiries.enquiry_value_aed','enquiries.margin_set','enquiries.enquiry_date','enquiries.enquiry_mode','enquiries.enquired_item','enquiries.supply_term','enquiries.total_qty','enquiries.enquiry_reference','enquiries.enquiry_abstract','enquiries.kb_commitment','enquiries.enquiry_period','enquiries.delivery_place','enquiries.enquiry_conditions','enquiries.enq_status','customers.id as custname','customers.customer_name','products.*','contacts.*','uoms.name as uom_name','enquiry_priorities.name as enq_pri_name','users.first_name as focal_points','incotrims.name as incoTrname','categories.category_name as category_name','base_products.product_name as baseProductName','sub_products.product_name as subProductName','cities.city_name','states.name as state_name','enquirer.first_name as enquirer_name')
+            ->select('enquiries.id as enq_id','enquiries.enquiry_value_aed','enquiries.margin_set','enquiries.enquiry_date','enquiries.enquiry_mode','enquiries.enquired_item','enquiries.supply_term','enquiries.total_qty','enquiries.enquiry_reference','enquiries.enquiry_abstract','enquiries.kb_commitment','enquiries.enquiry_period','enquiries.delivery_place','enquiries.enquiry_conditions','enquiries.enq_status','customers.id as custname','customers.customer_name','products.*','contacts.*','uoms.name as uom_name','enquiry_priorities.name as enq_pri_name','users.first_name as focal_points','incotrims.name as incoTrname','categories.category_name as category_name','base_products.product_name as baseProductName','sub_products.product_name as subProductName','cities.city_name','states.name as state_name','enquirer.first_name as enquirer_name','enq_dropp_lost_reasons.dropp_reason','enq_dropp_lost_reasons.lost_reason','enquiries.rfq_date','enquiries.quoted_date','enquiries.negotiation_date','enquiries.confirmed_date','enquiries.Dropped_date','enquiries.lost_date','enquiries.closed','enquiries.delivered_date')
             ->get();
+            // dd($data);   
         return view('enquiry.index',compact('data'));
     }
     public function create(Request $request)
@@ -185,5 +188,51 @@ class EnquiryController extends Controller
         $data->save();
         $response=array("status"=>200,'response'=>'data deleted successfully');
         return $response;
+    }
+    public function status_update(Request $request)
+    {
+        // dd($request);
+        $id=$request->id;
+        $status=$request->status;
+        $data=Enquiry::findOrFail($id);
+        $data->enq_status=$status;
+        if($status=='2')
+        {
+            $data->quoted_date=$request->changed_date;
+        }
+        if($status=='3')
+        {
+            $data->rfq_date=$request->changed_date;
+        }
+        if($status=='4')
+        {
+            $data->negotiation_date=$request->changed_date;
+        }
+        if($status=='5')
+        {
+            $data->confirmed_date=$request->changed_date;
+        }
+        if($status=='6')
+        {
+            $data->Dropped_date=$request->changed_date;
+            $data->dropped_reson_id=$request->reason;
+        }
+        if($status=='7')
+        {
+            $data->lost_date=$request->changed_date;
+            $data->dropped_reson_id=$request->reason;
+        }
+        if($status=='8')
+        {
+            $data->closed=$request->changed_date;
+        }
+        $data->save();
+        $response=array("status"=>200,'response'=>'data deleted successfully');
+        return $response;
+    }
+    public function get_reason(Request $request)
+    {
+        $data=EnqDroppLostReason::all();
+        return $data;
     }
 }

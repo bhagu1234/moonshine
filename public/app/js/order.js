@@ -1,23 +1,4 @@
 var base_path = $("#url").val();
-// list data ==========================================================
-$(".close_orderModal").click(function(){
-   $("#orderModal").modal("hide");
-});
-function openOrderModel()
-{
-    $("#order_datatable").html("");
-    $.ajax({
-      type:'get',
-      url:base_path+"/order",
-      success:function(res){
-         $("#order_datatable").append(res);
-      }
-   });
-   $("#orderModal").modal("show");
-}
-
-
-// end list data =====================================================
 
 // // start store customer ==================================================
 

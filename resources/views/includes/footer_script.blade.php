@@ -17,7 +17,6 @@
 <!-- app js -->
 <script src="{{URL::to('/')}}/public/assets/js/app.js"></script>
 
-
  <!-- custom scripts  -->
  <!-- customer  -->
 <script src="{{URL::to('/')}}/public/app/js/customer.js"></script>

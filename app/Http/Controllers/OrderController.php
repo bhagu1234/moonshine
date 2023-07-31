@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-
+        return view('order.index');
     }
     public function store(Request $request)
     {

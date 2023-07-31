@@ -1,48 +1,62 @@
-<div class="container">
-    <div class="modal fade bd-example-modal-xl" data-backdrop="static" id="orderModal" role="dialog"
-        style="backdrop-filter: blur(1px) contrast(.1);">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content" style="height:fit-content; ">
-                <div class="modal-header">
-                    <h5 class="modal-title">Order </h5>
-                    <button type="button" class="button-24 close_orderModal" data-dismiss="modal">×</button>
+@include('includes.header')
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+	 <!--start header wrapper-->	
+		@include('includes.nav')
+		<!--start page wrapper -->
+		<div class="page-wrapper">
+            <div class="page-content">
+                <div>
+                    <h6 class="mb-0">Total Order</h6>
+                    <button id="openCreateOrderModal">Add Order</button>
                 </div>
-                <div class="modal-body">
-                    <h6 class="mb-0 text-uppercase">All Orders </h6> <button id="openCreateorderModal">Add Order</button>
-                    <hr/>
-                    <div class="table-responsive">
-                        <table  class="data_table table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>order Name</th>
-                                    <th>User</th>
-                                    <th>Bank</th>
-                                    <th>Group cos</th>
-                                    <th>Address 1</th>
-                                    <th>Address 2</th>
-                                    <th>Area</th>
-                                    <th>Land Mark</th>
-                                    <th>Country</th>
-                                    <th>State</th>
-                                    <th>City</th>
-                                    <th>Address Type</th>
-                                    <th>Mobile</th>
-                                    <th>Fax</th>
-                                    <th>Location Email</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="order_datatable">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="button-57_alt button-58_alt close_orderModal"
-                        data-dismiss="modal">Close</button>
+                <div class="table-responsive">
+                    <table  class="data_table table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>MSBMT SC Ref</th>
+                                <th>MSBMT SC Date</th>
+                                <th>Enq#</th>
+                                <th>Mills P-Inv/SC-Ref</th>
+                                <th>Payment Ref#</th>
+                                <th>Order Status</th>
+                                <th>Days Left</th>
+                                <th>Customer Name</th>
+                                <th>Exporter Name</th>
+                                <th>Commodity/QTY</th>
+                                <th>Buyer order Ref</th>
+                                <th>Margin Secured</th>
+                                <th>LC/TT Made Date</th>
+                                <th>LDS Date as per payment</th>
+                                <th>Mobile</th>
+                                <th>LDS Date in LC</th>
+                                <th>LC Amend required</th>
+                                <th>Invoice no</th>
+                                <th>Invoice Qty</th>
+                                <th>Invoice Amount</th>
+                                <th>PL Count</th>
+                                <th>BL No</th>
+                                <th>BL-ETD/On Board</th>
+                                <th>ETA</th>
+                                <th>Custom Cleared</th>
+                                <th>Qty part/full</th>
+                                <th>Order Execution</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+        @include('includes.footer')
     </div>
-</div>
+    <!--end switcher-->
+	@include('includes.footer_script')
+</body>
+
+</html>

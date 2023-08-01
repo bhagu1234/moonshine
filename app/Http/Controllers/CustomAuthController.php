@@ -40,17 +40,17 @@ class CustomAuthController extends Controller
                 }
                 if($user->plan_end<$today)
                 {
-                    return redirect()->route("admin.subscription");
+                    return redirect()->route("admin.subscription")->withSuccess('You are successfully loggedin!'); 
                 }
                 else
                 {
-                    return redirect()->route("admin.dashboard");
+                    return redirect()->route("admin.dashboard")->withSuccess('You are successfully loggedin!'); 
                 }
                 
             }
         }
-        Session::flash('error', 'Your Details are not matched!');
-        return back();
+        // Session::flash('error', 'Your Details are not matched!');
+        return back()->withError('Your Details are not matched!');;
     }
 
     public function registration()
@@ -87,10 +87,10 @@ class CustomAuthController extends Controller
             $userModel->password = $user_data->password;
             $userModel->first_name = $user_data->first_name;
             Auth::login($userModel);
-            return redirect()->route("admin.subscription"); 
+            return redirect()->route("admin.subscription")->withSuccess('You are successfully registered !'); 
         }
-        Session::flash('error', 'Something went wrong!');
-        return back();
+        // Session::flash('error', 'Something went wrong!');
+        return back()->withError('Something went wrong!');
        
         
     }
@@ -117,7 +117,7 @@ class CustomAuthController extends Controller
             }
            
         }
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("login");
     }
     
     public function signOut() {

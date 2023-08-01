@@ -66,7 +66,7 @@
                                     <h5 class="mb-0">Add Country</h5>
                                 </div>
                                 <div class="card-body p-4">                            
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="bsValidation2" class="form-label">Enter CountryName</label>
                                         <input type="text" name="country_name" class="form-control"
                                         value="{{ old('country_name') }}"id="countryname" placeholder="Enter Countryname"required>
@@ -108,7 +108,7 @@
                                     <h5 class="mb-0">Update Country</h5>
                                 </div>
                                 <div class="card-body p-4">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input type="hidden" id="co_id">
                                             <label for="bsValidation2" 
                                             class="form-label">Enter Countryname</label>

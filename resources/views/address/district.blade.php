@@ -1,5 +1,4 @@
 {{-- start table  --}}
-
 <div class="container">
     <div class="modal fade bd-example-modal-xl" data-backdrop="static" id="districtModal" role="dialog"
         style="backdrop-filter: blur(1px) contrast(.1);">
@@ -19,15 +18,15 @@
                     </button><br><br>
                     </h3>
                 </div>
-                    <div id="success_message"></div>
-                    <div class="table-responsive">
+             <div id="success_message"></div>
+                <div class="table-responsive">
                     <table class="table table-bordered table-hover w-100" id="data-table">
                             <thead>
                                 <tr>
-                                    <th style="width:2px">ID</th>
-                                    <th style="width:10px">State Id</th>
-                                    <th style="width:10px">District Name</th>
-                                    <th style="width:50px">Action</th>
+                                   <th style="width:2px">ID</th>
+                                   <th style="width:10px">State Id</th>
+                                   <th style="width:10px">District Name</th>
+                                   <th style="width:50px">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="district_datatable">
@@ -66,15 +65,14 @@
                                 </div>
                                 <!-- <form> -->
                                 <div class="card-body p-4">
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="bsValidation2" class="form-label">Enter District Name</label>
-                                        <input type="text" name="district_name" class="form-control"  value="{{ old('district_name') }}"id="districtname" placeholder="Enter Districtname" required />
+                                        <input type="text" name="district_name" class="form-control"  value="{{ old('district_name') }}" id="districtname" placeholder="Enter Districtname" required />
                                     </div>
                                     <br>
                                     <div class="col-md-12">
                                         <label for="bsValidation9" class="form-label">State</label>
-                                        <select id="district_createstate" class="form-select single-select-clear-field" data-placeholder="Choose one thing" required >
+                                        <select id="district_createstate" class="form-select single-select-clear" data-placeholder="Choose one thing" required >
                                         </select>
                                     </div>
                                     <br>
@@ -92,8 +90,9 @@
         </div>
     </div>
 </div>
-
 {{-- end create start  --}}
+
+
 {{-- edit model start --}}
 <div class="container">
     <div class="modal fade bd-example-modal-xl" data-backdrop="static" id="UpdateDistrictModal" role="dialog"
@@ -114,13 +113,13 @@
                                 </div>
                                 <div class="card-body p-4">
                                     <input type="hidden" id="cdistrict_id">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                     <label for="bsValidation2" class="form-label">Enter District Name</label>
-                                    <input type="text" name="district_name" class="form-control"   value="" id="update_districtname"  placeholder="Enter DistrictName" required >
+                                    <input type="text" name="district_name" class="form-control" value="" id="update_districtname"  placeholder="Enter DistrictName" required >
                                     </div><br>
                                     <div class="col-md-12">
-                                        <label for="bsValidation9" class="form-label">District</label>
-                                        <select id="district_update_state" class="form-select single-select-clear-field" data-placeholder="Choose one thing" required >
+                                        <label for="bsValidation9" class="form-label">Choose State ID</label>
+                                        <select id="district_update_state" class="form-select single-select-clear" data-placeholder="Choose one thing" required >
                                         </select>
                                     </div><br>
                                     <div class="col-md-12">

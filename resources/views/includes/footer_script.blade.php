@@ -42,4 +42,8 @@
 <script src="{{URL::to('/')}}/public/app/js/state.js"></script>
 <!-- district -->
 <script src="{{URL::to('/')}}/public/app/js/district.js"></script>
+<!-- city -->
+<script src="{{URL::to('/')}}/public/app/js/city.js"></script>
+<!-- address region -->
+<script src="{{URL::to('/')}}/public/app/js/address_region.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

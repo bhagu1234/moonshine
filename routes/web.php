@@ -13,6 +13,8 @@ use App\Http\Controllers\BankController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\AddressRegionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -124,4 +126,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('district-update', [DistrictController::class, 'update'])->name('district-update');
     Route::get('district-delete', [DistrictController::class, 'delete'])->name('district-delete');
     Route::get('district-getDetails', [DistrictController::class, 'getDetails'])->name('district-getDetails');
+ 
+    //citycontroller
+    Route::get('city',[CityController::class,'index'])->name('address.city');
+    Route::post('city-store',[CityController::class,'store'])->name('city-store');
+    Route::get('city-edit',[CityController::class,'edit'])->name('city-edit');
+    Route::post('city-update',[CityController::class,'update'])->name('city-update');
+    Route::get('city-delete',[CityController::class,'delete'])->name('city-delete');
+    Route::get('city-getDetails',[CityController::class,'getDetails'])->name('city-getDetails');
+
+    // AddressRegionController
+    Route::get('address_region', [AddressRegionController::class, 'index'])->name('address_region.index');
+    Route::post('address_region-store', [AddressRegionController::class, 'store'])->name('address_region.store');
+    Route::get('address_region-edit',[AddressRegionController::class,'edit'])->name('address_region.edit');
+    Route::post('address_region-update', [AddressRegionController::class, 'update'])->name('address_region.update');
+    Route::get('address_region-delete', [AddressRegionController::class, 'delete'])->name('address_region.delete');
 });

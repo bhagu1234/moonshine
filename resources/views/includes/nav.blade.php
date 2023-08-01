@@ -713,8 +713,8 @@
                                 <div class="app-container p-2 my-2">
                                     <div class="row gx-0 gy-2 row-cols-3 justify-content-center p-2">
                                         <div class="col">
-                                            <a href="#" >
-                                                <p class="mb-0 mt-1">Address Region</p>
+                                            <a href="#" onclick="addressRegion()">
+                                                Address Region
                                             </a>
                                         </div>
                                          <div class="col">
@@ -758,12 +758,12 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#"  href="#">
+                                            <a href="#" onclick="opendistrictModel()">
                                                 <p class="mb-0 mt-1" >District</p>
                                             </a>
                                         </div>
                                         <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="opencityModel()">
                                                 <p class="mb-0 mt-1">City</p>
                                             </a>
                                         </div>
@@ -889,3 +889,7 @@
 @include('address.country')
 @include('address.state')
 @include('address.district')
+@include('address.city')
+
+<!-- custom region -->
+@include('custom.address_region')

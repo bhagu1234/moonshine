@@ -46,4 +46,8 @@
 <script src="{{URL::to('/')}}/public/app/js/city.js"></script>
 <!-- address region -->
 <script src="{{URL::to('/')}}/public/app/js/address_region.js"></script>
+<!-- address type -->
+<script src="{{URL::to('/')}}/public/app/js/address_type.js"></script>
+<!-- base product -->
+<script src="{{URL::to('/')}}/public/app/js/baseproduct.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>

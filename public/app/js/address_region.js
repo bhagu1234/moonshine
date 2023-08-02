@@ -3,7 +3,7 @@ var base_path = $("#url").val();
 $(".close_AddressRegionModal").click(function(){
    $("#AddressRegionModal").modal("hide");
 });
-function addressRegion()
+function addressRegionView()
 {
    $("#addressRegion_datatable").html("");
    $.ajax({
@@ -47,7 +47,7 @@ $("#storeAddressRegion").click(function(){
         success:function(){
             $("#AddressRegion_name").val("");
             alert("success data stored !");
-            addressRegion();
+            addressRegionView();
         }
    })
 })
@@ -97,7 +97,7 @@ $("#updatAddressRegion").click(function(){
         success:function(){
             $("#AddressRegion_name").val("");
             alert("success data update !");
-            addressRegion();
+            addressRegionView();
             $("#UpdateAddressRegionModal").modal("hide");
         }
     })
@@ -115,7 +115,7 @@ $("body").on('click','#delete_addressRegion',function(){
          url:base_path+"/address_region-delete",
          success:function(){
             alert("success data deleted !");
-            addressRegion();
+            addressRegionView();
          }
       });
    }

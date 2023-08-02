@@ -48,6 +48,42 @@
                         </thead>
                         <tbody>
                            
+                           @foreach($data as $row)
+                                <tr>
+                                    <td> <a href='#' id='view_orderdata' data-value="{{$row->id}}"><i class='bx bxs-show'></i></a></td>
+                                    <td>SO-{{str_pad($row->id, 6, '0', STR_PAD_LEFT)}}</td>
+                                    <td>{{date("d/m/20y", strtotime($row->msbmt_sc_date) )}}</td>
+                                    <td>EQ{{str_pad($row->enquiry_id, 6, '0', STR_PAD_LEFT)}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{$row->customer_name}}</td>
+                                    <td></td>
+                                    <td>{{$row->product_full_name}}</td>
+                                    <td>{{$row->buyer_order_ref}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{$row->phone_no}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td> 
+                                        <a href='#' id='edit_orderData' data-value='{{$row->id}}'><i class='bx bxs-edit-alt'></i></a>
+                                        <a href='#' id='delete_orderData' data-value='{{$row->id}}'><i class='bx bxs-trash'></i></a>
+                                    </td>
+                                </tr>
+                           @endforeach
                         </tbody>
                     </table>
                 </div>

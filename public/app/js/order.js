@@ -1,102 +1,101 @@
 var base_path = $("#url").val();
+// start store  ==================================================
+$("#openCreateOrderModal").click(function(){
+   $("#create_OrderEnquiry").html("");
+   $("#create_OrderIncoTerm").html("");
+   $.ajax({
+        type:'get',
+        url:base_path+"/order-create",
+        success:function(res){
+            $("#create_OrderEnquiry").append(res.enqOpt);
+            $("#create_OrderIncoTerm").append(res.incoTrOp);
+        }
+   });
+   $("#createOrderModal").modal("show");
+});
+$("#createOrderModal").on("shown.bs.modal",function(){
+    $(this).hide().show(); 
+});
+$(".close_openCreateOrderModal").click(function(){
+    $("#createOrderModal").modal("hide");
+});
+$("#storeOrder").click(function(){
+    var _token=$("#token").val();
+    var create_OrderEnquiry=$("#create_OrderEnquiry").val();
+    var create_OrderProducer=$("#create_OrderProducer").val();
+    var create_OrderQtyMTe=$("#create_OrderQtyMTe").val();
+    var create_OrderValueUS=$("#create_OrderValueUS").val();
+    var create_OrderConfRef=$("#create_OrderConfRef").val();
+    var create_OrderShipmentDays=$("#create_OrderShipmentDays").val();
+    var create_OrderShipMode=$("#create_OrderShipMode").val();
+    var create_OrderShipFrom=$("#create_OrderShipFrom").val();
+    var create_OrderShipTo=$("#create_OrderShipTo").val();
+    var create_OrderPartialShip=$("#create_OrderPartialShip").val();
+    var create_OrderTransshipment=$("#create_OrderTransshipment").val();
+    var create_OrderDeliverydays=$("#create_OrderDeliverydays").val();
+    var create_OrderIncoTerm=$("#create_OrderIncoTerm").val();
+    var create_OrderDestination=$("#create_OrderDestination").val();
+    var create_OrderComments=$("#create_OrderComments").val();
+    var create_OrderBuyerOrderRef=$("#create_OrderBuyerOrderRef").val();
+    var create_OrderBuyerOrderDate=$("#create_OrderBuyerOrderDate").val();
+    var create_OrderMillSCRef=$("#create_OrderMillSCRef").val();
+    var create_OrderMillSCDate=$("#create_OrderMillSCDate").val();
+    var create_OrderMonthBooked=$("#create_OrderMonthBooked").val();
+    var create_OrderMSBMTSCDate=$("#create_OrderMSBMTSCDate").val();
+    // var create_OrderMSBMTSCRef=$("#create_OrderMSBMTSCRef").val();
+    var create_OrderRefComments=$("#create_OrderRefComments").val();
+    if(create_OrderEnquiry=="" || create_OrderEnquiry==null)
+    {
+        alert("please select enquiry !!");
+        return false;
+    }
+    if(create_OrderIncoTerm=="" || create_OrderIncoTerm==null)
+    {
+        alert("please select inco trim !!");
+        return false;
+    }
+    var formData=new FormData();
+    formData.append('_token',_token);
+    formData.append('create_OrderEnquiry',create_OrderEnquiry);
+    formData.append('create_OrderProducer',create_OrderProducer);
+    formData.append('create_OrderQtyMTe',create_OrderQtyMTe);
+    formData.append('create_OrderValueUS',create_OrderValueUS);
+    formData.append('create_OrderConfRef',create_OrderConfRef);
+    formData.append('create_OrderShipmentDays',create_OrderShipmentDays);
+    formData.append('create_OrderShipMode',create_OrderShipMode);
+    formData.append('create_OrderShipFrom',create_OrderShipFrom);
+    formData.append('create_OrderShipTo',create_OrderShipTo);
+    formData.append('create_OrderPartialShip',create_OrderPartialShip);
+    formData.append('create_OrderTransshipment',create_OrderTransshipment);
+    formData.append('create_OrderDeliverydays',create_OrderDeliverydays);
+    formData.append('create_OrderIncoTerm',create_OrderIncoTerm);
+    formData.append('create_OrderDestination',create_OrderDestination);
+    formData.append('create_OrderComments',create_OrderComments);
+    formData.append('create_OrderBuyerOrderRef',create_OrderBuyerOrderRef);
+    formData.append('create_OrderBuyerOrderDate',create_OrderBuyerOrderDate);
+    formData.append('create_OrderMillSCRef',create_OrderMillSCRef);
+    formData.append('create_OrderMillSCDate',create_OrderMillSCDate);
+    formData.append('create_OrderMonthBooked',create_OrderMonthBooked);
+    formData.append('create_OrderMSBMTSCDate',create_OrderMSBMTSCDate);
+    // formData.append('create_OrderMSBMTSCRef',create_OrderMSBMTSCRef);
+    formData.append('create_OrderRefComments',create_OrderRefComments);
+    $.ajax({
+        type:'POST',
+        processData: false,
+        contentType: false,
+        cache: false,
+        async: false,
+        data:formData,
+        url:base_path+"/order-store",
+        success:function(){
+            alert("success data stored !");
+            location.reload();
+            $("#createOrderModal").modal("hide");
 
-// // start store customer ==================================================
-
-// $("#openCreateCustomerModal").click(function(){
-//    $("#customer_country").html("");
-//    $("#CustomerRegion").html(""); 
-//    $("#CustomerType").html("");
-//    $.ajax({
-//       type:'get',
-//       url:base_path+"/customer-getDetails",
-//       data:{'from':'open_form'},
-//       success:function(res){
-//          $("#customer_country").append(res.country);
-//          $("#CustomerRegion").append(res.region); 
-//          $("#CustomerType").append(res.addressType);
-//       }
-//    });
-//    $("#createCustomerModal").modal("show");
-// });
-// $("#createCustomerModal").on("shown.bs.modal",function(){
-//    $(this).hide().show(); 
-//    });
-
-// $(".close_openCreateCustomerModal").click(function(){
-//    $("#createCustomerModal").modal("hide");
-// });
-// $('#createCustomerModal').on('hidden.bs.modal', function () {
-//    $(this).find('form').trigger('reset');
-// });
-// $("#storeCustomer").click(function(){
-//    var _token=$("#token").val();
-//    var customer_name=$("#customer_name").val();
-//    var customerPostBox=$("#customerPostBox").val();
-//    var customer_groupCos=$("#customer_groupCos").val();
-//    var customer_address1=$("#customer_address1").val();
-//    var customer_address2=$("#customer_address2").val();
-//    var CustomerArea=$("#CustomerArea").val();
-//    var customerLandMark=$("#customerLandMark").val();
-//    var customer_country=$("#customer_country").val();
-//    var CustomerState=$("#CustomerState").val();
-//    var CustomerDistrict=$("#CustomerDistrict").val();
-//    var CustomerCity=$("#CustomerCity").val();
-//    var CustomerRegion=$("#CustomerRegion").val();
-//    var CustomerType=$("#CustomerType").val();
-//    var customerPhoneNo=$("#customerPhoneNo").val();
-//    var customerFax=$("#customerFax").val();
-//    var customerLocationEmail=$("#customerLocationEmail").val();
-//    var customerWebsite=$("#customerWebsite").val();
-//    var customerReferencedBy=$("#customerReferencedBy").val();
-//    var CustomerTradeActivity=$("#CustomerTradeActivity").val();
-//    var CustomerFacilityAndLocation=$("#CustomerFacilityAndLocation").val();
-//    var customerContact=$("#customerContact").val();
-//    var customerBank=$("#customerBank").val();
-//    var customerCreditFacility=$("#customerCreditFacility").val();
-//    var customerVisiteRating=$("#customerVisiteRating").val();
-//    var formData=new FormData();
-//    formData.append('_token',_token);
-//    formData.append('customer_name',customer_name);
-//    formData.append('customerPostBox',customerPostBox);
-//    formData.append('customer_groupCos',customer_groupCos);
-//    formData.append('customer_address1',customer_address1);
-//    formData.append('customer_address2',customer_address2);
-//    formData.append('CustomerArea',CustomerArea);
-//    formData.append('customerLandMark',customerLandMark);
-//    formData.append('customer_country',customer_country);
-//    formData.append('CustomerState',CustomerState);
-//    formData.append('CustomerDistrict',CustomerDistrict);
-//    formData.append('CustomerCity',CustomerCity);
-//    formData.append('CustomerRegion',CustomerRegion);
-//    formData.append('CustomerType',CustomerType);
-//    formData.append('customerPhoneNo',customerPhoneNo);
-//    formData.append('customerFax',customerFax);
-//    formData.append('customerLocationEmail',customerLocationEmail);
-//    formData.append('customerWebsite',customerWebsite);
-//    formData.append('customerReferencedBy',customerReferencedBy);
-//    formData.append('CustomerTradeActivity',CustomerTradeActivity);
-//    formData.append('CustomerFacilityAndLocation',CustomerFacilityAndLocation);
-//    formData.append('customerContact',customerContact);
-//    formData.append('customerBank',customerBank);
-//    formData.append('customerCreditFacility',customerCreditFacility);
-//    formData.append('customerVisiteRating',customerVisiteRating);
-//    $.ajax({
-//       type:'POST',
-//       processData: false,
-//       contentType: false,
-//       cache: false,
-//       async: false,
-//       data:formData,
-//       url:base_path+"/customer-store",
-//       success:function(){
-//          alert("success data stored !");
-//          openCustomerModel();
-//          $("#createCustomerModal").modal("hide");
-
-//       }
-//    })
-// })
-// // end store customer ===================================================
+        }
+    });
+});
+// end store  ===================================================
 
 // //start edit customer ===============================================
 // $("body").on('click','#edit_customer',function(){
@@ -268,29 +267,66 @@ var base_path = $("#url").val();
 // });
 // // end edit customer ================================================
 
-// // start view data ==================================================
-// $("body").on('click','.view_customer',function(){
-//    var id=$(this).attr('data-value');
-//    $.ajax({
-//       type:'get',
-//       data:{'id':id},
-//       url:base_path+"/customer-view",
-//       success:function(res){
-//          $(".customer_name_view").text(res.customer_name);
-//          $(".group_cos_view").text(res.group_cos);
-//          $(".address1_view").text(res.address1);
-//          $(".address2_view").text(res.address2);
-//          $(".location_email_view").text(res.location_email);
-//       }
-//    });
-  
-//    $("#customerDetailsviewModal").modal("show");
-// });
-// $(".close_customerModalview").click(function(){
-//    $("#customerDetailsviewModal").modal("hide");
-// });
+// start view data ==================================================
+$("body").on('click','#view_orderdata',function(){
+    var id=$(this).attr('data-value');
+    $.ajax({
+        type:'get',
+        data:{'id':id},
+        url:base_path+"/order-view",
+        success:function(res){
+            var str = "" + res.order_details.enquiry_id
+            var ms = "" + res.order_details.id
+            var pad = "00000"
+            var ans = pad.substring(0, pad.length - str.length) + str;
+            var msbt = pad.substring(0, pad.length - ms.length) + ms;
+            var Buydate = new Date(res.order_details.buyer_order_date+'T00:00:00+05:30');
+            var buyerDate=((Buydate.getMonth() > 8) ? (Buydate.getMonth() + 1) : ('0' + (Buydate.getMonth() + 1))) + '/' + ((Buydate.getDate() > 9) ? Buydate.getDate() : ('0' + Buydate.getDate())) + '/' + Buydate.getFullYear();
 
-// // end view data ====================================================
+            var mdate = new Date(res.order_details.mill_p_inv_sc_date+'T00:00:00+05:30');
+            var millDate=((mdate.getMonth() > 8) ? (mdate.getMonth() + 1) : ('0' + (mdate.getMonth() + 1))) + '/' + ((mdate.getDate() > 9) ? mdate.getDate() : ('0' + mdate.getDate())) + '/' + mdate.getFullYear();
+
+            var msDate = new Date(res.order_details.msbmt_sc_date+'T00:00:00+05:30');
+            msbtDate=((msDate.getMonth() > 8) ? (msDate.getMonth() + 1) : ('0' + (msDate.getMonth() + 1))) + '/' + ((msDate.getDate() > 9) ? msDate.getDate() : ('0' + msDate.getDate())) + '/' + msDate.getFullYear();
+            $("#orderView_enq_no").text("EQ"+ans);
+            $("#order_viewCustomername").text(res.order_details.customer_name);
+            $("#orderView_exportername").text("");
+            $("#orderView_orStatus").text("");
+            $("#orderView_masterCat").text(res.order_details.category_name);
+            $("#orderViewCommodityQty").text(res.order_details.order_qty_mt);
+            $("#orderViewfferDate").text("");
+            $("#orderViewProducer").text(res.order_details.producer);
+            $("#orderViewQtyMt").text(res.order_details.order_qty_mt);
+            $("#orderViewValueUs").text("$"+res.order_details.order_value_us);
+            $("#orderViewConfRef").text(res.order_details.order_conf_ref);
+            $("#orderViewShipmentDays").text(res.order_details.shipment_days);
+            $("#orderViewShipMode").text(res.order_details.ship_mode);
+            $("#orderViewShipFrom").text(res.order_details.ship_from);
+            $("#orderViewShipTo").text(res.order_details.ship_to);
+            $("#orderViewPartialShip").text(res.order_details.partial_ship);
+            $("#orderViewTransshipment").text(res.order_details.Trans_shipment);
+            $("#orderViewDeliverydays").text(res.order_details.delivery_days);
+            $("#orderViewIncoTerm").text(res.order_details.incoTrname);
+            $("#orderViewDestination").text(res.order_details.destination);
+            $("#orderViewComments").text(res.order_details.comment);
+            $("#orderViewMSBMT_SC_Ref").text("SO-"+msbt);
+            $("#orderViewBuyerOrderRef").text(res.order_details.buyer_order_ref);
+            $("#orderViewBuyerOrderDate").text(buyerDate);
+            $("#orderViewMill_Ref").text(res.order_details.mill_p_inv_sc_ref);
+            $("#orderViewMill_Date").text(millDate);
+            $("#orderViewMonthBooked").text(res.order_details.month_booked);
+            $("#orderViewMSBMT_Date").text(msbtDate);
+            $("#orderViewRefComments").text(res.order_details.order_reference_comment);
+           
+        }
+    });
+    $("#OrderDetailsviewModal").modal("show");
+});
+$(".close_orderDetailsModalview").click(function(){
+   $("#OrderDetailsviewModal").modal("hide");
+});
+
+// end view data ====================================================
 
 // // start delete customer ===============================================
 // $("body").on('click','#delete_customer',function(){

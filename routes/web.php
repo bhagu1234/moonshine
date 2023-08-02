@@ -15,6 +15,9 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AddressRegionController;
+use App\Http\Controllers\AddressTypeController;
+use App\Http\Controllers\BaseproductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +83,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // OrderController
     Route::get('order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('order-create', [OrderController::class, 'create'])->name('order.create');
     Route::post('order-store', [OrderController::class, 'store'])->name('order.store');
     Route::get('order-edit',[OrderController::class,'edit'])->name('order.edit');
     Route::post('order-update', [OrderController::class, 'update'])->name('order.update');
@@ -141,4 +145,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('address_region-edit',[AddressRegionController::class,'edit'])->name('address_region.edit');
     Route::post('address_region-update', [AddressRegionController::class, 'update'])->name('address_region.update');
     Route::get('address_region-delete', [AddressRegionController::class, 'delete'])->name('address_region.delete');
+
+    // AddressTypeController
+    Route::get('address_type', [AddressTypeController::class, 'index'])->name('address_type.index');
+    Route::post('address_type-store', [AddressTypeController::class, 'store'])->name('address_type.store');
+    Route::get('address_type-edit',[AddressTypeController::class,'edit'])->name('address_type.edit');
+    Route::post('address_type-update', [AddressTypeController::class, 'update'])->name('address_type.update');
+    Route::get('address_type-delete', [AddressTypeController::class, 'delete'])->name('address_type.delete');
+
+    //Baseproductcontroller
+    Route::get('baseproduct',[BaseproductController::class,'index'])->name('custom.baseproduct');
+    Route::post('baseproduct-store',[BaseproductController::class,'store'])->name('baseproduct-store');
+    Route::get('baseproduct-edit',[BaseproductController::class,'edit'])->name('baseproduct-edit');
+    Route::post('baseproduct-update',[BaseproductController::class,'update'])->name('baseproduct-update');
+    Route::get('baseproduct-delete',[BaseproductController::class,'delete'])->name('baseproduct-delete');
+    Route::get('baseproduct-getDetails',[BaseproductController::class,'getDetails'])->name('baseproduct-getDetails');
 });

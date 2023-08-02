@@ -713,12 +713,12 @@
                                 <div class="app-container p-2 my-2">
                                     <div class="row gx-0 gy-2 row-cols-3 justify-content-center p-2">
                                         <div class="col">
-                                            <a href="#" onclick="addressRegion()">
+                                            <a href="#" onclick="addressRegionView()">
                                                 Address Region
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="addressTypeView()">
                                                 <p class="mb-0 mt-1">Address Type</p>
                                             </a>
                                         </div>
@@ -773,7 +773,7 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="openbaseproductModel()">
                                                 <p class="mb-0 mt-1">Base Product</p>
                                             </a>
                                         </div>
@@ -891,5 +891,7 @@
 @include('address.district')
 @include('address.city')
 
-<!-- custom region -->
+<!-- custom  -->
 @include('custom.address_region')
+@include('custom.address_type')
+@include('custom.baseproduct')

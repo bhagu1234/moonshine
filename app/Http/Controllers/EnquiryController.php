@@ -32,6 +32,7 @@ class EnquiryController extends Controller
             ->leftJoin('states','states.state_id','customers.state')
             ->leftJoin('enq_dropp_lost_reasons','enq_dropp_lost_reasons.id','enquiries.dropped_reson_id')
             ->where('enquiries.status','1')
+            ->where('enquiries.enq_status','!=','5')
             ->select('enquiries.id as enq_id','enquiries.enquiry_value_aed','enquiries.margin_set','enquiries.enquiry_date','enquiries.enquiry_mode','enquiries.enquired_item','enquiries.supply_term','enquiries.total_qty','enquiries.enquiry_reference','enquiries.enquiry_abstract','enquiries.kb_commitment','enquiries.enquiry_period','enquiries.delivery_place','enquiries.enquiry_conditions','enquiries.enq_status','customers.id as custname','customers.customer_name','products.*','contacts.*','uoms.name as uom_name','enquiry_priorities.name as enq_pri_name','users.first_name as focal_points','incotrims.name as incoTrname','categories.category_name as category_name','base_products.product_name as baseProductName','sub_products.product_name as subProductName','cities.city_name','states.name as state_name','enquirer.first_name as enquirer_name','enq_dropp_lost_reasons.dropp_reason','enq_dropp_lost_reasons.lost_reason','enquiries.rfq_date','enquiries.quoted_date','enquiries.negotiation_date','enquiries.confirmed_date','enquiries.Dropped_date','enquiries.lost_date','enquiries.closed','enquiries.delivered_date')
             ->get();
             // dd($data);   

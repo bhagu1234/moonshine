@@ -17,6 +17,11 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\AddressRegionController;
 use App\Http\Controllers\AddressTypeController;
 use App\Http\Controllers\BaseproductController;
+use App\Http\Controllers\SubproductController;
+use App\Http\Controllers\MarginController;
+use App\Http\Controllers\VisitCustomerController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,4 +165,42 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('baseproduct-update',[BaseproductController::class,'update'])->name('baseproduct-update');
     Route::get('baseproduct-delete',[BaseproductController::class,'delete'])->name('baseproduct-delete');
     Route::get('baseproduct-getDetails',[BaseproductController::class,'getDetails'])->name('baseproduct-getDetails');
+    
+     //Subproductcontroller
+     Route::get('subproduct',[SubproductController::class,'index'])->name('custom.subproduct');
+     Route::post('subproduct-store',[SubproductController::class,'store'])->name('subproduct-store');
+     Route::get('subproduct-edit',[SubproductController::class,'edit'])->name('subproduct-edit');
+     Route::post('subproduct-update',[SubproductController::class,'update'])->name('subproduct-update');
+     Route::get('subproduct-delete',[SubproductController::class,'delete'])->name('subproduct-delete');
+     Route::get('subproduct-getDetails',[SubproductController::class,'getDetails'])->name('subproduct-getDetails');
+
+    //  MarginController
+    Route::post('margin_invoice-store', [MarginController::class, 'store'])->name('margin_invoice.store');
+    Route::get('margin_invoice-edit',[MarginController::class,'edit'])->name('margin_invoice.edit');
+    Route::post('margin_invoice-update', [MarginController::class, 'update'])->name('margin_invoice.update');
+    Route::get('margin_invoice-delete', [MarginController::class, 'delete'])->name('margin_invoice.delete');
+
+    // VisitCustomerController
+    Route::get('visit_customer', [VisitCustomerController::class, 'index'])->name('visit_customer.index');
+    Route::post('visit_customer-store', [VisitCustomerController::class, 'store'])->name('visit_customer.store');
+    Route::get('visit_customer-edit',[VisitCustomerController::class,'edit'])->name('visit_customer.edit');
+    Route::post('visit_customer-update', [VisitCustomerController::class, 'update'])->name('visit_customer.update');
+    Route::get('visit_customer-delete', [VisitCustomerController::class, 'delete'])->name('visit_customer.delete');
+    Route::get('visit_customer-view', [VisitCustomerController::class, 'view'])->name('visit_customer.view');
+    
+    //Statuscontroller
+    Route::get('status', [StatusController::class, 'index'])->name('custom.status');
+    Route::post('status-store', [StatusController::class, 'store'])->name('status-store');
+    Route::get('status-edit',[StatusController::class,'edit'])->name('status-edit');
+    Route::post('status-update', [StatusController::class, 'update'])->name('status-update');
+    Route::get('status-delete', [StatusController::class, 'delete'])->name('status-delete');
+    
+    //Uomcontroller
+    
+    Route::get('uom', [UomController::class, 'index'])->name('custom.uom');
+    Route::post('uom-store', [UomController::class, 'store'])->name('uom-store');
+    Route::get('uom-edit',[UomController::class,'edit'])->name('uom-edit');
+    Route::post('uom-update', [UomController::class, 'update'])->name('uom-update');
+    Route::get('uom-delete', [UomController::class, 'delete'])->name('uom-delete');
+
 });

@@ -696,6 +696,18 @@
                             <li> <a class="dropdown-item" href="{{route('order.index')}}">Orders View </a>
                             </li>
                         </ul>
+                    </li>                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                            <div class="menu-title d-flex align-items-center">Field Vistis</div>
+                            <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li> <a class="dropdown-item" href="#" onclick="visit_customerView()">Customers</a>
+                            </li>
+                            <li> <a class="dropdown-item" href="#">Suppliers</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
@@ -723,7 +735,7 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="statusView()">
                                                 <p class="mb-0 mt-1">Status</p>
                                             </a>
                                         </div>
@@ -733,18 +745,13 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="uomView()">
                                                 <p class="mb-0 mt-1">UOM</p>
                                             </a>
                                         </div>
                                          <div class="col">
                                             <a href="#">
                                                 <p class="mb-0 mt-1">Supply Term List</p>
-                                            </a>
-                                        </div>
-                                         <div class="col">
-                                            <a href="#">
-                                                <p class="mb-0 mt-1">Enquiry  Priority List</p>
                                             </a>
                                         </div>
                                          <div class="col">
@@ -778,8 +785,58 @@
                                             </a>
                                         </div>
                                          <div class="col">
-                                            <a href="#">
+                                            <a href="#" onclick="opensubproductModel()">
                                                 <p class="mb-0 mt-1">Sub Product</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Enquiry priority</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Drop reason</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Lost reason</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Inco term</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Language</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Payment Mode</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">POC</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Region</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Religion</p>
+                                            </a>
+                                        </div>
+                                         <div class="col">
+                                            <a href="#">
+                                                <p class="mb-0 mt-1">Section</p>
                                             </a>
                                         </div>
                                         
@@ -863,6 +920,7 @@
 @include('order.view')
 @include('order.create')
 @include('order.edit')
+@include('order.margin')
 <!-- enquiry  -->
 
 @include('enquiry.view')
@@ -895,3 +953,9 @@
 @include('custom.address_region')
 @include('custom.address_type')
 @include('custom.baseproduct')
+@include('custom.subproduct')
+@include('custom.status')
+@include('custom.uom')
+
+<!-- visit fields  -->
+@include('visit_field.customer_index');

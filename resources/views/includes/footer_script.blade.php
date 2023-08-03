@@ -50,4 +50,14 @@
 <script src="{{URL::to('/')}}/public/app/js/address_type.js"></script>
 <!-- base product -->
 <script src="{{URL::to('/')}}/public/app/js/baseproduct.js"></script>
+<!-- sub product -->
+<script src="{{URL::to('/')}}/public/app/js/subproduct.js"></script>
+<!-- margin invoice -->
+<script src="{{URL::to('/')}}/public/app/js/margin.js"></script>
+<!-- visit customer-->
+<script src="{{URL::to('/')}}/public/app/js/visit_customer.js"></script>
+<!-- status-->
+<script src="{{URL::to('/')}}/public/app/js/status.js"></script>
+<!-- uom-->
+<script src="{{URL::to('/')}}/public/app/js/uom.js"></script>
 <script src="{{URL::to('/')}}/public/app/js/fromValidation.js"></script>
